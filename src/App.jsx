@@ -19,7 +19,7 @@ function App() {
 
   return (
     <>
-      <p>Site SOLUÇÕES OBI IFPAR</p>
+      <p className="text-3xl">Site SOLUÇÕES OBI IFPAR</p>
       <br />
       <br />
       <p>
@@ -51,10 +51,10 @@ function App() {
       <br />
       <p>Contador porque sim: {count}</p>
       <button onClick={() => setCount(count + 1)}>Incrementar</button>
-      <br /><br /><br />
-      <button onClick={callApi}>
-        Chamar API de teste
-      </button>
+      <br />
+      <br />
+      <br />
+      <button onClick={callApi}>Chamar API de teste</button>
       {message && <p>Resposta da API: {message}</p>}
     </>
   );
