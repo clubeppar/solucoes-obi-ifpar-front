@@ -2,6 +2,20 @@ import { useState } from "react";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [message, setMessage] = useState("");
+
+  async function callApi(e) {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/api/hello");
+      const data = await response.json();
+      setMessage(data.message);
+    } catch (error) {
+      console.error("Error calling API:", error);
+      setMessage("Error calling API");
+    }
+  }
 
   return (
     <>
@@ -37,6 +51,11 @@ function App() {
       <br />
       <p>Contador porque sim: {count}</p>
       <button onClick={() => setCount(count + 1)}>Incrementar</button>
+      <br /><br /><br />
+      <button onClick={callApi}>
+        Chamar API de teste
+      </button>
+      {message && <p>Resposta da API: {message}</p>}
     </>
   );
 }
