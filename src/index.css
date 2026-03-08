@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+@layer components {
+  .btn-info-3d {
+    @apply text-white font-bold 
+    px-3 py-1 m-1 rounded 
+    border-b-4 border-blue-600
+  bg-blue-500
+  hover:bg-blue-400
+    hover:border-b-0
+    cursor-pointer;
+  }
+
+  .list-item{
+    @apply text-white hover:text-blue-500 font-bold px-3 py-1 m-1 cursor-pointer
+  }
+}
