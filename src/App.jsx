@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Topbar from "./components/Topbar";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -19,12 +20,14 @@ function App() {
 
   return (
     <>
-      <div className="grid grid-cols-4 grid-rows-[1fr_6fr_1fr] min-h-screen gap-3">
-        <div className="col-span-full bg-blue-500 flex items-center justify-center">header</div>
+      <div className="grid grid-cols-4 grid-rows-[auto_6fr_auto] min-h-screen gap-0">
+        <div className="col-span-full bg-slate-800 flex items-center">
+          <Topbar />
+        </div>
 
-        <div className="col-span-1 bg-red-500 flex items-center justify-center">sidebar</div>
+        <div className="col-span-1 bg-slate-800 flex items-center justify-center">sidebar</div>
 
-        <div className="col-span-3  bg-green-500 flex items-center justify-center">main page</div>
+        <div className="col-span-3  bg-slate-800 flex items-center justify-center">main page</div>
 
         <div className="col-span-full bg-yellow-500  flex items-center justify-center"> footer</div>
       </div>
