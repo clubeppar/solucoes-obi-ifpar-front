@@ -3,6 +3,7 @@ import Topbar from "./components/Topbar";
 import Landingpage from "./components/Landingpage";
 import Footer from "./components/Footer";
 import Grid from "./components/Grid";
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -22,18 +23,14 @@ function App() {
   }
 
   return (
-    <>
-      <div className="grid grid-cols-4 grid-rows-[auto_6fr_auto] min-h-screen gap-0">
-        <div className="col-span-full bg-gray-950 flex items-center">
-          <Topbar />
-        </div>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
 
-        <Grid />
-        
-        <Footer />
-      </div>
-      <Landingpage />
-    </>
+      {/* Routes */}
+      <Routes>
+        <Route path="/" element={<Landingpage />} />
+        <Route path="/grid" element={<Grid />} />
+      </Routes>
+    </BrowserRouter>
     
   );
 }
