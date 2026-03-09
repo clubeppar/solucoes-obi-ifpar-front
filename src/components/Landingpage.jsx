@@ -1,4 +1,5 @@
 import Topbar from "./Topbar";
+import Footer from "./Footer";
 function Landingpage() {
   return (
     <>
@@ -25,7 +26,7 @@ function Landingpage() {
             </div>
         </div>
 
-        <div className="col-span-full bg-yellow-500 flex items-center justify-center"> footer</div>
+        <Footer />
       </div>
     </>
   );

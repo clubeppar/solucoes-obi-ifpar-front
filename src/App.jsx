@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Topbar from "./components/Topbar";
 import Landingpage from "./components/Landingpage";
+import Footer from "./components/Footer";
+import Grid from "./components/Grid";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -26,11 +28,9 @@ function App() {
           <Topbar />
         </div>
 
-        <div className="col-span-1 bg-slate-900 flex items-center justify-center text-white">sidebar</div>
-
-        <div className="col-span-3  bg-slate-900 flex items-center justify-center text-white">main page</div>
-
-        <div className="col-span-full bg-yellow-500  flex items-center justify-center"> footer</div>
+        <Grid />
+        
+        <Footer />
       </div>
       <Landingpage />
     </>
