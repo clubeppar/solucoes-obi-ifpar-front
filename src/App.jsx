@@ -1,7 +1,5 @@
 import { useState } from "react";
-import Topbar from "./components/Topbar";
 import Landingpage from "./components/Landingpage";
-import Footer from "./components/Footer";
 import Grid from "./components/Grid";
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
