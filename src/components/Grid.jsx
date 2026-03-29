@@ -7,10 +7,10 @@ export default function Grid() {
 		<>
 			<div className="grid grid-cols-4 grid-rows-[auto_1fr_auto] h-screen gap-0">
 				<div className="col-span-full bg-gray-950 flex items-center">
-					<Topbar />
+					{/* <Topbar /> */}
 				</div>
 
-				<div className="col-span-1 bg-slate-900 flex justify-end overflow-y-auto scrollbar">
+				<div className="col-span-1 bg-slate-900 flex justify-end overflow-y-auto max-h-screen scrollbar">
 					<Sidebar />
 				</div>
 				
