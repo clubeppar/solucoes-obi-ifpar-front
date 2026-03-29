@@ -15,9 +15,22 @@
     @apply text-white hover:text-blue-500 font-bold px-3 py-1 m-1 cursor-pointer
   }
 
+  
   .text-sidebar {
     @apply text-stone-300
     font-semibold
+  }
+
+  .item-sidebar{
+    @apply flex items-center 
+    justify-between 
+    w-full 
+    p-2 rounded-xl 
+    hover:bg-gray-800 
+  }
+  .selected-sidebar{
+    @apply text-blue-600
+    bg-gray-800
   }
 }
 
