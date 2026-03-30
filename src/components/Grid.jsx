@@ -1,6 +1,7 @@
 import Topbar from "./Topbar";
 import Footer from "./Footer";
 import Sidebar from "./Sidebar";
+import Loading from "./Loading";
 
 export default function Grid() {
 	return (
@@ -16,6 +17,7 @@ export default function Grid() {
 				
 				<div className="col-span-3  bg-slate-900 flex items-center justify-center text-white">main page</div>
 
+				<Loading />
 				<Footer />
 			</div>
 			</>
