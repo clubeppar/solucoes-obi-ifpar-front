@@ -12,9 +12,7 @@ export default function Grid() {
 					{/* <Topbar /> */}
 				</div>
 
-				<div className="col-span-1 bg-slate-900 flex justify-end overflow-y-auto max-h-screen scrollbar">
-					<Sidebar />
-				</div>
+				<Sidebar />
 				
 				<MainPage />
 
