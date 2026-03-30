@@ -17,7 +17,7 @@ function Topbar(){
           Questões
         </button>
         <button className="btn-info-3d hidden sm:flex items-center gap-2 cursor-pointer"
-         onClick={()=> window.location.href= "https://github.com/G-Aleixo/solucoes-obi-ifpar"}
+          onClick={()=> window.location.href= "https://github.com/G-Aleixo/solucoes-obi-ifpar"}
         >
           <img className="size-6" src="https://cdn-icons-png.flaticon.com/256/25/25231.png" alt="" />
           Github

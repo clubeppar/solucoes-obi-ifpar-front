@@ -125,6 +125,7 @@ function Landingpage() {
             </div>      
           </div>
         </div>
+        
         <Footer />
       </div>
     </>
