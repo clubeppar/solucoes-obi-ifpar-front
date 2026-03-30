@@ -18,9 +18,8 @@ export default function Grid() {
 				
 				<MainPage />
 
-				{/* <Loading /> */}
 				<Footer />
 			</div>
-			</>
+		</>
 	);
 }
