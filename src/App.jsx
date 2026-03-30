@@ -1,6 +1,9 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Landingpage from "./components/Landingpage";
 import Grid from "./components/Grid";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Admin from "./components/Admin";
+import Credits from "./components/Credits";
 
 function App() {
   return (
@@ -8,6 +11,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Landingpage />} />
         <Route path="/grid" element={<Grid />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/credits" element={<Credits />} />
       </Routes>
     </BrowserRouter>
   );
