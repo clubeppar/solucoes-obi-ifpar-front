@@ -4,6 +4,7 @@ import LandingHero from "../subcomponents/LandingHero";
 import LandingFeatures from "../subcomponents/LandingFeatures";
 import LandingAbout from "../subcomponents/LandingAbout";
 import LandingHowItWorks from "../subcomponents/LandingHowItWorks";
+import LandingSeeOnPractice from "../subcomponents/LandingSeeOnPractice";
 
 function Landingpage() {
   return (
@@ -18,7 +19,7 @@ function Landingpage() {
           <LandingFeatures />
           <LandingAbout />
           <LandingHowItWorks />
-
+          <LandingSeeOnPractice />
 
         </div>
 
