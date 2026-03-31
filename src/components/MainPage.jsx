@@ -1,4 +1,33 @@
 import { useState } from "react";
+import Teste from "./Teste";
+import Topbar from "./Topbar";
+
+let teste = [
+  {
+    nTeste: 1,
+    status: "Aprovado",
+    tempoTeste: 100,
+    menorTempo: 2,
+    usoMemoria: 10,
+    tipoFalha: ""
+  },
+  {
+    nTeste: 2,
+    status: "Reprovado",
+    tempoTeste: 150,
+    menorTempo: 5,
+    usoMemoria: 15,
+    tipoFalha: "Tempo excedido"
+  },
+  {
+    nTeste: 3,
+    status: "Erro",
+    tempoTeste: 200,
+    menorTempo: 10,
+    usoMemoria: 20,
+    tipoFalha: ""
+  }
+];
 
 export default function MainPage() {
   const [year] = useState(2025);
@@ -8,6 +37,7 @@ export default function MainPage() {
   return (
     <>
       <div className="col-span-3 bg-slate-900 text-white">
+        <Topbar collapsed={true}/>
         <div className="flex justify-center items-center">
           <h4 className="flex text-gray-400 w-19/20 m-3">
             <svg className="mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" /></svg>
@@ -40,6 +70,22 @@ export default function MainPage() {
 
         <div className="flex justify-center items-center">
           <h1 className="w-19/20 m-3 text-2xl ">Resultado:</h1>
+        </div>
+
+        <div className="flex justify-center">
+          <div className="w-19/20 flex justify-between">
+            {teste.map((t) => (
+            <Teste
+              key={t.nTeste}
+              nTeste={t.nTeste}
+              status={t.status}
+              tempoTeste={t.tempoTeste}
+              menorTempo={t.menorTempo}
+              usoMemoria={t.usoMemoria}
+              tipoFalha={t.tipoFalha}
+            />
+          ))}
+          </div>
         </div>
       </div>
     </>
