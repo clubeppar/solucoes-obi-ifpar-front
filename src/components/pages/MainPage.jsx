@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Teste from "./Teste";
-import Topbar from "./Topbar";
-import MainPageHeader from "./MainPageHeader";
+import Teste from "../subcomponents/Teste";
+import Topbar from "../global_components/Topbar";
+import MainPageHeader from "../subcomponents/MainPageHeader";
 
 let teste = [
   {
@@ -38,7 +38,7 @@ export default function MainPage() {
   return (
     <>
       <div className="col-span-3 bg-slate-900 text-white">
-        <Topbar collapsed={true}/>
+        <Topbar collapsed={true} />
         <MainPageHeader year={year} fase={fase} level={level} question={question} />
 
 
@@ -61,16 +61,16 @@ export default function MainPage() {
         <div className="flex justify-center">
           <div className="w-19/20 flex justify-between">
             {teste.map((t) => (
-            <Teste
-              key={t.nTeste}
-              nTeste={t.nTeste}
-              status={t.status}
-              tempoTeste={t.tempoTeste}
-              menorTempo={t.menorTempo}
-              usoMemoria={t.usoMemoria}
-              tipoFalha={t.tipoFalha}
-            />
-          ))}
+              <Teste
+                key={t.nTeste}
+                nTeste={t.nTeste}
+                status={t.status}
+                tempoTeste={t.tempoTeste}
+                menorTempo={t.menorTempo}
+                usoMemoria={t.usoMemoria}
+                tipoFalha={t.tipoFalha}
+              />
+            ))}
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
-import Topbar from "./Topbar";
-import Footer from "./Footer";
-import Sidebar from "./Sidebar";
-import Loading from "./Loading";
+import Topbar from "../global_components/Topbar";
+import Footer from "../global_components/Footer";
+import Sidebar from "../global_components/Sidebar";
+import Loading from "../global_components/Loading";
 import MainPage from "./MainPage";
 
 export default function Grid() {
@@ -13,7 +13,7 @@ export default function Grid() {
 				</div>
 
 				<Sidebar />
-				
+
 				<MainPage />
 
 				<Footer />

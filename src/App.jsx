@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Landingpage from "./components/Landingpage";
-import Grid from "./components/Grid";
-import Admin from "./components/Admin";
-import Credits from "./components/Credits";
+import Landingpage from "./components/pages/Landingpage";
+import Grid from "./components/pages/Grid";
+import Admin from "./components/global_components/Admin";
+import Credits from "./components/subcomponents/Credits";
 
 function App() {
   return (
