@@ -1,7 +1,8 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useContext } from "react";
+import { Context } from "../src/Provider";
 
 export function useFetch() {
-  const [loading, setLoading] = useState(false);
+  const { setIsLoading } = useContext(Context);
   const [error, setError] = useState(null);
 
   const baseUrl = window.location.href.includes("localhost")
@@ -9,7 +10,7 @@ export function useFetch() {
     : ""; // URL do backend em produção
 
   const request = useCallback(async (url, options = {}) => {
-    setLoading(true);
+    setIsLoading(true);
 
     try {
       const response = await fetch(baseUrl + url, {
@@ -37,9 +38,9 @@ export function useFetch() {
       });
       return null;
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
-  }, []);
+  }, [setIsLoading]);
 
   const get = (url) => request(url);
 
@@ -49,14 +50,14 @@ export function useFetch() {
       body: JSON.stringify(body),
     });
 
-  return { get, post, request, loading, error };
+  return { get, post, request, error };
 }
 
 // como importar:
 // import { useFetch } from "../hooks/useFetch";
 
 // exemplo de uso dentro de um componente:
-// const { get, post, loading, error } = useFetch();
+// const { get, post, error } = useFetch();
 
 // GET (exemplo real da nossa aplicação)
 // useEffect(() => {

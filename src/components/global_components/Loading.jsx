@@ -16,7 +16,7 @@ export default function Loading() {
   });
 
   return (
-    <div className="z-999 flex flex-col justify-center items-center fixed w-screen h-screen bg-gray-950/50">
+    <div className="z-999 flex flex-col justify-center items-center fixed w-screen h-screen bg-gray-900/75 overflow-hidden">
       <img
         src="https://www.svgrepo.com/show/315795/spinner.svg"
         alt=""

@@ -1,22 +1,30 @@
-import { useState } from "react";
-import { useFetch } from "./hooks/useFetch";
+import { useEffect, useState } from "react";
+import { useFetch } from "../../../../hooks/useFetch";
 
-// let api2 =  {"ano" : 2022, "fases" : [1, 2, 3]};
+let api2 = { ano: 2022, fases: [1, 2, 3] };
 
-// let api3 =  {"ano" : 2022,
-//   "fase" : [1,2,3],
-//   "niveis": ["j", "1", "2", "s"]};
+let api3 = { ano: 2022, fase: [1, 2, 3], niveis: ["j", "1", "2", "s"] };
 
-// let api4 = {
-//   "ano": 2022,
-//   "fase": 1,
-//   "nivel": "1",
-//   "questoes": ["nome", "otonome", "kaio", "AAAAAAAAAAAAAAAA"]
-// };
+let api4 = {
+  ano: 2022,
+  fase: 1,
+  nivel: "1",
+  questoes: ["nome", "otonome", "kaio", "AAAAAAAAAAAAAAAA"],
+};
 
 export default function Sidebar() {
   const [questionSelect, setQuestionSelect] = useState(null);
-  const [get, post, loading, error] = useFetch();
+  const [data, setData] = useState(null);
+  const { get, error } = useFetch();
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await get("/nav/years");
+      setData(data);
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <div className="col-span-1 bg-slate-900 flex justify-end overflow-y-auto max-h-screen scrollbar">
@@ -65,7 +73,7 @@ export default function Sidebar() {
         </div>
 
         <ul>
-          {api1.anos.map((year, index) => (
+          {data?.anos?.map((year, index) => (
             <SidebarItem
               key={index}
               text={year}
