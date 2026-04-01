@@ -31,7 +31,7 @@ let boxex = [
   },
 ]
 
-export default function LandingSeeOnPractice() {
+export default function SeeOnPractice() {
   return (
     <>
       <h2 className="text-center text-3xl font-bold">Veja na prática</h2>

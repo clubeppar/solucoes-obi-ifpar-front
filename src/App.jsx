@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Landingpage from "./components/pages/Landingpage";
 import Grid from "./components/pages/Grid";
-import Admin from "./components/global_components/Admin";
-import Credits from "./components/subcomponents/Credits";
+import Admin from "./components/pages/Admin";
+import Credits from "./components/pages/Credits";
 
 function App() {
   return (

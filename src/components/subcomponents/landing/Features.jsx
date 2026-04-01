@@ -22,7 +22,7 @@ const featureItems = [
   },
 ];
 
-function LandingFeatures() {
+function Features() {
   return (
     <div className="grid grid-cols-3 divide-x-4 divide-gray-700 m-10">
       {featureItems.map((item) => (

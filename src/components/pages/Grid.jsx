@@ -1,23 +1,18 @@
-import Topbar from "../global_components/Topbar";
 import Footer from "../global_components/Footer";
-import Sidebar from "../global_components/Sidebar";
-import Loading from "../global_components/Loading";
-import MainPage from "./MainPage";
+
+import Sidebar from "../subcomponents/grid/Sidebar";
+import MainPage from "../subcomponents/grid/MainPage";
 
 export default function Grid() {
-	return (
-		<>
-			<div className="grid grid-cols-4 grid-rows-[auto_1fr_auto] h-screen gap-0">
-				<div className="col-span-full bg-gray-950 flex items-center">
-					{/* <Topbar /> */}
-				</div>
+  return (
+    <>
+      <div className="grid grid-cols-4 grid-rows-[auto_1fr_auto] h-screen gap-0">
+        <Sidebar />
 
-				<Sidebar />
+        <MainPage />
 
-				<MainPage />
-
-				<Footer />
-			</div>
-		</>
-	);
+        <Footer />
+      </div>
+    </>
+  );
 }

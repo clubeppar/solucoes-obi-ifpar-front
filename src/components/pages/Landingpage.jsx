@@ -1,10 +1,11 @@
 import Topbar from "../global_components/Topbar";
 import Footer from "../global_components/Footer";
-import LandingHero from "../subcomponents/LandingHero";
-import LandingFeatures from "../subcomponents/LandingFeatures";
-import LandingAbout from "../subcomponents/LandingAbout";
-import LandingHowItWorks from "../subcomponents/LandingHowItWorks";
-import LandingSeeOnPractice from "../subcomponents/LandingSeeOnPractice";
+
+import Hero from "../subcomponents/landing/Hero";
+import Features from "../subcomponents/landing/Features";
+import About from "../subcomponents/landing/About";
+import HowItWorks from "../subcomponents/landing/HowItWorks";
+import SeeOnPractice from "../subcomponents/landing/SeeOnPractice";
 
 function Landingpage() {
   return (
@@ -15,12 +16,11 @@ function Landingpage() {
         </div>
 
         <div className="col-span-full bg-slate-900 flex flex-col items-center justify-start text-white">
-          <LandingHero />
-          <LandingFeatures />
-          <LandingAbout />
-          <LandingHowItWorks />
-          <LandingSeeOnPractice />
-
+          <Hero />
+          <Features />
+          <About />
+          <HowItWorks />
+          <SeeOnPractice />
         </div>
 
         <Footer />

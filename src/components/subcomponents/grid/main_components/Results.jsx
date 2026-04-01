@@ -1,4 +1,4 @@
-import Teste from "../subcomponents/Teste";
+import Teste from "./Teste";
 
 export default function MainPageResults({ testes }) {
   return (

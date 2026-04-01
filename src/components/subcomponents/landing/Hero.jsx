@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function LandingHero() {
+function Hero() {
   return (
     <>
       <div className="flex flex-col justify-center items-center text-center w-1/2 m-10">

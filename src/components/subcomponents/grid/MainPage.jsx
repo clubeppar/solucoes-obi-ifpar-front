@@ -1,8 +1,10 @@
 import { useState } from "react";
-import Topbar from "../global_components/Topbar";
-import MainPageHeader from "../subcomponents/MainPageHeader";
-import MainPageInput from "../subcomponents/MainPageInput";
-import MainPageResults from "../subcomponents/MainPageResults";
+
+import Topbar from "../../global_components/Topbar";
+
+import Header from "./main_components/Header";
+import Input from "./main_components/Input";
+import Results from "./main_components/Results";
 
 let teste = [
   {
@@ -41,11 +43,11 @@ export default function MainPage() {
       <div className="col-span-3 bg-slate-900 text-white">
         <Topbar collapsed={true} />
 
-        <MainPageHeader year={year} fase={fase} level={level} question={question} />
+        <Header year={year} fase={fase} level={level} question={question} />
 
-        <MainPageInput />
+        <Input />
 
-        <MainPageResults testes={teste} />
+        <Results testes={teste} />
       </div>
     </>
   );

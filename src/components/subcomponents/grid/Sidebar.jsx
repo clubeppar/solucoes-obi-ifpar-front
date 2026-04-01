@@ -1,22 +1,24 @@
-import { useState } from "react"
+import { useState } from "react";
+import { useFetch } from "./hooks/useFetch";
 
-let api1 = {"anos" : [2025, 2024, 2023, 2022, 2021, 2020]};
+
    
-let api2 =  {"ano" : 2022, "fases" : [1, 2, 3]};
+// let api2 =  {"ano" : 2022, "fases" : [1, 2, 3]};
 
-let api3 =  {"ano" : 2022,
-  "fase" : [1,2,3],
-  "niveis": ["j", "1", "2", "s"]};  
+// let api3 =  {"ano" : 2022,
+//   "fase" : [1,2,3],
+//   "niveis": ["j", "1", "2", "s"]};  
     
-let api4 = {
-  "ano": 2022,
-  "fase": 1,
-  "nivel": "1",
-  "questoes": ["nome", "otonome", "kaio", "AAAAAAAAAAAAAAAA"]
-};
+// let api4 = {
+//   "ano": 2022,
+//   "fase": 1,
+//   "nivel": "1",
+//   "questoes": ["nome", "otonome", "kaio", "AAAAAAAAAAAAAAAA"]
+// };
 
 function Sidebar(){
   const [questionSelect, setQuestionSelect] = useState(null)
+  const [ get, post, loading, error ] = useFetch();
 
   return(
     <div className="col-span-1 bg-slate-900 flex justify-end overflow-y-auto max-h-screen scrollbar">
