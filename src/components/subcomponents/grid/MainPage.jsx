@@ -13,7 +13,7 @@ let teste = [
     tempoTeste: 100,
     menorTempo: 2,
     usoMemoria: 10,
-    tipoFalha: ""
+    tipoFalha: "",
   },
   {
     nTeste: 2,
@@ -21,7 +21,7 @@ let teste = [
     tempoTeste: 150,
     menorTempo: 5,
     usoMemoria: 15,
-    tipoFalha: "Tempo excedido"
+    tipoFalha: "Tempo excedido",
   },
   {
     nTeste: 3,
@@ -29,8 +29,8 @@ let teste = [
     tempoTeste: 200,
     menorTempo: 10,
     usoMemoria: 20,
-    tipoFalha: ""
-  }
+    tipoFalha: "",
+  },
 ];
 
 export default function MainPage() {

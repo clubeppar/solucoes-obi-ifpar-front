@@ -7,7 +7,7 @@ import About from "../subcomponents/landing/About";
 import HowItWorks from "../subcomponents/landing/HowItWorks";
 import SeeOnPractice from "../subcomponents/landing/SeeOnPractice";
 
-function Landingpage() {
+export default function Landingpage() {
   return (
     <>
       <div className="grid grid-cols-4 grid-rows-[auto_6fr_auto] min-h-screen gap-0">
@@ -28,5 +28,3 @@ function Landingpage() {
     </>
   );
 }
-
-export default Landingpage;

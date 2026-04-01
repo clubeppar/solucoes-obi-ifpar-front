@@ -22,7 +22,7 @@ const featureItems = [
   },
 ];
 
-function Features() {
+export default function Features() {
   return (
     <div className="grid grid-cols-3 divide-x-4 divide-gray-700 m-10">
       {featureItems.map((item) => (
@@ -48,5 +48,3 @@ function Features() {
     </div>
   );
 }
-
-export default LandingFeatures;

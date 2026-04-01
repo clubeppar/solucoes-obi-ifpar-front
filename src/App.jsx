@@ -5,7 +5,7 @@ import Grid from "./components/pages/Grid";
 import Admin from "./components/pages/Admin";
 import Credits from "./components/pages/Credits";
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter basename={"solucoes-obi-ifpar"}>
       <Routes>
@@ -17,5 +17,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;

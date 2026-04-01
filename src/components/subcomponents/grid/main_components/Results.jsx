@@ -1,6 +1,6 @@
 import Teste from "./Teste";
 
-export default function MainPageResults({ testes }) {
+export default function Results({ testes }) {
   return (
     <>
       <div className="flex justify-center items-center">
