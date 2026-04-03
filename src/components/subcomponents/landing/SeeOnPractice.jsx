@@ -31,6 +31,11 @@ let boxex = [
   },
 ];
 
+const spanClassBySize = {
+  2: "col-span-2",
+  3: "col-span-3",
+};
+
 export default function SeeOnPractice() {
   return (
     <>
@@ -40,7 +45,7 @@ export default function SeeOnPractice() {
           {boxex.map((box, index) => (
             <div
               key={index}
-              className={`col-span-${box.size} bg-gray-800 m-2 p-4 rounded-lg text-balance`}
+              className={`${spanClassBySize[box.size] ?? "col-span-1"} bg-gray-800 m-2 p-4 rounded-lg text-balance`}
             >
               <h3 className="text-xl font-bold">{box.h1}</h3>
               <p>{box.p}</p>
