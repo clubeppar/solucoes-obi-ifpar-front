@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import { useFetch } from "../../../../hooks/useFetch";
+
 import { GoChevronDown } from "react-icons/go";
+import { CiSearch } from "react-icons/ci";
+import { CiFilter } from "react-icons/ci";
+import { GoSidebarExpand } from "react-icons/go";
+import { GoSidebarCollapse } from "react-icons/go";
+import { FaCode } from "react-icons/fa6";
 
 export default function Sidebar( {selection, setSelection} ) {
   const [data, setData] = useState(null);
@@ -19,16 +25,8 @@ export default function Sidebar( {selection, setSelection} ) {
     <div className="col-span-1 bg-slate-900 flex justify-end overflow-y-auto max-h-screen scrollbar">
       <aside className="w-full text-sidebar">
         <div className="flex justify-between align-middle mt-2">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/711/711284.png"
-            alt=""
-            className="size-10 invert cursor-pointer ms-2"
-          />
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/7168/7168076.png"
-            alt=""
-            className="size-8 invert me-2"
-          />
+          <FaCode className="size-10 cursor-pointer ms-2"/>
+          <GoSidebarExpand className="size-8 me-2"/>
         </div>
 
         <div className="flex justify-between items-center m-2">
@@ -37,27 +35,19 @@ export default function Sidebar( {selection, setSelection} ) {
             method="post"
             className="flex justify-between items-center grow relative"
           >
-            <img
-              src="https://www.iconpacks.net/icons/2/free-search-icon-2907-thumb.png"
-              alt=""
-              className="size-7 absolute left-3 invert"
-            />
+            <CiSearch className="size-8 absolute left-3"/>
             <input
               type="text"
               className="
-            bg-gray-600
-            rounded-full
-            grow h-8
-            me-1 px-4 ps-[15%]
-            "
+              bg-gray-600
+                rounded-full
+                grow h-8
+                me-1 px-4 ps-[17%]
+              "
             />
           </form>
           <button className=" bg-gray-500 box-content rounded-full grow-0 flex items-center justify-center size-8">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/107/107799.png"
-              alt=""
-              className="invert size-5"
-            />
+            <CiFilter className="size-7" />
           </button>
         </div>
 
