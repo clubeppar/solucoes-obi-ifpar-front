@@ -29,6 +29,10 @@
   }
   .selected-sidebar {
     @apply text-blue-600
+    flex items-center 
+    justify-between 
+    w-full 
+    p-2 rounded-xl 
     bg-gray-800;
   }
 }

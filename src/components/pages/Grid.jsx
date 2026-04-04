@@ -17,7 +17,7 @@ export default function Grid() {
     <>
       <div className="grid grid-cols-4 grid-rows-[auto_1fr_auto] h-screen gap-0">
         <Sidebar selection={selection} setSelection={setSelection}/>
-        <MainPage />
+        <MainPage selection={selection} />
         <Footer />
       </div>
     </>

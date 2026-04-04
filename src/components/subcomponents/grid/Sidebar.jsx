@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useFetch } from "../../../../hooks/useFetch";
+import { GoChevronDown } from "react-icons/go";
 
 export default function Sidebar( {selection, setSelection} ) {
   const [data, setData] = useState(null);
@@ -128,7 +129,7 @@ function SidebarItem({ text, nextCall, selection, setSelection }) {
   return (
     <li>
       <button
-        className={`item-sidebar ${isSelected ? "selected-sidebar" : ""}`}
+        className={isSelected ? "selected-sidebar" : "item-sidebar"}
         onClick={() => {
           if (!nextStep) {
             setSelection(prev => ({ ...prev, problem: text }));
@@ -149,15 +150,7 @@ function SidebarItem({ text, nextCall, selection, setSelection }) {
       >
         {prefix + text}
         {nextStep && (
-          <img
-            src="https://uxwing.com/wp-content/themes/uxwing/download/arrow-direction/arrow-down-icon.png"
-            alt=""
-            className={
-              open
-                ? "size-4 invert transition"
-                : "size-4 invert transition rotate-180"
-            }
-          />
+          <GoChevronDown className={open?"size-6 transition":"size-6 transition rotate-180"}/>
         )}
       </button>
       {open && (

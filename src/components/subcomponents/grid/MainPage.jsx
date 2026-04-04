@@ -33,17 +33,19 @@ let teste = [
   },
 ];
 
-export default function MainPage() {
-  const [year] = useState(2025);
-  const [fase] = useState(3);
-  const [level] = useState("Júnior");
-  const [question] = useState("nome");
+export default function MainPage({ selection }) {
+
   return (
     <>
       <div className="col-span-3 bg-slate-900 text-white">
         <Topbar collapsed={true} />
 
-        <Header year={year} fase={fase} level={level} question={question} />
+        <Header 
+        year={selection.year} 
+        fase={selection.phase} 
+        level={`Nivel ${selection.level}`} 
+        question={selection.problem} 
+        />
 
         <Input />
 
