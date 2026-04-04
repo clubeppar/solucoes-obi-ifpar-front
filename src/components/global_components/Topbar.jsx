@@ -1,9 +1,14 @@
+import { useContext } from "react";
+
 import { FiSun } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
 
+import { Context } from "../../Provider";
+
 export default function Topbar({ collapsed }) {
+  const { setIsDarkMode } = useContext(Context);
   const handleThemeToggle = () => {
-    console.log("implementar sun/dark mode");
+    setIsDarkMode(prev => !prev);
   };
 
   const handleGithubClick = () => {
