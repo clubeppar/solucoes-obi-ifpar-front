@@ -14,7 +14,7 @@
   }
 
   .list-item {
-    @apply text-white hover:text-blue-500 font-bold px-3 py-1 m-1 cursor-pointer;
+    @apply text-white hover:text-blue-500 transition-colors font-bold px-3 py-1 m-1 cursor-pointer whitespace-nowrap;
   }
 
   .text-sidebar {
