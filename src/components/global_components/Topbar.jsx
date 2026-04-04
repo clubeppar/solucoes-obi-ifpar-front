@@ -20,10 +20,10 @@ export default function Topbar({ collapsed }) {
   };
 
   return (
-    <header className="grid grid-cols-[auto_1fr_auto] items-center h-16 px-4 z-10 w-full">
-      {!collapsed ? <FaCode className="size-12 text-white" /> : <span></span>}
+    <header className="relative flex items-center h-16 px-4 z-10 w-full">
+      {!collapsed ? <FaCode className="ms-2 size-12 text-white" /> : <span></span>}
 
-      <div className="hidden md:flex justify-center gap-6">
+      <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 justify-center gap-6">
         <button className="list-item" onClick={() => handleNavigate("/")}>
           Início
         </button>
@@ -38,7 +38,7 @@ export default function Topbar({ collapsed }) {
         </button>
       </div>
 
-      <div className="me-4 flex justify-end gap-3 sm:gap-5">
+      <div className="ms-auto me-2 flex gap-5">
         <button
           className="cursor-pointer text-white hover:text-blue-500 transition-colors"
           onClick={handleThemeToggle}
@@ -55,7 +55,7 @@ export default function Topbar({ collapsed }) {
             handleNavigate("https://github.com/G-Aleixo/solucoes-obi-ifpar")
           }
         >
-          <FaGithub className="size-8 sm:size-10" />
+          <FaGithub className="size-10" />
         </button>
       </div>
     </header>
