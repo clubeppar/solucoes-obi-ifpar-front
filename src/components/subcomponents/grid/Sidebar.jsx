@@ -1,19 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFetch } from "../../../../hooks/useFetch";
 
-let api2 = { ano: 2022, fases: [1, 2, 3] };
-
-let api3 = { ano: 2022, fase: [1, 2, 3], niveis: ["j", "1", "2", "s"] };
-
-let api4 = {
-  ano: 2022,
-  fase: 1,
-  nivel: "1",
-  questoes: ["nome", "otonome", "kaio", "AAAAAAAAAAAAAAAA"],
-};
-
-export default function Sidebar() {
-  const [questionSelect, setQuestionSelect] = useState(null);
+export default function Sidebar( {selection, setSelection} ) {
   const [data, setData] = useState(null);
   const { get, error } = useFetch();
 
@@ -78,8 +66,8 @@ export default function Sidebar() {
               key={index}
               text={year}
               nextCall="Phase"
-              questionSelect={questionSelect}
-              setQuestionSelect={setQuestionSelect}
+              selection={selection}
+              setSelection={setSelection}
             />
           ))}
         </ul>
@@ -90,31 +78,50 @@ export default function Sidebar() {
 
 //SidebarBtns Abaixo
 
-function SidebarItem({ text, nextCall, questionSelect, setQuestionSelect }) {
+function SidebarItem({ text, nextCall, selection, setSelection }) {
   const [open, setOpen] = useState(false);
+  const [data, setData] = useState(null);
+  const { get, error } = useFetch();
 
   let actualArray = [];
   let prefix = "";
-  let isSelected = questionSelect === `${text}`; //trocar para ID depois
+  let nextURL = "";
+  let nextStep = nextCall;
+  let isSelected = selection.problem === text; //trocar para ID depois
+
+  useEffect(() => {
+    if (!open || data) return;
+
+    async function fetchData() {
+      if (!nextCall) return;
+      const data = await get(nextURL);
+      setData(data);
+    }
+
+    fetchData();
+  }, [open]);
 
   switch (nextCall) {
     case "Phase":
-      actualArray = api2.fases;
-      nextCall = "Levels";
+      actualArray = data?.fases;
+      nextStep = "Levels";
       prefix = "";
+      nextURL = `/nav/years/${selection?.year}/phases`;
       break;
     case "Levels":
-      actualArray = api3.niveis;
-      nextCall = "Questions";
+      actualArray = data?.niveis;
+      nextStep = "Questions";
       prefix = "Fase ";
+      nextURL = `/nav/years/${selection?.year}/phases/${selection?.phase}/levels`;
       break;
     case "Questions":
-      actualArray = api4.questoes;
-      nextCall = "none";
+      actualArray = data?.questoes;
+      nextStep = "none";
       prefix = "Nivel ";
+      nextURL = `/nav/years/${selection?.year}/phases/${selection?.phase}/levels/${selection?.level}/problems`;
       break;
     default:
-      nextCall = null;
+      nextStep = null;
       break;
   }
 
@@ -123,15 +130,25 @@ function SidebarItem({ text, nextCall, questionSelect, setQuestionSelect }) {
       <button
         className={`item-sidebar ${isSelected ? "selected-sidebar" : ""}`}
         onClick={() => {
-          if (!nextCall) {
-            setQuestionSelect(`${text}`);
+          if (!nextStep) {
+            setSelection(prev => ({ ...prev, problem: text }));
           } else {
             setOpen(!open);
+
+            if(nextStep === "Levels"){
+              setSelection(prev => ({ ...prev, year: text }))
+            }
+            else if(nextStep === "Questions"){
+              setSelection(prev => ({ ...prev, phase: text }))
+            }
+            else if(nextStep === "none"){
+              setSelection(prev => ({ ...prev, level: text }))
+            }
           }
         }}
       >
-        <p>{prefix + text}</p>
-        {nextCall && (
+        {prefix + text}
+        {nextStep && (
           <img
             src="https://uxwing.com/wp-content/themes/uxwing/download/arrow-direction/arrow-down-icon.png"
             alt=""
@@ -146,13 +163,13 @@ function SidebarItem({ text, nextCall, questionSelect, setQuestionSelect }) {
       {open && (
         <ul className="ml-8 max-w-full overflow-x-hidden">
           <li>
-            {actualArray.map((item, index) => (
+            {actualArray?.map((item, index) => (
               <SidebarItem
                 key={index}
                 text={item}
-                nextCall={nextCall}
-                questionSelect={questionSelect}
-                setQuestionSelect={setQuestionSelect}
+                nextCall={nextStep}
+                selection={selection}
+                setSelection={setSelection}
               />
             ))}
           </li>
