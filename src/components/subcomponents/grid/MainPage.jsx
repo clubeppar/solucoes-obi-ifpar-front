@@ -34,23 +34,49 @@ let teste = [
 ];
 
 export default function MainPage({ selection }) {
+  const [fileName, setFileName] = useState("");
+  const [file, setFile] = useState(null);
+
+  const handleSetFile = (event) => {
+    const selectedFile = event.target.files[0];
+
+    if (!selectedFile) {
+      return;
+    }
+
+    setFileName(selectedFile.name);
+    setFile(selectedFile);
+  };
+
+  const handleCancel = () => {
+    setFileName("");
+    setFile(null);
+  };
+
+  const handleUpload = () => {
+    console.log("Nome do arquivo:", fileName);
+    console.log("Arquivo selecionado:", file);
+
+    handleCancel();
+  };
 
   return (
-    <>
-      <div className="col-span-3 bg-slate-900 text-white">
-        <Topbar collapsed={true} />
+    <div className="col-span-3 bg-slate-900 text-white">
+      <Topbar collapsed={true} />
 
-        <Header 
-        year={selection.year} 
-        fase={selection.phase} 
-        level={`Nivel ${selection.level}`} 
-        question={selection.problem} 
-        />
+      <Header
+        year={selection.year}
+        fase={selection.phase}
+        level={selection.level}
+        question={selection.problem}
+        file={file}
+        cancel={handleCancel}
+        onSubmit={handleUpload}
+      />
 
-        <Input />
+      <Input fileName={fileName} file={file} onFileChange={handleSetFile} />
 
-        <Results testes={teste} />
-      </div>
-    </>
+      <Results testes={teste} />
+    </div>
   );
 }
