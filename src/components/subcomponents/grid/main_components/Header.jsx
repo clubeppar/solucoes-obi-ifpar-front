@@ -19,9 +19,9 @@ export default function Header({
         </h4>
       </div>
 
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center light:bg-white">
         <div className="flex justify-between w-19/20 m-3">
-          <h1 className="text-2xl">{question}</h1>
+          <h1 className="text-2xl light:text-black">{question}</h1>
           <div className="flex items-center gap-2">
             <button
               disabled={file == null}

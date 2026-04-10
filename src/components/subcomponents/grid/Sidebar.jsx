@@ -26,9 +26,9 @@ export default function Sidebar({
   }, []);
 
   return (
-    <div className="h-full bg-slate-900 flex justify-end overflow-y-auto scrollbar">
+    <div className="h-full bg-slate-900  flex justify-end overflow-y-auto scrollbar">
       <aside className="w-full text-sidebar">
-        <div className="flex justify-between align-middle mt-2">
+        <div className="flex justify-between align-middle mt-2 ">
           <FaCode className="size-10 cursor-pointer ms-2" />
           <GoSidebarExpand className="size-8 me-2" />
         </div>

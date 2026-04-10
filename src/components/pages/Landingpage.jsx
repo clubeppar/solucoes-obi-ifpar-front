@@ -15,7 +15,7 @@ export default function Landingpage() {
           <Topbar collapsed={false} />
         </div>
 
-        <div className="col-span-full bg-slate-900 flex flex-col items-center justify-start text-white">
+        <div className="col-span-full bg-slate-900 light:bg-white flex flex-col items-center justify-start text-white">
           <Hero />
           <Features />
           <About />

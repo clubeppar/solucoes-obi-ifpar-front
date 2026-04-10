@@ -1,9 +1,9 @@
 export default function About() {
   return (
-    <div className="flex flex-col items-center justify-center m-10">
+    <div className="flex flex-col items-center justify-center m-10 light:text-black">
       <button
         className="flex items-center justify-center cursor-pointer border border-blue-500 p-2 
-            rounded-3xl m-3 bg-blue-900 text-blue-500 font-bold"
+            rounded-3xl m-3 bg-blue-900 text-blue-500 font-bold light:bg-blue-500 light:text-black light:border-blue-900"
       >
         <svg
           className="mr-1"

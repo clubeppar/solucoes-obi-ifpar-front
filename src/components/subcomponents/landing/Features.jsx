@@ -24,12 +24,12 @@ const featureItems = [
 
 export default function Features() {
   return (
-    <div className="grid grid-cols-3 divide-x-4 divide-gray-700 m-10">
+    <div className="grid grid-cols-3 divide-x-4 divide-gray-700 light:divide-gray-400 m-10 light:text-black">
       {featureItems.map((item) => (
         <div key={item.title} className="flex m-2">
-          <div className="bg-gray-500 rounded-lg border border-blue-600 w-fit h-fit p-0.5 mr-2">
+          <div className="bg-gray-500 rounded-lg border border-blue-600 light:border-blue-500 light:bg-gray-300 w-fit h-fit p-0.5 mr-2">
             <svg
-              className="text-blue-600"
+              className="text-blue-600 light:text-blue-500"
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
               viewBox="0 -960 960 960"

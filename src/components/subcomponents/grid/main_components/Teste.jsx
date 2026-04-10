@@ -15,10 +15,10 @@ export default function Teste({
   return (
     <>
       <div>
-        <h1 className="flex text-xl">
+        <h1 className="flex text-xl light:text-black">
           Teste {nTeste} -
           <span className={statusColors[status] + " ml-2"}>{status}</span>
-          <span className="flex text-gray-400 text-xs items-center justify-center">
+          <span className="flex text-gray-400 light:text-gray-700 text-xs items-center justify-center">
             <svg
               className="ml-2 w-6"
               xmlns="http://www.w3.org/2000/svg"
@@ -33,13 +33,13 @@ export default function Teste({
           </span>
         </h1>
 
-        <p className="text-gray-400">{tipoFalha}</p>
-        <p>
+        <p className="text-gray-400 light:text-gray-700">{tipoFalha}</p>
+        <p className="light:text-black">
           Menor tempo:{" "}
-          <span className="text-gray-400">{menorTempo} ms</span>{" "}
+          <span className="text-gray-400 light:text-gray-700">{menorTempo} ms</span>{" "}
         </p>
-        <p>
-          Uso de memória: <span className="text-gray-400">{usoMemoria} KB</span>
+        <p className="light:text-black">
+          Uso de memória: <span className="text-gray-400 light:text-gray-700">{usoMemoria} KB</span>
         </p>
       </div>
     </>

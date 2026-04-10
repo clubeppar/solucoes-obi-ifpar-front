@@ -25,18 +25,18 @@ export default function Topbar({ collapsed }) {
   };
 
   return (
-    <header className="relative flex items-center h-16 px-4 z-10 w-full light:bg-amber-600">
-      {!collapsed ? <FaCode className="ms-2 size-12 text-white" /> : <span></span>}
+    <header className="relative flex items-center h-16 px-4 z-10 w-full light:bg-gray-500">
+      {!collapsed ? <FaCode className="ms-2 size-12 text-white light:text-black" /> : <span></span>}
 
       <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 justify-center gap-6">
-        <button className="list-item" onClick={() => handleNavigate("/")}>
+        <button className="list-item light:text-black light:hover:text-gray-300" onClick={() => handleNavigate("/")}>
           Início
         </button>
-        <button className="list-item" onClick={() => handleNavigate("/grid")}>
+        <button className="list-item light:text-black light:hover:text-gray-300" onClick={() => handleNavigate("/grid")}>
           Questões
         </button>
         <button
-          className="list-item"
+          className="list-item light:text-black light:hover:text-gray-300"
           onClick={() => handleNavigate("/credits")}
         >
           Sobre Nós
@@ -45,7 +45,7 @@ export default function Topbar({ collapsed }) {
 
       <div className="ms-auto me-2 flex gap-5">
         <button
-          className="cursor-pointer text-white hover:text-blue-500 transition-colors"
+          className="cursor-pointer text-white hover:text-blue-500 transition-colors light:text-black light:hover:text-gray-300"
           onClick={handleThemeToggle}
         >
           {!isLightMode ? (
@@ -55,7 +55,7 @@ export default function Topbar({ collapsed }) {
           )}
         </button>
         <button
-          className="cursor-pointer text-white hover:text-blue-500 transition-colors"
+          className="cursor-pointer text-white hover:text-blue-500 transition-colors light:text-black light:hover:text-gray-300"
           onClick={() =>
             handleNavigate("https://github.com/G-Aleixo/solucoes-obi-ifpar")
           }
