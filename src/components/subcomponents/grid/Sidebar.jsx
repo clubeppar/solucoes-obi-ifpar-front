@@ -7,7 +7,12 @@ import { useFetch } from "../../../../hooks/useFetch";
 import SearchFilter from "./sidebar_components/SearchFilter";
 import SidebarItem from "./sidebar_components/SidebarItem";
 
-export default function Sidebar({ selection, setSelection }) {
+export default function Sidebar({
+  selection,
+  setSelection,
+  onQuestionSelect,
+  activeQuestion,
+}) {
   const [data, setData] = useState(null);
   const { get } = useFetch();
 
@@ -21,7 +26,7 @@ export default function Sidebar({ selection, setSelection }) {
   }, []);
 
   return (
-    <div className="col-span-1 bg-slate-900 flex justify-end overflow-y-auto max-h-screen scrollbar">
+    <div className="h-full bg-slate-900 flex justify-end overflow-y-auto scrollbar">
       <aside className="w-full text-sidebar">
         <div className="flex justify-between align-middle mt-2">
           <FaCode className="size-10 cursor-pointer ms-2" />
@@ -38,6 +43,8 @@ export default function Sidebar({ selection, setSelection }) {
               nextCall="Phase"
               selection={selection}
               setSelection={setSelection}
+              onQuestionSelect={onQuestionSelect}
+              activeQuestion={activeQuestion}
             />
           ))}
         </ul>

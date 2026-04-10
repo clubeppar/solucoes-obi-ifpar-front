@@ -61,7 +61,7 @@ export default function MainPage({ selection }) {
   };
 
   return (
-    <div className="col-span-3 bg-slate-900 text-white">
+    <div className="h-full bg-slate-900 text-white overflow-y-auto">
       <Topbar collapsed={true} />
 
       <Header

@@ -9,6 +9,8 @@ export default function SidebarItem({
   nextCall,
   selection,
   setSelection,
+  onQuestionSelect,
+  activeQuestion,
 }) {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState(null);
@@ -18,7 +20,6 @@ export default function SidebarItem({
   let prefix = "";
   let nextURL = "";
   let nextStep = "";
-  let isSelected = selection.problem === text; //trocar para ID depois
 
   switch (nextCall) {
     case "Phase":
@@ -35,8 +36,8 @@ export default function SidebarItem({
       break;
     case "Questions":
       actualArray = data?.questoes;
-      nextStep = "none";
-      prefix = "Nivel ";
+      nextStep = "Problem";
+      prefix = "Nível ";
       nextURL = `/nav/years/${selection?.year}/phases/${selection?.phase}/levels/${selection?.level}/problems`;
       break;
     default:
@@ -44,8 +45,15 @@ export default function SidebarItem({
       break;
   }
 
+  const isSelected =
+    nextStep == null &&
+    String(activeQuestion?.year) == String(selection?.year) &&
+    String(activeQuestion?.phase) == String(selection?.phase) &&
+    String(activeQuestion?.level) == String(selection?.level) &&
+    String(activeQuestion?.problem) == String(text);
+
   useEffect(() => {
-    if (!open || data) return;
+    if (!open || data || !nextURL) return;
 
     async function fetchData() {
       if (!nextCall) return;
@@ -61,16 +69,26 @@ export default function SidebarItem({
       <button
         className={isSelected ? "selected-sidebar" : "item-sidebar"}
         onClick={() => {
-          if (!nextStep) {
-            setSelection((prev) => ({ ...prev, problem: text }));
+          if (nextStep == null) {
+            onQuestionSelect({
+              year: selection?.year,
+              phase: selection?.phase,
+              level: selection?.level,
+              problem: text,
+            });
           } else {
             setOpen((prev) => !prev);
 
             if (nextStep === "Levels") {
-              setSelection((prev) => ({ ...prev, year: text }));
+              setSelection((prev) => ({
+                ...prev,
+                year: text,
+                phase: null,
+                level: null,
+              }));
             } else if (nextStep === "Questions") {
-              setSelection((prev) => ({ ...prev, phase: text }));
-            } else if (nextStep === "none") {
+              setSelection((prev) => ({ ...prev, phase: text, level: null }));
+            } else {
               setSelection((prev) => ({ ...prev, level: text }));
             }
           }
@@ -95,6 +113,8 @@ export default function SidebarItem({
                 nextCall={nextStep}
                 selection={selection}
                 setSelection={setSelection}
+                onQuestionSelect={onQuestionSelect}
+                activeQuestion={activeQuestion}
               />
             ))}
           </li>

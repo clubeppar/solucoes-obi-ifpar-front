@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className="col-span-full bg-yellow-500  flex items-center justify-center">
+    <div className="h-full bg-yellow-500 flex items-center justify-center text-sm">
       footer
     </div>
   );
