@@ -1,27 +1,43 @@
+import { useState } from "react";
+
 import { CiSearch, CiFilter } from "react-icons/ci";
 
+import FilterModal from "./FilterModal";
+
 export default function SearchFilter() {
+  const [isOpenFilter, setIsOpenFilter] = useState(false);
+  const [searchQuestion, setSearchQuestion] = useState("");
+  const validateSearchQuestion = (e) => {
+    const value = e.trim();
+    setSearchQuestion(value);
+  };
+
   return (
-    <div className="flex justify-between items-center m-2">
-      <form
-        action=""
-        method="post"
-        className="flex justify-between items-center grow relative"
-      >
-        <CiSearch className="size-8 absolute left-3" />
-        <input
-          type="text"
-          className="
-                  bg-gray-600
-                    rounded-full
-                    grow h-8
-                    me-1 px-4 ps-[17%]
-                  "
-        />
-      </form>
-      <button className="bg-gray-500 box-content rounded-full grow-0 flex items-center justify-center size-8">
-        <CiFilter className="size-7" />
-      </button>
-    </div>
+    <>
+      {isOpenFilter && <FilterModal onClose={() => setIsOpenFilter(false)} />}
+
+      <div className="mx-2 mt-3 mb-2 flex items-center gap-2">
+        <div className="relative min-w-0 grow">
+          <CiSearch className="pointer-events-none absolute left-3 top-1/2 size-6 -translate-y-1/2 text-stone-400" />
+          <input
+            type="text"
+            placeholder="Buscar questão..."
+            className="h-8 w-full rounded-full border border-transparent bg-gray-600 pl-10 pr-3 text-sm text-stone-100 shadow-sm outline-none transition placeholder:text-stone-300/80 hover:bg-gray-500"
+            value={searchQuestion}
+            onChange={(e) => validateSearchQuestion(e.target.value)}
+          />
+        </div>
+
+        <button
+          type="button"
+          className="flex size-8 shrink-0 items-center justify-center rounded-full border border-transparent bg-gray-500 text-stone-100 shadow-sm transition hover:cursor-pointer hover:bg-gray-400"
+          aria-label="Abrir filtros"
+          title="Filtros"
+          onClick={() => setIsOpenFilter(true)}
+        >
+          <CiFilter className="size-6" />
+        </button>
+      </div>
+    </>
   );
 }
