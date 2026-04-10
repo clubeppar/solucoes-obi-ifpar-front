@@ -8,19 +8,24 @@ import { FaCode } from "react-icons/fa6";
 import { Context } from "../../Provider";
 
 export default function Topbar({ collapsed }) {
-  const { isDarkMode, setIsDarkMode } = useContext(Context);
+  const { isLightMode, setisLightMode } = useContext(Context);
   const navigate = useNavigate();
 
   const handleThemeToggle = () => {
-    setIsDarkMode((prev) => !prev);
+    setisLightMode((prev) => !prev);
   };
 
   const handleNavigate = (url) => {
+    if (url.includes("http")) {
+      window.open(url, "_blank", "noopener,noreferrer");
+      return;
+    }
+
     navigate(url);
   };
 
   return (
-    <header className="relative flex items-center h-16 px-4 z-10 w-full">
+    <header className="relative flex items-center h-16 px-4 z-10 w-full light:bg-amber-600">
       {!collapsed ? <FaCode className="ms-2 size-12 text-white" /> : <span></span>}
 
       <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 justify-center gap-6">
@@ -43,7 +48,7 @@ export default function Topbar({ collapsed }) {
           className="cursor-pointer text-white hover:text-blue-500 transition-colors"
           onClick={handleThemeToggle}
         >
-          {isDarkMode ? (
+          {!isLightMode ? (
             <FiSun className="size-10" />
           ) : (
             <FiMoon className="size-10" />

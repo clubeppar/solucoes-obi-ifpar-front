@@ -4,15 +4,15 @@ export const Context = createContext();
 
 export default function Provider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isLightMode, setisLightMode] = useState(false);
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDarkMode);
-  }, [isDarkMode]);
+    document.documentElement.classList.toggle("light", isLightMode);
+  }, [isLightMode]);
 
   return (
     <Context.Provider
-      value={{ isLoading, setIsLoading, isDarkMode, setIsDarkMode }}
+      value={{ isLoading, setIsLoading, isLightMode, setisLightMode }}
     >
       {children}
     </Context.Provider>
