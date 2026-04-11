@@ -13,10 +13,10 @@ export default function SearchFilter() {
   };
 
   return (
-    <>
+    <div className="py-1">
       {isOpenFilter && <FilterModal onClose={() => setIsOpenFilter(false)} />}
 
-      <div className="mx-2 mt-3 mb-2 flex items-center gap-2 light:bg-white">
+      <div className="mx-2 mt-3 mb-2 flex items-center gap-2">
         <div className="relative min-w-0 grow">
           <CiSearch className="pointer-events-none absolute left-3 top-1/2 size-6 -translate-y-1/2 text-stone-400" />
           <input
@@ -30,7 +30,7 @@ export default function SearchFilter() {
 
         <button
           type="button"
-          className="flex size-8 shrink-0 items-center justify-center rounded-full border border-transparent bg-gray-500 text-stone-100 shadow-sm transition hover:cursor-pointer hover:bg-gray-400"
+          className="flex size-8 shrink-0 items-center justify-center rounded-full border border-transparent bg-gray-600 text-stone-100 shadow-sm transition hover:cursor-pointer hover:bg-gray-400"
           aria-label="Abrir filtros"
           title="Filtros"
           onClick={() => setIsOpenFilter(true)}
@@ -38,6 +38,6 @@ export default function SearchFilter() {
           <CiFilter className="size-6" />
         </button>
       </div>
-    </>
+    </div>
   );
 }

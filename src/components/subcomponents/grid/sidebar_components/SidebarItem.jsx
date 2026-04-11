@@ -67,7 +67,7 @@ export default function SidebarItem({
   return (
     <li>
       <button
-        className={isSelected ? "selected-sidebar" : "item-sidebar"}
+        className={isSelected ? "selected-sidebar light:bg-gray-500 light:text-white" : "item-sidebar light:hover:bg-gray-400"}
         onClick={() => {
           if (nextStep == null) {
             onQuestionSelect({
@@ -104,7 +104,7 @@ export default function SidebarItem({
         )}
       </button>
       {open && (
-        <ul className="ml-8 max-w-full overflow-x-hidden">
+        <ul className="ml-4 max-w-full overflow-x-hidden">
           <li>
             {actualArray?.map((item, index) => (
               <SidebarItem
