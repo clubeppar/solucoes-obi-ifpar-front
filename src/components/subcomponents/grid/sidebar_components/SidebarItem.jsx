@@ -16,6 +16,11 @@ export default function SidebarItem({
   const [data, setData] = useState(null);
   const { get } = useFetch();
 
+  const handleCapitalize = (str) => {
+    if (!str) return str;
+    return String(str).charAt(0).toUpperCase() + String(str).slice(1);
+  };
+
   let actualArray = [];
   let prefix = "";
   let nextURL = "";
@@ -57,7 +62,7 @@ export default function SidebarItem({
 
     async function fetchData() {
       if (!nextCall) return;
-      const data = await get(nextURL);
+      const data = await get(nextURL.toLowerCase());
       setData(data);
     }
 
@@ -67,14 +72,18 @@ export default function SidebarItem({
   return (
     <li>
       <button
-        className={isSelected ? "selected-sidebar light:bg-gray-500 light:text-white" : "item-sidebar light:hover:bg-gray-400"}
+        className={
+          isSelected
+            ? "selected-sidebar light:bg-gray-500 light:text-white"
+            : "item-sidebar light:hover:bg-gray-400"
+        }
         onClick={() => {
           if (nextStep == null) {
             onQuestionSelect({
               year: selection?.year,
               phase: selection?.phase,
               level: selection?.level,
-              problem: text,
+              problem: handleCapitalize(text),
             });
           } else {
             setOpen((prev) => !prev);
@@ -82,19 +91,26 @@ export default function SidebarItem({
             if (nextStep === "Levels") {
               setSelection((prev) => ({
                 ...prev,
-                year: text,
+                year: handleCapitalize(text),
                 phase: null,
                 level: null,
               }));
             } else if (nextStep === "Questions") {
-              setSelection((prev) => ({ ...prev, phase: text, level: null }));
+              setSelection((prev) => ({
+                ...prev,
+                phase: handleCapitalize(text),
+                level: null,
+              }));
             } else {
-              setSelection((prev) => ({ ...prev, level: text }));
+              setSelection((prev) => ({
+                ...prev,
+                level: handleCapitalize(text),
+              }));
             }
           }
         }}
       >
-        {prefix + text}
+        {prefix + handleCapitalize(text)}
         {nextStep && (
           <GoChevronDown
             className={
@@ -105,19 +121,17 @@ export default function SidebarItem({
       </button>
       {open && (
         <ul className="ml-4 max-w-full overflow-x-hidden">
-          <li>
-            {actualArray?.map((item, index) => (
-              <SidebarItem
-                key={index}
-                text={item}
-                nextCall={nextStep}
-                selection={selection}
-                setSelection={setSelection}
-                onQuestionSelect={onQuestionSelect}
-                activeQuestion={activeQuestion}
-              />
-            ))}
-          </li>
+          {actualArray?.map((item, index) => (
+            <SidebarItem
+              key={index}
+              text={item}
+              nextCall={nextStep}
+              selection={selection}
+              setSelection={setSelection}
+              onQuestionSelect={onQuestionSelect}
+              activeQuestion={activeQuestion}
+            />
+          ))}
         </ul>
       )}
     </li>

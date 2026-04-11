@@ -16,7 +16,7 @@ export default function Grid() {
     year: "2025",
     phase: "1",
     level: "1",
-    problem: "fila",
+    problem: "Fila",
   });
 
   return (
