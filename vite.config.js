@@ -19,8 +19,9 @@ export default defineConfig({
     tailwindcss(),
   ],
   resolve: {
-    alias: {
-      "@": resolve(__dirname, "./src/components"),
-    },
+    alias: [
+      { find: "@/hooks", replacement: resolve(__dirname, "./hooks") },
+      { find: "@", replacement: resolve(__dirname, "./src/components") },
+    ],
   },
 });
