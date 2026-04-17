@@ -115,7 +115,7 @@ export default function SidebarItem({
         {nextStep && (
           <GoChevronDown
             className={
-              open ? "size-6 transition" : "size-6 transition rotate-180"
+              open ? "size-6 transition rotate-180" : "size-6 transition"
             }
           />
         )}
