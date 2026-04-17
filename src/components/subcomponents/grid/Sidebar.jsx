@@ -13,8 +13,11 @@ export default function Sidebar({
   onQuestionSelect,
   activeQuestion,
 }) {
-  const [data, setData] = useState(null);
   const { get } = useFetch();
+
+  const [search, setSearch] = useState(null);
+
+  const [data, setData] = useState(null);
 
   const [collapsed, setCollapsed] = useState(false);
 
@@ -57,23 +60,32 @@ export default function Sidebar({
               onClick={() => setCollapsed(!collapsed)}
             />
           </div>
-          {!collapsed && <SearchFilter />}
+          {!collapsed && <SearchFilter setDataSidebar={setSearch} />}
         </div>
 
         {!collapsed && (
           <>
             <ul>
-              {data?.map((year, index) => (
-                <SidebarItem
-                  key={index}
-                  text={year}
-                  nextCall="Phase"
-                  selection={selection}
-                  setSelection={setSelection}
-                  onQuestionSelect={onQuestionSelect}
-                  activeQuestion={activeQuestion}
-                />
-              ))}
+              {data?.map((year, index) => {
+                const hasSearch = search
+                  ? Object.prototype.hasOwnProperty.call(search, year)
+                  : true;
+
+                if (!hasSearch) return null;
+
+                return (
+                  <SidebarItem
+                    key={index}
+                    text={year}
+                    nextCall="Phase"
+                    search={search}
+                    selection={selection}
+                    setSelection={setSelection}
+                    onQuestionSelect={onQuestionSelect}
+                    activeQuestion={activeQuestion}
+                  />
+                );
+              })}
             </ul>
           </>
         )}

@@ -7,6 +7,7 @@ import { useFetch } from "../../../../../hooks/useFetch";
 export default function SidebarItem({
   text,
   nextCall,
+  search = null,
   selection,
   setSelection,
   onQuestionSelect,
@@ -121,17 +122,26 @@ export default function SidebarItem({
       </button>
       {open && (
         <ul className="ml-4 max-w-full overflow-x-hidden">
-          {actualArray?.map((item, index) => (
-            <SidebarItem
-              key={index}
-              text={item}
-              nextCall={nextStep}
-              selection={selection}
-              setSelection={setSelection}
-              onQuestionSelect={onQuestionSelect}
-              activeQuestion={activeQuestion}
-            />
-          ))}
+          {actualArray?.map((item, index) => {
+            const searchScope = search ? search[text] : null;
+
+            if (search && (!searchScope || searchScope[item] === undefined)) {
+              return null;
+            }
+
+            return (
+              <SidebarItem
+                key={index}
+                text={item}
+                nextCall={nextStep}
+                search={search ? searchScope : null}
+                selection={selection}
+                setSelection={setSelection}
+                onQuestionSelect={onQuestionSelect}
+                activeQuestion={activeQuestion}
+              />
+            );
+          })}
         </ul>
       )}
     </li>

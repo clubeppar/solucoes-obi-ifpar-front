@@ -4,21 +4,45 @@ import { CiSearch, CiFilter } from "react-icons/ci";
 
 import FilterModal from "./FilterModal";
 
-export default function SearchFilter() {
+import { useFetch } from "../../../../../hooks/useFetch";
+
+export default function SearchFilter({ setDataSidebar }) {
+  const { get } = useFetch();
+
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const [searchQuestion, setsearchQuestion] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
   const [selectedPhase, setSelectedPhase] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("");
 
-  function getSearchFilterAPI({ question, year, phase, level }) {
-    console.log("questão", question);
-    console.log("ano", year);
-    console.log("fase", phase);
-    console.log("level", level);
-    // aqui dentro se faz o get
-    // utilizar na url do get os quatro parâmetros com validação para ver se não nulos
-    // seguir documentação para mais detalhes
+  async function getSearchFilterAPI({ question, year, phase, level }) {
+    const items = {
+      problem: question,
+      year: year,
+      phase: phase,
+      level: level,
+    };
+    const queryParams = [];
+
+    // for each pair in the items (Object), add to the query if it is not null
+    Object.entries(items).forEach(([key, value]) => {
+      if (value) {
+        queryParams.push(
+          `${encodeURIComponent(key)}=${encodeURIComponent(value)}`,
+        );
+      }
+    });
+
+    const url = "/search/?" + queryParams.join("&");
+
+    const res = await get(url);
+    const data = await res.data;
+
+    if (url.length < 12) {
+      setDataSidebar(null);
+    } else {
+      setDataSidebar(data);
+    }
   }
 
   const refTimer = useRef(null);
