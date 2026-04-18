@@ -1,6 +1,6 @@
 export const yearList = [];
 const atualDate = new Date();
-for (let i = atualDate.getFullYear(); i >= 2000; i--) {
+for (let i = atualDate.getFullYear() - 1; i >= 2000; i--) {
   yearList.push({ value: String(i), key: String(i) });
 }
 

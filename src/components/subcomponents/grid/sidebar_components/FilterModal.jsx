@@ -28,10 +28,29 @@ export default function FilterModal({
     onClose();
   };
 
+  const ModalsComponents = [
+    { title: "Anos", value: year, setValue: setYear, arrayValues: yearList },
+    {
+      title: "Fases",
+      value: phase,
+      setValue: setPhase,
+      arrayValues: phaseList,
+    },
+    {
+      title: "Níveis",
+      value: level,
+      setValue: setLevel,
+      arrayValues: levelList,
+    },
+  ];
+
   return (
     <div
       className="fixed inset-0 z-100 flex items-center justify-center bg-black/50"
-      onClick={onClose}
+      onClick={() => {
+        onClose();
+        cancelFilter();
+      }}
     >
       <div
         className="w-full max-w-md rounded-xl bg-gray-900 p-5 shadow-2xl"
@@ -50,26 +69,15 @@ export default function FilterModal({
 
         <hr className="my-4 border-0 border-t border-stone-700" />
 
-        <div>
+        {ModalsComponents.map((filter, index) => (
           <ModalComponent
-            title={"Anos"}
-            value={year}
-            setValue={setYear}
-            arrayValues={yearList}
+            key={index}
+            title={filter.title}
+            value={filter.value}
+            setValue={filter.setValue}
+            arrayValues={filter.arrayValues}
           />
-          <ModalComponent
-            title={"Fases"}
-            value={phase}
-            setValue={setPhase}
-            arrayValues={phaseList}
-          />
-          <ModalComponent
-            title={"Níveis"}
-            value={level}
-            setValue={setLevel}
-            arrayValues={levelList}
-          />
-        </div>
+        ))}
 
         <hr className="my-4 border-0 border-t border-stone-700" />
 

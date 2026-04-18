@@ -10,8 +10,12 @@ export default function ModalComponent({
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSelect = (value) => {
-    setValue(value);
+  const handleSelect = (v) => {
+    if (value === v) {
+      setValue("");
+      return;
+    }
+    setValue(v);
   };
 
   return (
