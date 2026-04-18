@@ -58,6 +58,9 @@ export default function FilterModal({
       >
         <header className="mb-4 flex items-center justify-between">
           <h2 className="text-lg font-semibold text-white">Filtros</h2>
+          {year && <p className="bg-blue-700 px-1">{year}</p>}
+          {phase && <p className="bg-blue-700 px-1">{phase}</p>}
+          {level && <p className="bg-blue-700 px-1">{level}</p>}
           <button
             type="button"
             onClick={onClose}

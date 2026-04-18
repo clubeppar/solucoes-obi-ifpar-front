@@ -125,8 +125,6 @@ export default function SearchFilter({ setDataSidebar }) {
         <button
           type="button"
           className="flex size-8 shrink-0 items-center justify-center rounded-full border border-transparent bg-gray-600 text-stone-100 shadow-sm transition hover:cursor-pointer hover:bg-gray-400"
-          aria-label="Abrir filtros"
-          title="Filtros"
           onClick={() => setIsOpenFilter(true)}
         >
           <CiFilter className="size-6" />
