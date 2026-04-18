@@ -10,7 +10,7 @@ export default function SearchFilter({ setDataSidebar }) {
   const { get } = useFetch();
 
   const [isOpenFilter, setIsOpenFilter] = useState(false);
-  const [searchQuestion, setsearchQuestion] = useState("");
+  const [searchQuestion, setSearchQuestion] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
   const [selectedPhase, setSelectedPhase] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("");
@@ -64,13 +64,13 @@ export default function SearchFilter({ setDataSidebar }) {
   };
 
   const handleDebouncedSearch = (value) => {
-    setsearchQuestion(value);
+    setSearchQuestion(value);
 
     clearSearchTimer();
 
     refTimer.current = setTimeout(() => {
       runSearch({
-        question: value,
+        question: value.trim().toLowerCase(),
         year: selectedYear,
         phase: selectedPhase,
         level: selectedLevel,

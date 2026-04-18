@@ -12,6 +12,9 @@ export default function SidebarItem({
   setSelection,
   onQuestionSelect,
   activeQuestion,
+  branchYear = null,
+  branchPhase = null,
+  branchLevel = null,
 }) {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState(null);
@@ -27,24 +30,37 @@ export default function SidebarItem({
   let nextURL = "";
   let nextStep = "";
 
+  const currentYear =
+    nextCall === "Phase"
+      ? handleCapitalize(text)
+      : handleCapitalize(branchYear);
+  const currentPhase =
+    nextCall === "Levels"
+      ? handleCapitalize(text)
+      : handleCapitalize(branchPhase);
+  const currentLevel =
+    nextCall === "Questions"
+      ? handleCapitalize(text)
+      : handleCapitalize(branchLevel);
+
   switch (nextCall) {
     case "Phase":
       actualArray = data?.fases;
       nextStep = "Levels";
       prefix = "";
-      nextURL = `/nav/years/${selection?.year}/phases`;
+      nextURL = `/nav/years/${currentYear}/phases`;
       break;
     case "Levels":
       actualArray = data?.niveis;
       nextStep = "Questions";
       prefix = "Fase ";
-      nextURL = `/nav/years/${selection?.year}/phases/${selection?.phase}/levels`;
+      nextURL = `/nav/years/${currentYear}/phases/${currentPhase}/levels`;
       break;
     case "Questions":
       actualArray = data?.questoes;
       nextStep = "Problem";
       prefix = "Nível ";
-      nextURL = `/nav/years/${selection?.year}/phases/${selection?.phase}/levels/${selection?.level}/problems`;
+      nextURL = `/nav/years/${currentYear}/phases/${currentPhase}/levels/${currentLevel}/problems`;
       break;
     default:
       nextStep = null;
@@ -52,11 +68,11 @@ export default function SidebarItem({
   }
 
   const isSelected =
-    nextStep == null &&
-    String(activeQuestion?.year) == String(selection?.year) &&
-    String(activeQuestion?.phase) == String(selection?.phase) &&
-    String(activeQuestion?.level) == String(selection?.level) &&
-    String(activeQuestion?.problem) == String(text);
+    nextStep === null &&
+    handleCapitalize(activeQuestion?.year) === currentYear &&
+    handleCapitalize(activeQuestion?.phase) === currentPhase &&
+    handleCapitalize(activeQuestion?.level) === currentLevel &&
+    handleCapitalize(activeQuestion?.problem) === handleCapitalize(text);
 
   useEffect(() => {
     if (!open || data || !nextURL) return;
@@ -79,11 +95,11 @@ export default function SidebarItem({
             : "item-sidebar light:hover:bg-gray-400"
         }
         onClick={() => {
-          if (nextStep == null) {
+          if (nextStep === null) {
             onQuestionSelect({
-              year: selection?.year,
-              phase: selection?.phase,
-              level: selection?.level,
+              year: currentYear,
+              phase: currentPhase,
+              level: currentLevel,
               problem: handleCapitalize(text),
             });
           } else {
@@ -139,6 +155,9 @@ export default function SidebarItem({
                 setSelection={setSelection}
                 onQuestionSelect={onQuestionSelect}
                 activeQuestion={activeQuestion}
+                branchYear={currentYear}
+                branchPhase={currentPhase}
+                branchLevel={currentLevel}
               />
             );
           })}
