@@ -44,6 +44,33 @@ export default function FilterModal({
     },
   ];
 
+  let textExibitPhase = "";
+  let textExibitLevel = "";
+
+  switch (phase){
+    case "cf":
+      textExibitPhase = "Comp. Fem";
+      break
+    default:
+      textExibitPhase = phase;
+      break
+  }
+
+  switch (level){
+    case "j":
+      textExibitLevel = "N. Junior";
+      break
+    case "s":
+      textExibitLevel = "N. Senior";
+      break
+    case "u":
+      textExibitLevel = "Nível Uni";
+      break
+    default:
+      textExibitLevel = level;
+      break
+  }
+
   return (
     <div
       className="fixed inset-0 z-100 flex items-center justify-center bg-black/50"
@@ -53,24 +80,26 @@ export default function FilterModal({
       }}
     >
       <div
-        className="w-full max-w-md rounded-xl bg-gray-900 p-5 shadow-2xl"
+        className="w-full max-h-[80%] overflow-auto scrollbar max-w-md rounded-xl bg-gray-900 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <header className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-white">Filtros</h2>
-          {year && <p className="bg-blue-700 px-1">{year}</p>}
-          {phase && <p className="bg-blue-700 px-1">{phase}</p>}
-          {level && <p className="bg-blue-700 px-1">{level}</p>}
+        <header className="sticky w-full top-0 z-150 py-4 flex items-center bg-gray-900 rounded-xl justify-between">
+          <h2 className="text-lg ms-5 font-semibold text-white">Filtros</h2>
+          <div className="flex justify-center items-center">
+            {year && <p className="bg-blue-700 px-2 py rounded-xl">{year}</p>}
+            {year && phase && <div className="bg-blue-700 w-5 h-1"></div>}
+            {phase && <p className="bg-blue-700 px-2 py rounded-xl">{phase == "cf"?`${textExibitPhase}`:`Fase ${textExibitPhase}`}</p>}
+            {phase && level && <div className="bg-blue-700  w-5 h-1"></div>}
+            {level && <p className="bg-blue-700 px-2 py rounded-xl">{level in ["j","s","u"] ? `Nivel ${textExibitLevel}`:`${textExibitLevel}`}</p>}
+          </div>
           <button
             type="button"
             onClick={onClose}
-            className="rounded-md p-1 text-stone-600 transition hover:cursor-pointer hover:bg-stone-200 hover:text-stone-900"
+            className="rounded-md p-1 me-5 text-white transition hover:cursor-pointer hover:text-blue-600"
           >
-            <IoClose className="size-5" />
+            <IoClose className="size-8" />
           </button>
         </header>
-
-        <hr className="my-4 border-0 border-t border-stone-700" />
 
         {ModalsComponents.map((filter, index) => (
           <ModalComponent
@@ -82,20 +111,18 @@ export default function FilterModal({
           />
         ))}
 
-        <hr className="my-4 border-0 border-t border-stone-700" />
-
-        <footer className="mt-6 flex justify-end gap-2">
+        <footer className="mt-6 mb-2 px-3 flex justify-end gap-2">
           <button
             type="button"
             onClick={useFilter}
-            className="w-28 rounded-md border border-blue-600 bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-md shadow-blue-900/30 transition hover:cursor-pointer hover:bg-blue-700"
+            className="w-28 h-10 btn-info"
           >
             Salvar
           </button>
           <button
             type="button"
             onClick={cancelFilter}
-            className="w-28 rounded-md border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white shadow-md shadow-black/30 transition hover:cursor-pointer hover:bg-white/15"
+            className="w-28 h-10 btn-info bg-gray-600 hover:bg-gray-500"
           >
             Cancelar
           </button>
