@@ -40,7 +40,7 @@ export const CONTRIBUTORS = [
     image: "@/../images/gustavo.png",
   },
   {
-    name: "Rita Cássia",
+    name: "Rita de Cássia",
     role: "Fullstack",
     image: "@/../images/rita.png",
   },
