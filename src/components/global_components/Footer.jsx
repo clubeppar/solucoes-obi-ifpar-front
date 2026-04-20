@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <div className="h-full bg-yellow-500 flex items-center justify-center text-sm">
-      footer
+    <div className="flex justify-center items-center bg-slate-900 text-gray-300">
+      Clube de Programação IFPAR
     </div>
   );
 }

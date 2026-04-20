@@ -23,7 +23,9 @@ export default function Landingpage() {
           <SeeOnPractice />
         </div>
 
-        <Footer />
+        <div className="col-span-full">
+          <Footer />
+        </div>
       </div>
     </>
   );
