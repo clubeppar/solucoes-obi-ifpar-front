@@ -54,6 +54,16 @@ export const CONTRIBUTORS = [
     role: "Frontend",
     image: "@/../images/alanderson.png",
   },
+  {
+    name: "Júlio César",
+    role: "Fullstack",
+    image: "@/../images/julio.png",
+  },
+  {
+    name: "Cauã de Lima",
+    role: "Backend",
+    image: "@/../images/caua.png",
+  },
 ];
 
 CONTRIBUTORS.sort((a, b) => a.name.localeCompare(b.name));
