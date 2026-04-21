@@ -65,7 +65,7 @@ export default function ModalComponent({
 
       {isOpen && (
         <div className="border bg-gray-800 border-gray-800 rounded-xl px-5 py-4">
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-3 gap-1">
             {arrayValues.map((item) => {
               const isSelected = value === item.key;
 

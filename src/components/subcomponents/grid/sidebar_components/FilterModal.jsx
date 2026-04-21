@@ -14,6 +14,7 @@ export default function FilterModal({
   setLevel,
   handleGet,
   onCancelFilters,
+  posFilter,
 }) {
   const useFilter = () => {
     handleGet();
@@ -58,10 +59,10 @@ export default function FilterModal({
 
   switch (level){
     case "j":
-      textExibitLevel = "N. Junior";
+      textExibitLevel = "N. Júnior";
       break
     case "s":
-      textExibitLevel = "N. Senior";
+      textExibitLevel = "N. Sênior";
       break
     case "u":
       textExibitLevel = "Nível Uni";
@@ -80,17 +81,19 @@ export default function FilterModal({
       }}
     >
       <div
-        className="w-full max-h-[80%] overflow-auto scrollbar max-w-md rounded-xl bg-gray-900 shadow-2xl"
+        className="ps-[15px] max-h-[65%] w-full fixed overflow-auto scrollbar max-w-md rounded-xl bg-gray-900 shadow-2xl [scrollbar-gutter:stable]"
         onClick={(e) => e.stopPropagation()}
+        style={{
+            top: posFilter.top,
+            left: posFilter.left,
+          }}
       >
         <header className="sticky w-full top-0 z-150 py-4 flex items-center bg-gray-900 rounded-xl justify-between">
           <h2 className="text-lg ms-5 font-semibold text-white">Filtros</h2>
           <div className="flex justify-center items-center">
-            {year && <p className="bg-blue-700 px-2 py rounded-xl">{year}</p>}
-            {year && phase && <div className="bg-blue-700 w-5 h-1"></div>}
-            {phase && <p className="bg-blue-700 px-2 py rounded-xl">{phase == "cf"?`${textExibitPhase}`:`Fase ${textExibitPhase}`}</p>}
-            {phase && level && <div className="bg-blue-700  w-5 h-1"></div>}
-            {level && <p className="bg-blue-700 px-2 py rounded-xl">{level in ["j","s","u"] ? `Nivel ${textExibitLevel}`:`${textExibitLevel}`}</p>}
+            {year && <p className="bg-blue-700 mx-2 px-2 py rounded-xl">{year}</p>}
+            {phase && <p className="bg-blue-700 mx-2 px-2 py rounded-xl">{phase == "cf"?`${textExibitPhase}`:`Fase ${textExibitPhase}`}</p>}
+            {level && <p className="bg-blue-700 mx-2 px-2 py rounded-xl">{level in ["j","s","u"] ? `Nivel ${textExibitLevel}`:`${textExibitLevel}`}</p>}
           </div>
           <button
             type="button"
