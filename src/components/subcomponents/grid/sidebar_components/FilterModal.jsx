@@ -26,7 +26,6 @@ export default function FilterModal({
     setYear("");
     setLevel("");
     setPhase("");
-    onClose();
   };
 
   const ModalsComponents = [
@@ -81,7 +80,7 @@ export default function FilterModal({
       }}
     >
       <div
-        className="ps-[15px] max-h-[65%] w-full fixed overflow-auto scrollbar max-w-md rounded-xl bg-gray-900 shadow-2xl [scrollbar-gutter:stable]"
+        className=" flex flex-col md:gap-4 ps-3.75 max-h-[75%] md:h-[75%] w-100 md:w-150 md:max-w-lg max-w-md overflow-auto scrollbar rounded-xl bg-gray-900 shadow-2xl [scrollbar-gutter:stable]"
         onClick={(e) => e.stopPropagation()}
         style={{
             top: posFilter.top,
@@ -90,15 +89,15 @@ export default function FilterModal({
       >
         <header className="sticky w-full top-0 z-150 py-4 flex items-center bg-gray-900 rounded-xl justify-between">
           <h2 className="text-lg ms-5 font-semibold text-white">Filtros</h2>
-          <div className="flex justify-center items-center">
-            {year && <p className="bg-blue-700 mx-2 px-2 py rounded-xl">{year}</p>}
-            {phase && <p className="bg-blue-700 mx-2 px-2 py rounded-xl">{phase == "cf"?`${textExibitPhase}`:`Fase ${textExibitPhase}`}</p>}
-            {level && <p className="bg-blue-700 mx-2 px-2 py rounded-xl">{level in ["j","s","u"] ? `Nivel ${textExibitLevel}`:`${textExibitLevel}`}</p>}
+          <div className="flex justify-center items-stretch">
+            {year && <p className="bg-blue-700 mx-1 sm:mx-2 px-2 py rounded-xl">{year}</p>}
+            {phase && <p className="bg-blue-700 mx-1 sm:mx-2 px-2 py rounded-xl">{phase == "cf"?`${textExibitPhase}`:`Fase ${textExibitPhase}`}</p>}
+            {level && <p className="bg-blue-700 mx-1 sm:mx-2 px-2 py rounded-xl">{level in ["j","s","u"] ? `Nivel ${textExibitLevel}`:`${textExibitLevel}`}</p>}
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="rounded-md p-1 me-5 text-white transition hover:cursor-pointer hover:text-blue-600"
+            className="rounded-md p-1  text-white transition hover:cursor-pointer hover:text-blue-600"
           >
             <IoClose className="size-8" />
           </button>
@@ -114,7 +113,7 @@ export default function FilterModal({
           />
         ))}
 
-        <footer className="mt-6 mb-2 px-3 flex justify-end gap-2">
+        <footer className="mt-6 mb-2 px-3 flex items-baseline justify-end gap-2">
           <button
             type="button"
             onClick={useFilter}
@@ -127,7 +126,7 @@ export default function FilterModal({
             onClick={cancelFilter}
             className="w-28 h-10 btn-info bg-gray-600 hover:bg-gray-500"
           >
-            Cancelar
+            Limpar
           </button>
         </footer>
       </div>
