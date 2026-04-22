@@ -30,7 +30,7 @@ export default function Grid() {
 
       <MainPage selection={mainSelection} />
 
-      <div className="col-span-2 h-full">
+      <div className="col-span-full flex w-full">
         <Footer />
       </div>
     </div>
