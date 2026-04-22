@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { FiSun, FiMoon } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
@@ -26,7 +26,7 @@ export default function Topbar({ collapsed }) {
 
   return (
     <header className="relative flex items-center h-16 px-4 z-10 w-full light:bg-gray-500">
-      {!collapsed ? <FaCode className="ms-2 size-12 text-white light:text-black" /> : <span></span>}
+      {!collapsed ? <Link to="/"><FaCode className="ms-2 size-12 text-white light:text-black" /></Link> : <span></span>}
 
       <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 justify-center gap-6">
         <button className="list-item light:text-black light:hover:text-gray-300" onClick={() => handleNavigate("/")}>

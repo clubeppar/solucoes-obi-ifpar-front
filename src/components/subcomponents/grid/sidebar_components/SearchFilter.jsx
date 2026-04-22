@@ -125,11 +125,11 @@ export default function SearchFilter({ setDataSidebar }) {
 
       <div className="mx-2 mt-3 mb-2 flex items-center gap-2">
         <div className="relative min-w-0 grow">
-          <CiSearch className="pointer-events-none absolute left-3 top-1/2 size-6 -translate-y-1/2 text-stone-400" />
+          <CiSearch className="pointer-events-none absolute left-3 top-1/2 size-6 -translate-y-1/2 text-gray-400" />
           <input
             type="text"
             placeholder="Buscar questão..."
-            className="h-8 w-full rounded-full border border-transparent bg-gray-600 pl-10 pr-3 text-sm text-stone-100 shadow-sm outline-none transition placeholder:text-stone-300/80 hover:bg-gray-500"
+            className="h-9 w-full rounded-full border border-transparent bg-gray-900 pl-10 pr-3 text-sm text-gray-400 shadow-sm outline-none transition placeholder:text-stone-300/80 hover:bg-gray-500"
             value={searchQuestion}
             onChange={(e) => handleDebouncedSearch(e.target.value)}
           />
@@ -137,10 +137,10 @@ export default function SearchFilter({ setDataSidebar }) {
 
         <button
           type="button"
-          className="flex size-8 shrink-0 items-center justify-center rounded-full border border-transparent bg-gray-600 text-stone-100 shadow-sm transition hover:cursor-pointer hover:bg-gray-400"
+          className="flex size-9 shrink-0 items-center justify-center rounded-full border border-transparent bg-gray-900 text-gray-400 shadow-sm transition hover:cursor-pointer hover:bg-gray-400"
           onClick={getFilterPosition}
         >
-          <CiFilter className="size-6" />
+          <svg className="size-6" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M440-160q-17 0-28.5-11.5T400-200v-240L168-736q-15-20-4.5-42t36.5-22h560q26 0 36.5 22t-4.5 42L560-440v240q0 17-11.5 28.5T520-160h-80Zm40-308 198-252H282l198 252Zm0 0Z"/></svg>
         </button>
       </div>
     </div>

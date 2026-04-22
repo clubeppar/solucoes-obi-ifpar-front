@@ -1,31 +1,42 @@
 import { Link } from "react-router-dom";
+import heroBackground from "../../../../images/Image Landing Page.png";
 
 export default function Hero() {
   return (
-    <>
-      <div className="flex flex-col justify-center items-center text-center w-1/2 m-10 light:text-black">
-        <h1 className="text-4xl font-bold m-5">
-          Resolva Problemas. Envie Código. Veja o Resultado
-        </h1>
-        <p className="text-lg text-center w-7/8">
-          Uma plataforma gratuita para treinar programação competitiva
-          resolvendo questões da OBI e recebendo feedback automático das suas
-          soluções
-        </p>
+    <div
+      className="bg-center bg-no-repeat bg-contain w-full min-h-125 flex flex-col justify-center m-12"
+      style={{
+        backgroundImage: `url(${heroBackground})`,
+      }}
+    >
+      <div className="flex justify-center">
+        <div className="flex flex-col justify-center items-center text-center w-1/2 m-10 light:text-black">
+          <h1 className="text-[40px] font-bold mb-4">
+            Resolva Problemas. Envie Código. Veja o Resultado
+          </h1>
+          <p className="text-lg text-center w-7/8">
+            Uma plataforma gratuita para treinar programação competitiva
+            resolvendo questões da OBI e recebendo feedback automático das suas
+            soluções
+          </p>
+        </div>
       </div>
 
       <div className="flex justify-center m-5 light:text-black">
-        <button className="bg-blue-500 hover:bg-blue-400 px-3 py-2 rounded-xl m-3 cursor-pointer">
-          Começar a praticar
-        </button>
-
         <Link
           to="/grid"
-          className="border border-white light:border-black px-3 py-2 rounded-xl m-3"
+          className="bg-blue-600 hover:bg-blue-700 custom-transition px-3 py-2 rounded-xl m-3 cursor-pointer"
+        >
+          Começar a praticar
+        </Link>
+
+        <a
+          href="#about"
+          className="border border-white light:border-black hover:bg-gray-700 custom-transition px-3 py-2 rounded-xl m-3"
         >
           Conheça o projeto
-        </Link>
+        </a>
       </div>
-    </>
+    </div>
   );
 }

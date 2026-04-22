@@ -1,4 +1,5 @@
 import { IoMdArrowBack } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 export default function Header({
   year,
@@ -6,14 +7,13 @@ export default function Header({
   level,
   question,
   file,
-  cancel,
   onSubmit,
 }) {
   return (
     <>
       <div className="flex justify-center items-center">
         <h4 className="flex items-center text-gray-400 w-19/20 m-3">
-          <IoMdArrowBack className="mr-2 shrink-0 size-6" />
+          <Link to="/"><IoMdArrowBack className="mr-2 shrink-0 size-6" /></Link>
           {year} {">"} Fase {fase} {">"} Nível {level} {">"}
           <span className="text-blue-500 ml-1">{question}</span>
         </h4>
@@ -25,16 +25,10 @@ export default function Header({
           <div className="flex items-center gap-2">
             <button
               disabled={file == null}
-              className="px-3 py-2 cursor-pointer rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed bg-blue-500 hover:bg-blue-400"
-              onClick={cancel}
-            >
-              Cancelar
-            </button>
-            <button
-              disabled={file == null}
-              className="px-3 py-2 cursor-pointer rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed bg-blue-500 hover:bg-blue-400"
+              className="flex px-3 py-2 cursor-pointer rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed bg-blue-600 hover:bg-blue-700"
               onClick={onSubmit}
             >
+              <svg className="mr-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
               Enviar questão
             </button>
           </div>

@@ -29,11 +29,6 @@ export default function MainPage({ selection }) {
     setFile(selectedFile);
   };
 
-  const handleCancel = () => {
-    setFileName("");
-    setFile(null);
-  };
-
   const setResponseValues = (memory, time, subtasks) => {
     setLargerMemory(memory);
     setLongerTime(time);
@@ -63,7 +58,7 @@ export default function MainPage({ selection }) {
   }, [subtasks]);
 
   return (
-    <div className="h-full bg-slate-900 text-white overflow-y-auto light:bg-white">
+    <div className="h-full bg-gray-950 text-white overflow-y-auto light:bg-white">
       <Topbar collapsed={true} />
 
       <Header
@@ -72,13 +67,12 @@ export default function MainPage({ selection }) {
         level={selection.level}
         question={selection.problem}
         file={file}
-        cancel={handleCancel}
         onSubmit={handleUpload}
       />
 
       <Input fileName={fileName} file={file} onFileChange={handleSetFile} />
 
-      <Results memory={largerMemory} time={longerTime} subtasks={subtasks} />
+      {<Results subtasks={subtasks} />}
     </div>
   );
 }

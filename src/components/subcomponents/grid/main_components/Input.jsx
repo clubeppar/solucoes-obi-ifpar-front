@@ -3,7 +3,7 @@ export default function Input({ fileName, file, onFileChange }) {
     <div className="flex justify-center items-center">
       <label
         htmlFor="file-upload"
-        className="bg-gray-800 light:bg-gray-400 w-19/20 cursor-pointer p-4 rounded-xl flex flex-col items-center gap-2"
+        className="bg-gray-900 light:bg-gray-400 w-19/20 cursor-pointer p-4 rounded-xl flex flex-col items-center gap-2"
       >
         {!fileName ? (
           <>
@@ -21,7 +21,7 @@ export default function Input({ fileName, file, onFileChange }) {
               <span className="font-bold text-white light:text-black">Click to upload </span>
               or drag and drop
             </h4>
-            <h5 className="text-xs text-gray-300 light:text-gray-800">py, js, ts, cpp, or cs</h5>
+            <h5 className="text-xs text-gray-300 light:text-gray-800">py, cpp, c or java</h5>
           </>
         ) : (
           <>

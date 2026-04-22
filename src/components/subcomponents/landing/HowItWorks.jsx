@@ -26,13 +26,13 @@ const rightSteps = [
 
 function StepIcon({ path }) {
   return (
-    <div className="bg-gray-500 light:bg-gray-300 rounded-lg border border-blue-600 light:border-blue-500 w-fit h-fit p-0.5 mr-2">
+    <div className="bg-gray-800 light:bg-gray-300 rounded-lg border border-blue-600 light:border-blue-500 w-fit h-fit p-0.5 mr-2">
       <svg
         className="text-blue-600 light:text-blue-500"
         xmlns="http://www.w3.org/2000/svg"
-        height="30px"
+        height="36px"
         viewBox="0 -960 960 960"
-        width="30px"
+        width="36px"
         fill="currentColor"
       >
         <path d={path} />
@@ -43,20 +43,20 @@ function StepIcon({ path }) {
 
 export default function HowItWorks() {
   return (
-    <div className="flex items-center justify-center flex-col mb-10 mt-10 light:text-black">
+    <div className="flex items-center justify-center flex-col mb-12 mt-10 light:text-black">
       <h2 className="text-3xl font-bold m-5 mb-10">Como Funciona</h2>
       <div className="grid grid-cols-13 w-3/4">
         <div className="col-span-6 grid grid-rows-4 items-center justify-items-end text-end">
           <div className="min-w-fit">
             <h3 className="font-semibold text-lg">{leftSteps[0].title}</h3>
-            <p className="text-gray-300 light:text-gray-800">{leftSteps[0].description}</p>
+            <p className="text-white light:text-gray-800 text-balance">{leftSteps[0].description}</p>
           </div>
 
           <StepIcon path="M200-120q-51 0-72.5-45.5T138-250l222-270v-240h-40q-17 0-28.5-11.5T280-800q0-17 11.5-28.5T320-840h320q17 0 28.5 11.5T680-800q0 17-11.5 28.5T640-760h-40v240l222 270q32 39 10.5 84.5T760-120H200Zm80-120h400L544-400H416L280-240Zm-80 40h560L520-492v-268h-80v268L200-200Zm280-280Z" />
 
           <div className="min-w-fit">
             <h3 className="font-semibold text-lg">{leftSteps[1].title}</h3>
-            <p className="text-gray-300 light:text-gray-800">{leftSteps[1].description}</p>
+            <p className="text-white light:text-gray-800 text-balance">{leftSteps[1].description}</p>
           </div>
 
           <StepIcon path="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
@@ -79,14 +79,14 @@ export default function HowItWorks() {
 
           <div className="min-w-fit">
             <h3 className="font-semibold text-lg">{rightSteps[0].title}</h3>
-            <p className="text-gray-300 light:text-gray-800">{rightSteps[0].description}</p>
+            <p className="text-white light:text-gray-800 text-balance">{rightSteps[0].description}</p>
           </div>
 
           <StepIcon path="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />
 
           <div className="min-w-fit">
             <h3 className="font-semibold text-lg">{rightSteps[1].title}</h3>
-            <p className="text-gray-300 light:text-gray-800">{rightSteps[1].description}</p>
+            <p className="text-white light:text-gray-800 text-balance">{rightSteps[1].description}</p>
           </div>
         </div>
       </div>
