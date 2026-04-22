@@ -49,7 +49,7 @@ export default function ModalComponent({
   }
 
   return (
-    <div className="px-5">
+    <div className="px-5 relative">
       <span className="text-sm">{title}</span>
       <button
         type="button"
@@ -64,26 +64,35 @@ export default function ModalComponent({
       </button>
 
       {isOpen && (
-        <div className="border bg-gray-800 border-gray-800 rounded-xl px-5 py-4">
-          <div className="grid grid-cols-3 gap-1">
-            {arrayValues.map((item) => {
-              const isSelected = value === item.key;
+        <div className="absolute left-0 w-full mt-2 z-100">
+          <div className="border mx-5 bg-gray-800 border-gray-800 rounded-xl overflow-y-hidden">
+            <div className="md:max-h-64 max-h-128 scrollbar overflow-y-auto">
+              {title == "Anos" && (
+                <div className="flex justify-center pt-2">
+                  <span className="text-sm text-gray-400">2000-2025</span>
+                </div>
+              )}
+              <div className="grid grid-cols-3 px-5 py-4 gap-1">
+                {arrayValues.map((item) => {
+                  const isSelected = value === item.key;
 
-              return (
-                <button
-                  key={item.key}
-                  type="button"
-                  onClick={() => handleSelect(item.key)}
-                  className={`cursor-pointer rounded-2xl py-2 text-sm text-white transition ${
-                    isSelected
-                      ? "bg-blue-600 hover:bg-blue-700"
-                      : "hover:bg-gray-700"
-                  }`}
-                >
-                  {item.value}
-                </button>
-              );
-            })}
+                  return (
+                    <button
+                      key={item.key}
+                      type="button"
+                      onClick={() => handleSelect(item.key)}
+                      className={`cursor-pointer rounded-2xl py-2 text-sm text-white transition ${
+                        isSelected
+                          ? "bg-blue-600 hover:bg-blue-700"
+                          : "hover:bg-gray-700"
+                      }`}
+                    >
+                      {item.value}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       )}

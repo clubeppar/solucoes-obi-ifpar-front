@@ -41,7 +41,7 @@ export default function Sidebar({
           <div
             className={
               !collapsed
-                ? `flex justify-between pt-2 `
+                ? `flex justify-between pt-2 items-center`
                 : `flex flex-col items-center pt-2 mx-1 gap-y-2 `
             }
           >
@@ -49,15 +49,15 @@ export default function Sidebar({
               <FaCode
                 className={
                   !collapsed
-                    ? `size-10 cursor-pointer ms-2`
-                    : `size-10 cursor-pointer`
+                    ? `size-12 cursor-pointer ms-2`
+                    : `size-12 cursor-pointer`
                 }
               />
             </Link>
             <GoSidebarExpand
               className={
                 !collapsed
-                  ? `size-8 cursor-pointer me-2`
+                  ? `size-10 cursor-pointer me-2`
                   : `size-10 cursor-pointer rotate-180`
               }
               onClick={() => setCollapsed(!collapsed)}

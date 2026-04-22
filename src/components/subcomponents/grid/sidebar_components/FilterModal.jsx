@@ -26,6 +26,7 @@ export default function FilterModal({
     setYear("");
     setLevel("");
     setPhase("");
+    handleGet();
   };
 
   const ModalsComponents = [
@@ -80,7 +81,7 @@ export default function FilterModal({
       }}
     >
       <div
-        className=" flex flex-col md:gap-4 ps-3.75 max-h-[75%] md:h-[75%] w-100 md:w-150 md:max-w-lg max-w-md overflow-auto scrollbar rounded-xl bg-gray-900 shadow-2xl [scrollbar-gutter:stable]"
+        className=" flex flex-col md:gap-4 h-[80%] max-h-[80%] md:max-h-[80%] md:h-[80%] w-100 md:w-150 md:max-w-lg max-w-md overflow-hidden rounded-xl bg-gray-900 shadow-2xl [scrollbar-gutter:stable]"
         onClick={(e) => e.stopPropagation()}
         style={{
             top: posFilter.top,

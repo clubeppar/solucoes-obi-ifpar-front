@@ -28,7 +28,7 @@ html {
   }
 
   .selected-sidebar {
-    @apply text-blue-600 flex items-center justify-between w-full p-2 rounded-xl bg-gray-800;
+    @apply text-blue-600 flex items-center justify-between w-full p-2 rounded-xl bg-gray-900;
   }
 
   .custom-transition {
@@ -51,12 +51,12 @@ html {
   }
 
   .scrollbar::-webkit-scrollbar-track {
-    background: oklch(13% 0.028 261.692);
+    background: oklch(21% 0.034 264.665);
   }
 
   .scrollbar::-webkit-scrollbar-thumb {
     background: oklch(37.9% 0.146 265.522);
-    border: 3px solid oklch(13% 0.028 261.692);
+    border: 3px solid oklch(21% 0.034 264.665);
     border-radius: 100vh;
   }
 
