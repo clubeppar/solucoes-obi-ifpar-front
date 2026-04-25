@@ -34,9 +34,9 @@ export default function Sidebar({
 
   return (
     <div
-      className={`h-full bg-gray-950  flex justify-end overflow-y-auto scrollbar ${!collapsed ? `border-0` : `border-e border-gray-800`} light:bg-white`}
+      className={`sidebar-bg scrollbar ${!collapsed ? `border-0` : `border-e border-gray-800`}`}
     >
-      <aside className="w-full text-sidebar light:text-black">
+      <aside className="sidebar-text sidebar-aside">
         <div className="light:bg-gray-500">
           <div
             className={

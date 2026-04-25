@@ -50,7 +50,7 @@ export default function ModalComponent({
 
   return (
     <div className="px-5 relative">
-      <span className="text-sm">{title}</span>
+      <span className="text-sm light:text-white">{title}</span>
       <button
         type="button"
         className="flex w-full justify-between cursor-pointer gap-3 my-2 p-2 rounded-xl border border-gray-700  hover:bg-gray-600"

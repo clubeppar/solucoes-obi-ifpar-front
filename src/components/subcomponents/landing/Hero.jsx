@@ -10,7 +10,7 @@ export default function Hero() {
       }}
     >
       <div className="flex justify-center">
-        <div className="flex flex-col justify-center items-center text-center w-1/2 m-10 light:text-black">
+        <div className="flex flex-col justify-center items-center text-center w-1/2 m-10 text-white">
           <h1 className="text-[40px] font-bold mb-4">
             Resolva Problemas. Envie Código. Veja o Resultado
           </h1>
@@ -22,7 +22,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="flex justify-center m-5 light:text-black">
+      <div className="flex justify-center m-5 text-white">
         <Link
           to="/grid"
           className="bg-blue-600 hover:bg-blue-700 custom-transition px-3 py-2 rounded-xl m-3 cursor-pointer"
@@ -32,7 +32,7 @@ export default function Hero() {
 
         <a
           href="#about"
-          className="border border-white light:border-black hover:bg-gray-700 custom-transition px-3 py-2 rounded-xl m-3"
+          className="border border-white hover:bg-gray-700 custom-transition px-3 py-2 rounded-xl m-3"
         >
           Conheça o projeto
         </a>

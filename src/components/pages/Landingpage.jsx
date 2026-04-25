@@ -10,12 +10,12 @@ import SeeOnPractice from "../subcomponents/landing/SeeOnPractice";
 export default function Landingpage() {
   return (
     <>
-      <div className="grid grid-cols-4 grid-rows-[auto_6fr_auto] min-h-screen gap-0">
-        <div className="col-span-full bg-gray-950 flex items-center h-16 sticky top-0 z-10">
+      <div className="landingpage-bg">
+        <div className="landingpage-topbar-slot">
           <Topbar collapsed={false} />
         </div>
 
-        <div className="col-span-full bg-gray-950 light:bg-white flex flex-col items-center justify-start text-white">
+        <div className="landingpage-body">
           <Hero />
           <Features />
           <About />

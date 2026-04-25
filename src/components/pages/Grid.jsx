@@ -20,7 +20,7 @@ export default function Grid() {
   });
 
   return (
-    <div className="grid h-screen grid-cols-[auto_minmax(0,1fr)] grid-rows-[minmax(0,1fr)_40px] gap-0">
+    <div className="grid-layout">
       <Sidebar
         selection={selection}
         setSelection={setSelection}

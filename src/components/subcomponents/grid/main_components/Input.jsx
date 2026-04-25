@@ -3,7 +3,7 @@ export default function Input({ fileName, file, onFileChange }) {
     <div className="flex justify-center items-center">
       <label
         htmlFor="file-upload"
-        className="bg-gray-900 light:bg-gray-400 w-19/20 cursor-pointer p-4 rounded-xl flex flex-col items-center gap-2"
+        className="input-label"
       >
         {!fileName ? (
           <>

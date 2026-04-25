@@ -1,10 +1,7 @@
 export default function About() {
   return (
-    <div id="about" className="flex flex-col items-center justify-center m-12 light:text-black">
-      <div
-        className="flex items-center justify-center border border-blue-500 p-2 mb-5
-            rounded-3xl m-3 bg-blue-950 text-blue-600 font-bold light:bg-blue-600 light:text-black light:border-blue-900"
-      >
+    <div id="about" className="about-container">
+      <div className="about-icon-container">
         <svg
           className="mr-1"
           xmlns="http://www.w3.org/2000/svg"

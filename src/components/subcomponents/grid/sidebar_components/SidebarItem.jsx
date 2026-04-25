@@ -91,8 +91,8 @@ export default function SidebarItem({
       <button
         className={
           isSelected
-            ? "selected-sidebar light:bg-gray-500 light:text-white"
-            : "item-sidebar light:hover:bg-gray-400"
+            ? "sidebaritem-selected light:bg-gray-500 light:text-white"
+            : "sidebaritem-item light:hover:bg-gray-400"
         }
         onClick={() => {
           if (nextStep === null) {

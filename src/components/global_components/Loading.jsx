@@ -19,7 +19,7 @@ export default function Loading() {
   return (
     <>
       {count > 2 && (
-      <div className="z-999 flex flex-col justify-center items-center fixed w-screen h-screen bg-gray-900/75 overflow-hidden">
+      <div className="loading-bg">
       <img
         src="https://www.svgrepo.com/show/315795/spinner.svg"
         alt=""

@@ -74,14 +74,14 @@ export default function FilterModal({
 
   return (
     <div
-      className="fixed inset-0 z-100 flex items-center justify-center bg-black/50"
+      className="filtermodal-bg-container"
       onClick={() => {
         onClose();
         cancelFilter();
       }}
     >
       <div
-        className=" flex flex-col md:gap-4 h-[80%] max-h-[80%] md:max-h-[80%] md:h-[80%] w-100 md:w-150 md:max-w-lg max-w-md overflow-hidden rounded-xl bg-gray-900 shadow-2xl [scrollbar-gutter:stable]"
+        className="filtermodal-container"
         onClick={(e) => e.stopPropagation()}
         style={{
             top: posFilter.top,

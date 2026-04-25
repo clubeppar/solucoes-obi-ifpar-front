@@ -58,7 +58,7 @@ export default function MainPage({ selection }) {
   }, [subtasks]);
 
   return (
-    <div className="h-full bg-gray-950 text-white overflow-y-auto light:bg-white">
+    <div className="mainpage-layout">
       <Topbar collapsed={true} />
 
       <Header
