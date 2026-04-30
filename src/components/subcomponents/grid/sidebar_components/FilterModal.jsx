@@ -26,7 +26,8 @@ export default function FilterModal({
     setYear("");
     setLevel("");
     setPhase("");
-    handleGet();
+    handleGet({ year: "", level: "", phase: "" });
+    onClose();
   };
 
   const ModalsComponents = [
@@ -48,52 +49,62 @@ export default function FilterModal({
   let textExibitPhase = "";
   let textExibitLevel = "";
 
-  switch (phase){
+  switch (phase) {
     case "cf":
       textExibitPhase = "Comp. Fem";
-      break
+      break;
     default:
       textExibitPhase = phase;
-      break
+      break;
   }
 
-  switch (level){
+  switch (level) {
     case "j":
       textExibitLevel = "N. Júnior";
-      break
+      break;
     case "s":
       textExibitLevel = "N. Sênior";
-      break
+      break;
     case "u":
-      textExibitLevel = "Nível Uni";
-      break
+      textExibitLevel = "N. Universitário";
+      break;
     default:
       textExibitLevel = level;
-      break
+      break;
   }
 
   return (
-    <div
-      className="filtermodal-bg-container"
-      onClick={() => {
-        onClose();
-        cancelFilter();
-      }}
-    >
+    <div className="filtermodal-bg-container" onClick={onClose}>
       <div
         className="filtermodal-container"
         onClick={(e) => e.stopPropagation()}
         style={{
-            top: posFilter.top,
-            left: posFilter.left,
-          }}
+          top: posFilter.top,
+          left: posFilter.left,
+        }}
       >
         <header className="sticky w-full top-0 z-150 py-4 flex items-center bg-gray-900 rounded-xl justify-between">
           <h2 className="text-lg ms-5 font-semibold text-white">Filtros</h2>
           <div className="flex justify-center items-stretch">
-            {year && <p className="bg-blue-700 mx-1 sm:mx-2 px-2 py rounded-xl">{year}</p>}
-            {phase && <p className="bg-blue-700 mx-1 sm:mx-2 px-2 py rounded-xl">{phase == "cf"?`${textExibitPhase}`:`Fase ${textExibitPhase}`}</p>}
-            {level && <p className="bg-blue-700 mx-1 sm:mx-2 px-2 py rounded-xl">{level in ["j","s","u"] ? `Nivel ${textExibitLevel}`:`${textExibitLevel}`}</p>}
+            {year && (
+              <p className="bg-blue-700 mx-1 sm:mx-2 px-2 py rounded-xl">
+                {year}
+              </p>
+            )}
+            {phase && (
+              <p className="bg-blue-700 mx-1 sm:mx-2 px-2 py rounded-xl">
+                {phase === "cf"
+                  ? `${textExibitPhase}`
+                  : `Fase ${textExibitPhase}`}
+              </p>
+            )}
+            {level && (
+              <p className="bg-blue-700 mx-1 sm:mx-2 px-2 py rounded-xl">
+                {!["j", "s", "u"].includes(level)
+                  ? `Nível ${textExibitLevel}`
+                  : `${textExibitLevel}`}
+              </p>
+            )}
           </div>
           <button
             type="button"

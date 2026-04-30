@@ -14,6 +14,9 @@ export default function SearchFilter({ setDataSidebar }) {
   const [selectedYear, setSelectedYear] = useState("");
   const [selectedPhase, setSelectedPhase] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("");
+  const [draftYear, setDraftYear] = useState("");
+  const [draftPhase, setDraftPhase] = useState("");
+  const [draftLevel, setDraftLevel] = useState("");
   const [posFilter, setPosFilter] = useState(null);
 
   async function getSearchFilterAPI({ question, year, phase, level }) {
@@ -79,25 +82,41 @@ export default function SearchFilter({ setDataSidebar }) {
     }, 1200);
   };
 
-  const handleApplyFilters = () => {
+  const handleApplyFilters = (queryObject = null) => {
+    const nextFilters = queryObject
+      ? queryObject
+      : {
+          year: draftYear,
+          phase: draftPhase,
+          level: draftLevel,
+        };
+
+    setSelectedYear(nextFilters.year || "");
+    setSelectedPhase(nextFilters.phase || "");
+    setSelectedLevel(nextFilters.level || "");
+
     clearSearchTimer();
     runSearch({
       question: searchQuestion,
-      year: selectedYear,
-      phase: selectedPhase,
-      level: selectedLevel,
+      year: nextFilters.year || "",
+      phase: nextFilters.phase || "",
+      level: nextFilters.level || "",
     });
   };
 
   function getFilterPosition(e) {
     const rect = e.currentTarget.getBoundingClientRect();
-    
+
+    setDraftYear(selectedYear);
+    setDraftPhase(selectedPhase);
+    setDraftLevel(selectedLevel);
+
     setPosFilter({
       top: rect.bottom - 35,
       left: rect.left + 60,
     });
 
-    setIsOpenFilter(true)
+    setIsOpenFilter(true);
   }
 
   useEffect(() => {
@@ -111,12 +130,12 @@ export default function SearchFilter({ setDataSidebar }) {
       {isOpenFilter && (
         <FilterModal
           onClose={() => setIsOpenFilter(false)}
-          year={selectedYear}
-          setYear={setSelectedYear}
-          phase={selectedPhase}
-          setPhase={setSelectedPhase}
-          level={selectedLevel}
-          setLevel={setSelectedLevel}
+          year={draftYear}
+          setYear={setDraftYear}
+          phase={draftPhase}
+          setPhase={setDraftPhase}
+          level={draftLevel}
+          setLevel={setDraftLevel}
           handleGet={handleApplyFilters}
           onCancelFilters={clearSearchTimer}
           posFilter={posFilter}
@@ -140,7 +159,16 @@ export default function SearchFilter({ setDataSidebar }) {
           className="flex size-9 shrink-0 items-center justify-center rounded-full border border-transparent bg-gray-900 text-gray-400 shadow-sm transition hover:cursor-pointer hover:bg-gray-400"
           onClick={getFilterPosition}
         >
-          <svg className="size-6" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M440-160q-17 0-28.5-11.5T400-200v-240L168-736q-15-20-4.5-42t36.5-22h560q26 0 36.5 22t-4.5 42L560-440v240q0 17-11.5 28.5T520-160h-80Zm40-308 198-252H282l198 252Zm0 0Z"/></svg>
+          <svg
+            className="size-6"
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="currentColor"
+          >
+            <path d="M440-160q-17 0-28.5-11.5T400-200v-240L168-736q-15-20-4.5-42t36.5-22h560q26 0 36.5 22t-4.5 42L560-440v240q0 17-11.5 28.5T520-160h-80Zm40-308 198-252H282l198 252Zm0 0Z" />
+          </svg>
         </button>
       </div>
     </div>

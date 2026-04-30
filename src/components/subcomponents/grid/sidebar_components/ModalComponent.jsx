@@ -21,31 +21,31 @@ export default function ModalComponent({
 
   let textExibit = "";
 
-  switch (value){
+  switch (value) {
     case "0":
-      textExibit = "0"
-      break
+      textExibit = "0";
+      break;
     case "1":
-      textExibit = "1"
-      break
+      textExibit = "1";
+      break;
     case "2":
-      textExibit = "2"
-      break
+      textExibit = "2";
+      break;
     case "3":
-      textExibit = "3"
-      break
+      textExibit = "3";
+      break;
     case "cf":
-      textExibit = "Competição Feminina"
-      break
+      textExibit = "Competição Feminina";
+      break;
     case "j":
-      textExibit = "Nivel Júnior"
-      break
+      textExibit = "Nível Júnior";
+      break;
     case "s":
-      textExibit = "Nivel Sénior"
-      break
+      textExibit = "Nível Sênior";
+      break;
     case "u":
-      textExibit = "Nivel Univeritário"
-      break
+      textExibit = "Nível Univeritário";
+      break;
   }
 
   return (
@@ -56,11 +56,29 @@ export default function ModalComponent({
         className="flex w-full justify-between cursor-pointer gap-3 my-2 p-2 rounded-xl border border-gray-700  hover:bg-gray-600"
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        {title == "Anos" && (<IoCalendarOutline />)}
-        {title == "Anos" && (<span className="text-sm mr-auto text-gray-400">{value == "" ? `Selecione um Ano`:`${value}`}</span>)}
-        {title == "Fases" && (<span className="text-sm text-gray-400">{value == "" ? `Selecione as ${title}`:`${value == "cf" ? `${textExibit}`:`Fase ${textExibit}`}`}</span>)}
-        {title == "Níveis" && (<span className="text-sm text-gray-400">{value == "" ? `Selecione o Nível`:`${value in ["j","s","u"]?`Nivel ${textExibit}`:`${textExibit}`}`}</span>)}
-        <GoChevronDown className={`size-5 ${isOpen ? "rotate-180" : "rotate-0"}`} />
+        {title == "Anos" && <IoCalendarOutline />}
+        {title == "Anos" && (
+          <span className="text-sm mr-auto text-gray-400">
+            {value == "" ? `Selecione um Ano` : `${value}`}
+          </span>
+        )}
+        {title == "Fases" && (
+          <span className="text-sm text-gray-400">
+            {value == ""
+              ? `Selecione as ${title}`
+              : `${value == "cf" ? `${textExibit}` : `Fase ${textExibit}`}`}
+          </span>
+        )}
+        {title == "Níveis" && (
+          <span className="text-sm text-gray-400">
+            {value == ""
+              ? `Selecione o Nível`
+              : `${value in ["j", "s", "u"] ? `Nivel ${textExibit}` : `${textExibit}`}`}
+          </span>
+        )}
+        <GoChevronDown
+          className={`size-5 ${isOpen ? "rotate-180" : "rotate-0"}`}
+        />
       </button>
 
       {isOpen && (
