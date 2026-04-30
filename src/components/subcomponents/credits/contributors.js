@@ -64,6 +64,12 @@ export const CONTRIBUTORS = [
     role: "Backend",
     image: "@/../images/caua.png",
   },
+  {
+    name: "Daniel Aguiar",
+    role: "Professor orientador",
+    image: "@/../images/daniel.png",
+  },
+  
 ];
 
 CONTRIBUTORS.sort((a, b) => a.name.localeCompare(b.name));
