@@ -49,7 +49,7 @@ export default function ModalComponent({
   }
 
   return (
-    <div className="px-5 relative">
+    <div className="px-5">
       <span className="text-sm light:text-white">{title}</span>
       <button
         type="button"
@@ -82,7 +82,7 @@ export default function ModalComponent({
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 w-full mt-2 z-100">
+        <div className="w-full mt-2 z-50">
           <div className="border mx-5 bg-gray-800 border-gray-800 rounded-xl overflow-y-hidden">
             <div className="md:max-h-64 max-h-128 scrollbar overflow-y-auto">
               {title == "Anos" && (

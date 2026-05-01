@@ -115,7 +115,6 @@ html {
       w-100 md:w-150 md:max-w-lg max-w-md 
       overflow-hidden rounded-xl 
       bg-gray-900 shadow-2xl 
-      [scrollbar-gutter:stable]
     }
     
     .sidebaritem-item {
