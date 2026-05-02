@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 
 import { GoChevronDown } from "react-icons/go";
 
-import { useFetch } from "../../../../../hooks/useFetch";
+import { useFetch } from "@/hooks/useFetch";
 
-export default function SidebarItem({
+export function SidebarItem({
   text,
   nextCall,
   search = null,

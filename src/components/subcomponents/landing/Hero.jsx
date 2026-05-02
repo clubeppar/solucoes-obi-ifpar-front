@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
-import heroBackground from "../../../../images/Image Landing Page.png";
+import heroBackground from "assets/public/bg_landing_page.png";
 
-
-
-export default function Hero() {
+export function Hero() {
   return (
     <div
       className="w-full flex flex-col items-center justify-center gap-8 bg-top bg-no-repeat px-4 py-16 md:aspect-[1440/496] md:py-0"

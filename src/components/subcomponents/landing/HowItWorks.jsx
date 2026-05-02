@@ -41,7 +41,7 @@ function StepIcon({ path }) {
   );
 }
 
-export default function HowItWorks() {
+export function HowItWorks() {
   return (
     <div className="flex items-center justify-center flex-col mb-12 mt-10 light:text-black">
       <h2 className="text-3xl font-bold m-5 mb-10">Como Funciona</h2>

@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
-import Topbar from "@/global_components/Topbar";
-import Footer from "@/global_components/Footer";
+import { Topbar } from "@/global_components/Topbar";
+import { Footer } from "@/global_components/Footer";
 
-import ContributorCard from "@/subcomponents/credits/contributorcard";
+import { ContributorCard } from "@/subcomponents/credits/ContributorCard";
 import { CONTRIBUTORS } from "@/subcomponents/credits/contributors";
 
-export default function Credits() {
+export function Credits() {
   const navigate = useNavigate();
 
   return (
@@ -32,7 +32,7 @@ export default function Credits() {
           </div>
           <div className="bottom-0 bg-slate-900 w-full flex justify-center flex-col items-center light:bg-white">
             {/* tentar fazer mais parecido com o figma */}
-            <div className="w-fit mt-6 px-3 text-center text-[16px]/[24px] font-normal display-inline-block  border-2 border-gray-700 rounded-[20px]  light:text-black" >
+            <div className="w-fit mt-6 px-3 text-center text-[16px]/[24px] font-normal display-inline-block  border-2 border-gray-700 rounded-[20px]  light:text-black">
               Feito por alunos, para alunos
             </div>
             {/* mudar cor do botão quando hover */}

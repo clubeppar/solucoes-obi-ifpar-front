@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
-import Topbar from "../../global_components/Topbar";
+import { Topbar } from "@/global_components/Topbar";
 
-import Header from "./main_components/Header";
-import Input from "./main_components/Input";
-import Results from "./main_components/Results";
+import { Header } from "@/subcomponents/grid/main_components/Header";
+import { Input } from "@/subcomponents/grid/main_components/Input";
+import { Results } from "@/subcomponents/grid/main_components/Results";
 
-import { useFetch } from "../../../../hooks/useFetch";
+import { useFetch } from "@/hooks/useFetch";
 
-export default function MainPage({ selection }) {
+export function MainPage({ selection }) {
   const [fileName, setFileName] = useState("");
   const [file, setFile] = useState(null);
 

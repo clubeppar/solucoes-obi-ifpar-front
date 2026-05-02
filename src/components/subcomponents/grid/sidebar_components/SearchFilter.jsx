@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-import { CiSearch, CiFilter } from "react-icons/ci";
+import { CiSearch } from "react-icons/ci";
 
-import FilterModal from "./FilterModal";
+import { FilterModal } from "@/subcomponents/grid/sidebar_components/FilterModal";
 
-import { useFetch } from "../../../../../hooks/useFetch";
+import { useFetch } from "@/hooks/useFetch";
 
-export default function SearchFilter({ setDataSidebar }) {
+export function SearchFilter({ setDataSidebar }) {
   const { get } = useFetch();
 
   const [isOpenFilter, setIsOpenFilter] = useState(false);

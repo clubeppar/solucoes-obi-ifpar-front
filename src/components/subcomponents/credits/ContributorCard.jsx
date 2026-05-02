@@ -1,4 +1,4 @@
-export default function ContributorCard({ name, role, image }) {
+export function ContributorCard({ name, role, image }) {
   return (
     <div className="bg-slate-800 rounded-3xl flex flex-col items-center p-8 w-full gap-4 light:bg-slate-300">
       <div className="w-24 h-24 rounded-full overflow-hidden border-0 border-slate-600 light:border-slate-300">

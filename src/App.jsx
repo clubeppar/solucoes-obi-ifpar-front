@@ -1,11 +1,11 @@
 import { BrowserRouter } from "react-router-dom";
 import { useContext } from "react";
 
-import { Context } from "./Provider";
-import Loading from "./components/global_components/Loading";
-import RoutePages from "./routes/RoutePages";
+import { Context } from "@src/Provider";
+import { Loading } from "@/global_components/Loading";
+import { RoutePages } from "@src/routes/RoutePages";
 
-export default function App() {
+export function App() {
   const { isLoading } = useContext(Context);
 
   return (

@@ -1,6 +1,6 @@
-import Subtask from "./Subtask";
+import { Subtask } from "@/subcomponents/grid/main_components/Subtask";
 
-export default function Results({ subtasks, maxTime, maxMemory }) {
+export function Results({ subtasks, maxTime, maxMemory }) {
   const formatTime = (value) => {
     if (value == null) {
       return "0.0000 s";

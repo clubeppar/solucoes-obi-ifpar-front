@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 export const Context = createContext();
 
-export default function Provider({ children }) {
+export function Provider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isLightMode, setisLightMode] = useState(false);
 

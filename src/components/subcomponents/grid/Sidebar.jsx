@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import { GoSidebarExpand } from "react-icons/go";
 import { FaCode } from "react-icons/fa6";
 
-import { useFetch } from "../../../../hooks/useFetch";
-import SearchFilter from "./sidebar_components/SearchFilter";
-import SidebarItem from "./sidebar_components/SidebarItem";
+import { useFetch } from "@/hooks/useFetch";
+import { SearchFilter } from "@/subcomponents/grid/sidebar_components/SearchFilter";
+import { SidebarItem } from "@/subcomponents/grid/sidebar_components/SidebarItem";
 import { Link } from "react-router-dom";
 
-export default function Sidebar({
+export function Sidebar({
   selection,
   setSelection,
   onQuestionSelect,

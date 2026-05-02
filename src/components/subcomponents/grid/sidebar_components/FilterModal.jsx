@@ -1,10 +1,14 @@
 import { IoClose } from "react-icons/io5";
 
-import ModalComponent from "./ModalComponent";
+import { ModalComponent } from "@/subcomponents/grid/sidebar_components/ModalComponent";
 
-import { yearList, phaseList, levelList } from "./constants";
+import {
+  yearList,
+  phaseList,
+  levelList,
+} from "@/subcomponents/grid/sidebar_components/constants";
 
-export default function FilterModal({
+export function FilterModal({
   onClose,
   year,
   setYear,

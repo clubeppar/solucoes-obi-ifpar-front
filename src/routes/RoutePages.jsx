@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 
-import Landingpage from "../components/pages/Landingpage";
-import Grid from "../components/pages/Grid";
-import Admin from "../components/pages/Admin";
-import Credits from "../components/pages/Credits";
+import { Landingpage } from "@/pages/Landingpage";
+import { Grid } from "@/pages/Grid";
+import { Admin } from "@/pages/Admin";
+import { Credits } from "@/pages/Credits";
 
-export default function RoutePages() {
+export function RoutePages() {
   return (
     <Routes>
       <Route path="/" element={<Landingpage />} />

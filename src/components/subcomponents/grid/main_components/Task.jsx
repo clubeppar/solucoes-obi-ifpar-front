@@ -1,4 +1,4 @@
-export default function Task({
+export function Task({
   numTask,
   status,
   taskTime,

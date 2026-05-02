@@ -1,5 +1,5 @@
 import { useState, useCallback, useContext } from "react";
-import { Context } from "../src/Provider";
+import { Context } from "@src/Provider";
 
 export function useFetch() {
   const { setIsLoading } = useContext(Context);

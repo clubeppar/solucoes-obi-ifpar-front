@@ -1,4 +1,4 @@
-export default function Admin() {
+export function Admin() {
   return (
     <>
       <p>teste admin</p>

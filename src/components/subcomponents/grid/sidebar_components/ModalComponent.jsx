@@ -3,7 +3,7 @@ import { useState } from "react";
 import { GoChevronDown } from "react-icons/go";
 import { IoCalendarOutline } from "react-icons/io5";
 
-export default function ModalComponent({
+export function ModalComponent({
   title,
   value,
   setValue,

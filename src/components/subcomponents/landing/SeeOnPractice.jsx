@@ -36,7 +36,7 @@ const spanClassBySize = {
   3: "col-span-3",
 };
 
-export default function SeeOnPractice() {
+export function SeeOnPractice() {
   return (
     <div className="m-12">
       <h2 className="text-center text-3xl font-bold light:text-black">Veja na prática</h2>

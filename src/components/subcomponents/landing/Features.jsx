@@ -22,7 +22,7 @@ const featureItems = [
   },
 ];
 
-export default function Features() {
+export function Features() {
   return (
     <div className="feature-divider grid grid-cols-3 m-12 light:text-black">
       {featureItems.map((item) => (

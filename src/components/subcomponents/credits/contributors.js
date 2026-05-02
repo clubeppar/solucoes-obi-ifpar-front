@@ -1,75 +1,89 @@
+import kaioImage from "assets/credits/kaio.png";
+import brasilicioImage from "assets/credits/brasilicio.png";
+import guilhermeImage from "assets/credits/guilherme.png";
+import gabrielImage from "assets/credits/gabriel.png";
+import douglasImage from "assets/credits/douglas.png";
+import brunoImage from "assets/credits/bruno.png";
+import leonardoImage from "assets/credits/leonardo.png";
+import gustavoImage from "assets/credits/gustavo.png";
+import ritaImage from "assets/credits/rita.png";
+import thiagoImage from "assets/credits/thiago.png";
+import alandersonImage from "assets/credits/alanderson.png";
+import julioImage from "assets/credits/julio.png";
+import cauaImage from "assets/credits/caua.png";
+import danielImage from "assets/credits/daniel.png";
+
 export const CONTRIBUTORS = [
   {
     name: "Kaio Henrique",
     role: "Frontend | Coordenador",
-    image: "@/../images/kaio.png",
+    image: kaioImage,
   },
   {
     name: "Brasilicio Campos",
     role: "Fullstack | Coordenador",
-    image: "@/../images/brasilicio.png",
+    image: brasilicioImage,
   },
   {
     name: "Guilherme Aleixo",
     role: "Backend | Coordenador",
-    image: "@/../images/guilherme.png",
+    image: guilhermeImage,
   },
   {
     name: "Gabriel Nascimento",
     role: "Design",
-    image: "@/../images/gabriel.png",
+    image: gabrielImage,
   },
   {
     name: "Douglas Ryan",
     role: "Frontend",
-    image: "@/../images/douglas.png",
+    image: douglasImage,
   },
   {
     name: "Bruno Gustavo",
     role: "Backend",
-    image: "@/../images/bruno.png",
+    image: brunoImage,
   },
   {
     name: "Leonardo Kauffman",
     role: "Backend",
-    image: "@/../images/leonardo.png",
+    image: leonardoImage,
   },
   {
     name: "Gustavo Andrey",
     role: "Frontend | Design",
-    image: "@/../images/gustavo.png",
+    image: gustavoImage,
   },
   {
     name: "Rita de Cássia",
     role: "Fullstack",
-    image: "@/../images/rita.png",
+    image: ritaImage,
   },
   {
     name: "Thiago Freitas",
     role: "Frontend",
-    image: "@/../images/thiago.png",
+    image: thiagoImage,
   },
   {
     name: "Alanderson Lima",
     role: "Frontend",
-    image: "@/../images/alanderson.png",
+    image: alandersonImage,
   },
   {
     name: "Júlio César",
     role: "Fullstack",
-    image: "@/../images/julio.png",
+    image: julioImage,
   },
   {
     name: "Cauã de Lima",
     role: "Backend",
-    image: "@/../images/caua.png",
+    image: cauaImage,
   },
   {
     name: "Daniel Aguiar",
     role: "Professor orientador",
-    image: "@/../images/daniel.png",
+    image: danielImage,
   },
-  
 ];
 
 CONTRIBUTORS.sort((a, b) => a.name.localeCompare(b.name));

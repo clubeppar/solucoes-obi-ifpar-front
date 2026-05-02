@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import Footer from "../global_components/Footer";
+import { Footer } from "@/global_components/Footer";
 
-import Sidebar from "../subcomponents/grid/Sidebar";
-import MainPage from "../subcomponents/grid/MainPage";
+import { Sidebar } from "@/subcomponents/grid/Sidebar";
+import { MainPage } from "@/subcomponents/grid/MainPage";
 
-export default function Grid() {
+export function Grid() {
   const [selection, setSelection] = useState({
     year: null,
     phase: null,

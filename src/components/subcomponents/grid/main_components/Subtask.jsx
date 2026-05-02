@@ -1,6 +1,6 @@
-import Task from "./Task";
+import { Task } from "@/subcomponents/grid/main_components/Task";
 
-export default function Subtask({
+export function Subtask({
   numSubtask,
   tasks,
   formatTime,
