@@ -21,10 +21,6 @@ export default function MainPage({ selection }) {
   const handleSetFile = (event) => {
     const selectedFile = event.target.files[0];
 
-    if (!selectedFile) {
-      return;
-    }
-
     setFileName(selectedFile.name);
     setFile(selectedFile);
   };
@@ -48,6 +44,8 @@ export default function MainPage({ selection }) {
     const res = await post("/questions/validate", body);
     const data = await res.data;
     setResponseValues(data.max_memory, data.max_time, data.subtasks);
+    setFileName("");
+    setFile(null);
   };
 
   // TIRAR DEPOIS DOS TESTES: NÃO DEVE EXISTIR ESSE HOOK EM PRODUÇÃO
@@ -56,6 +54,15 @@ export default function MainPage({ selection }) {
     console.log(longerTime);
     console.log(largerMemory);
   }, [subtasks]);
+
+  useEffect(() => {
+    const clearFile = () => {
+      setFileName("");
+      setFile(null);
+    };
+
+    clearFile();
+  }, [selection]);
 
   return (
     <div className="mainpage-layout">

@@ -1,4 +1,15 @@
+import { useRef, useEffect } from "react";
+
 export default function Input({ fileName, file, onFileChange }) {
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    // file is null and inputRef is previous value: clears the value
+    if (!file && inputRef.current) {
+      inputRef.current.value = "";
+    }
+  }, [file]);
+
   return (
     <div className="flex justify-center items-center">
       <label
@@ -38,6 +49,7 @@ export default function Input({ fileName, file, onFileChange }) {
         type="file"
         className="hidden"
         onChange={onFileChange}
+        ref={inputRef}
       />
     </div>
   );
