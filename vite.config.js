@@ -21,6 +21,8 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: "@/hooks", replacement: resolve(__dirname, "./hooks") },
+      { find: "@src", replacement: resolve(__dirname, "./src") },
+      { find: "assets", replacement: resolve(__dirname, "./images") },
       { find: "@", replacement: resolve(__dirname, "./src/components") },
     ],
   },
