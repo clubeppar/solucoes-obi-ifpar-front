@@ -48,6 +48,7 @@ export default function Input({ fileName, file, onFileChange }) {
         id="file-upload"
         type="file"
         className="hidden"
+        accept=".py, .c, .cpp, .c++, .java"
         onChange={onFileChange}
         ref={inputRef}
       />
