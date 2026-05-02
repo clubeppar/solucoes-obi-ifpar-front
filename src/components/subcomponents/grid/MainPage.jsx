@@ -48,17 +48,13 @@ export default function MainPage({ selection }) {
     setFile(null);
   };
 
-  // TIRAR DEPOIS DOS TESTES: NÃO DEVE EXISTIR ESSE HOOK EM PRODUÇÃO
-  useEffect(() => {
-    console.log(subtasks);
-    console.log(longerTime);
-    console.log(largerMemory);
-  }, [subtasks]);
-
   useEffect(() => {
     const clearFile = () => {
       setFileName("");
       setFile(null);
+      setLargerMemory(null);
+      setLongerTime(null);
+      setSubtasks(null);
     };
 
     clearFile();
@@ -79,7 +75,11 @@ export default function MainPage({ selection }) {
 
       <Input fileName={fileName} file={file} onFileChange={handleSetFile} />
 
-      {<Results subtasks={subtasks} />}
+      <Results
+        subtasks={subtasks}
+        maxMemory={largerMemory}
+        maxTime={longerTime}
+      />
     </div>
   );
 }
