@@ -90,9 +90,9 @@ export function SidebarItem({
     <li>
       <button
         className={
-          isSelected
+          (isSelected
             ? "sidebaritem-selected light:bg-gray-500 light:text-white"
-            : "sidebaritem-item light:hover:bg-gray-400"
+            : "sidebaritem-item light:hover:bg-gray-400") + " cursor-pointer"
         }
         onClick={() => {
           if (nextStep === null) {
