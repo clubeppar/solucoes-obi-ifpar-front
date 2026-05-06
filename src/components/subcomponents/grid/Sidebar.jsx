@@ -32,6 +32,14 @@ export function Sidebar({
     fetchData();
   }, []);
 
+  const visibleYears = data?.filter((year) => {
+    if (!search) {
+      return true;
+    }
+
+    return Object.prototype.hasOwnProperty.call(search, year);
+  });
+
   return (
     <div
       className={`sidebar-bg scrollbar ${!collapsed ? `border-0` : `border-e border-gray-800`}`}
@@ -69,13 +77,7 @@ export function Sidebar({
         {!collapsed && (
           <>
             <ul>
-              {data?.map((year, index) => {
-                const hasSearch = search
-                  ? Object.prototype.hasOwnProperty.call(search, year)
-                  : true;
-
-                if (!hasSearch) return null;
-
+              {visibleYears?.map((year, index) => {
                 return (
                   <SidebarItem
                     key={index}
@@ -90,6 +92,9 @@ export function Sidebar({
                 );
               })}
             </ul>
+            {visibleYears?.length === 0 && (
+              <p>Nenhum resultado encontrado</p>
+            )}
           </>
         )}
       </aside>

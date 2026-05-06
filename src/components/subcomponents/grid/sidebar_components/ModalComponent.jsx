@@ -3,12 +3,7 @@ import { useState } from "react";
 import { GoChevronDown } from "react-icons/go";
 import { IoCalendarOutline } from "react-icons/io5";
 
-export function ModalComponent({
-  title,
-  value,
-  setValue,
-  arrayValues = [],
-}) {
+export function ModalComponent({ title, value, setValue, arrayValues = [] }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSelect = (v) => {
@@ -65,14 +60,14 @@ export function ModalComponent({
         {title == "Fases" && (
           <span className="text-sm text-gray-400">
             {value == ""
-              ? `Selecione as ${title}`
+              ? `Selecione uma Fase`
               : `${value == "cf" ? `${textExibit}` : `Fase ${textExibit}`}`}
           </span>
         )}
         {title == "Níveis" && (
           <span className="text-sm text-gray-400">
             {value == ""
-              ? `Selecione o Nível`
+              ? `Selecione um Nível`
               : `${value in ["j", "s", "u"] ? `Nivel ${textExibit}` : `${textExibit}`}`}
           </span>
         )}
@@ -85,11 +80,6 @@ export function ModalComponent({
         <div className="w-full mt-2 z-50">
           <div className="border mx-5 bg-gray-800 border-gray-800 rounded-xl overflow-y-hidden">
             <div className="md:max-h-64 max-h-128 scrollbar overflow-y-auto">
-              {title == "Anos" && (
-                <div className="flex justify-center pt-2">
-                  <span className="text-sm text-gray-400">2000-2025</span>
-                </div>
-              )}
               <div className="grid grid-cols-3 px-5 py-4 gap-1">
                 {arrayValues.map((item) => {
                   const isSelected = value === item.key;
@@ -98,7 +88,10 @@ export function ModalComponent({
                     <button
                       key={item.key}
                       type="button"
-                      onClick={() => handleSelect(item.key)}
+                      onClick={() => {
+                        handleSelect(item.key);
+                        if (!isSelected) setIsOpen(false);
+                      }}
                       className={`cursor-pointer rounded-2xl py-2 text-sm text-white transition ${
                         isSelected
                           ? "bg-blue-600 hover:bg-blue-700"
