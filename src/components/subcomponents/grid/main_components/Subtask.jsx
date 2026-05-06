@@ -16,7 +16,7 @@ export function Subtask({
             <Task
               key={index}
               numTask={index + 1}
-              status={task.sucess}
+              status={task.success}
               taskTime={task.time}
               taskMemory={task.memory}
               formatTime={formatTime}
