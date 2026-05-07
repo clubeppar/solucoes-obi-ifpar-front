@@ -18,7 +18,6 @@ export function FilterModal({
   setLevel,
   handleGet,
   onCancelFilters,
-  posFilter,
 }) {
   const useFilter = () => {
     handleGet();
@@ -82,10 +81,6 @@ export function FilterModal({
       <div
         className="filtermodal-container"
         onClick={(e) => e.stopPropagation()}
-        style={{
-          top: posFilter.top,
-          left: posFilter.left,
-        }}
       >
         <div className="overflow-y-auto scrollbar [scrollbar-gutter:stable]">
           <header className="sticky w-full top-0 z-150 py-4 flex items-center bg-gray-900 rounded-xl justify-between">

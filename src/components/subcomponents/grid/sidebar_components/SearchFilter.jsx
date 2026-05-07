@@ -17,7 +17,6 @@ export function SearchFilter({ setDataSidebar }) {
   const [draftYear, setDraftYear] = useState("");
   const [draftPhase, setDraftPhase] = useState("");
   const [draftLevel, setDraftLevel] = useState("");
-  const [posFilter, setPosFilter] = useState(null);
 
   async function getSearchFilterAPI({ question, year, phase, level }) {
     const items = {
@@ -104,17 +103,10 @@ export function SearchFilter({ setDataSidebar }) {
     });
   };
 
-  function getFilterPosition(e) {
-    const rect = e.currentTarget.getBoundingClientRect();
-
+  function getFilterPosition() {
     setDraftYear(selectedYear);
     setDraftPhase(selectedPhase);
     setDraftLevel(selectedLevel);
-
-    setPosFilter({
-      top: rect.bottom - 35,
-      left: rect.left + 60,
-    });
 
     setIsOpenFilter(true);
   }
@@ -138,7 +130,6 @@ export function SearchFilter({ setDataSidebar }) {
           setLevel={setDraftLevel}
           handleGet={handleApplyFilters}
           onCancelFilters={clearSearchTimer}
-          posFilter={posFilter}
         />
       )}
 

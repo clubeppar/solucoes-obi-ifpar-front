@@ -111,7 +111,7 @@ html {
     }
     .filtermodal-container{
       @apply flex flex-col md:gap-4 
-      h-[80%] max-h-[80%] md:max-h-[80%] md:h-[80%] 
+      h-[80%] max-h-[70%] md:max-h-[70%] md:h-[80%] 
       w-100 md:w-150 md:max-w-lg max-w-md 
       overflow-hidden rounded-xl 
       bg-gray-900 shadow-2xl 
