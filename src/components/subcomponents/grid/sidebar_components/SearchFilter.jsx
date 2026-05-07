@@ -5,6 +5,7 @@ import { CiSearch } from "react-icons/ci";
 import { FilterModal } from "@/subcomponents/grid/sidebar_components/FilterModal";
 
 import { useFetch } from "@/hooks/useFetch";
+import { CiFilter } from "react-icons/ci";
 
 export function SearchFilter({ setDataSidebar }) {
   const { get } = useFetch();
@@ -150,16 +151,7 @@ export function SearchFilter({ setDataSidebar }) {
           className="flex size-9 shrink-0 items-center justify-center rounded-full border border-transparent bg-gray-900 text-gray-400 shadow-sm transition hover:cursor-pointer hover:bg-gray-400"
           onClick={getFilterPosition}
         >
-          <svg
-            className="size-6"
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            viewBox="0 -960 960 960"
-            width="24px"
-            fill="currentColor"
-          >
-            <path d="M440-160q-17 0-28.5-11.5T400-200v-240L168-736q-15-20-4.5-42t36.5-22h560q26 0 36.5 22t-4.5 42L560-440v240q0 17-11.5 28.5T520-160h-80Zm40-308 198-252H282l198 252Zm0 0Z" />
-          </svg>
+          <CiFilter className="w-6 h-6"/>
         </button>
       </div>
     </div>

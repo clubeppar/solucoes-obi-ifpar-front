@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { AiOutlineLoading } from "react-icons/ai";
 
 export function Loading() {
   const [text, setText] = useState("Carregando");
@@ -19,11 +20,8 @@ export function Loading() {
     <>
       {count > 2 && (
         <div className="loading-bg">
-          <img
-            src="https://www.svgrepo.com/show/315795/spinner.svg"
-            alt=""
-            className="animate-spin size-20 invert"
-          />
+          <AiOutlineLoading className="animate-spin size-20 invert"/>
+            
           <p className="text-white font-semibold text-xl">{text}</p>
           <div className="h-10 flex items-center">
             {count > 24 && (
