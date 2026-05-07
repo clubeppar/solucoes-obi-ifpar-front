@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { GoSidebarExpand } from "react-icons/go";
 import { FaCode } from "react-icons/fa6";
+import { IoIosWarning } from "react-icons/io";
 
 import { useFetch } from "@/hooks/useFetch";
 import { SearchFilter } from "@/subcomponents/grid/sidebar_components/SearchFilter";
@@ -53,15 +54,17 @@ export function Sidebar({
                 : `flex flex-col items-center pt-2 mx-1 gap-y-2 `
             }
           >
-            <Link to="/">
-              <FaCode
-                className={
-                  !collapsed
-                    ? `size-12 cursor-pointer ms-2`
-                    : `size-12 cursor-pointer`
-                }
-              />
-            </Link>
+            {!collapsed && (
+              <Link to="/">
+                <FaCode
+                  className={
+                    !collapsed
+                      ? `size-12 cursor-pointer ms-2`
+                      : `size-12 cursor-pointer`
+                  }
+                />
+              </Link>
+            )}
             <GoSidebarExpand
               className={
                 !collapsed
@@ -93,7 +96,11 @@ export function Sidebar({
               })}
             </ul>
             {visibleYears?.length === 0 && (
-              <p>Nenhum resultado encontrado</p>
+              <div className="h-[75%] max-w-full flex flex-col justify-center items-center">
+                <IoIosWarning className="size-8 mb-4" />
+                <p className="font-semibold">Nenhum resultado encontrado</p>
+                <p className="font-semibold">Tente novamente em breve</p>
+              </div>
             )}
           </>
         )}
