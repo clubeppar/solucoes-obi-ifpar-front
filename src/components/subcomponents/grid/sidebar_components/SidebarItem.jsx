@@ -30,18 +30,9 @@ export function SidebarItem({
   let nextURL = "";
   let nextStep = "";
 
-  const currentYear =
-    nextCall === "Phase"
-      ? handleCapitalize(text)
-      : handleCapitalize(branchYear);
-  const currentPhase =
-    nextCall === "Levels"
-      ? handleCapitalize(text)
-      : handleCapitalize(branchPhase);
-  const currentLevel =
-    nextCall === "Questions"
-      ? handleCapitalize(text)
-      : handleCapitalize(branchLevel);
+  const currentYear = nextCall === "Phase" ? text : branchYear;
+  const currentPhase = nextCall === "Levels" ? text : branchPhase;
+  const currentLevel = nextCall === "Questions" ? text : branchLevel;
 
   switch (nextCall) {
     case "Phase":
