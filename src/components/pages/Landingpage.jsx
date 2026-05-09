@@ -20,7 +20,7 @@ export function Landingpage() {
           <Features />
           <About />
           <HowItWorks />
-          <SeeOnPractice />
+          {/* <SeeOnPractice /> */}
         </div>
 
         <div className="col-span-full">
