@@ -1,28 +1,18 @@
-import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+// import { useContext } from "react";
+import { Link } from "react-router-dom";
 
-import { FiSun, FiMoon } from "react-icons/fi";
+// import { FiSun, FiMoon } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
 import { FaCode } from "react-icons/fa6";
 
-import { Context } from "@src/Provider";
+// import { Context } from "@src/Provider";
 
 export function Topbar({ collapsed }) {
-  const { isLightMode, setisLightMode } = useContext(Context);
-  const navigate = useNavigate();
+  // const { isLightMode, setisLightMode } = useContext(Context);
 
-  const handleThemeToggle = () => {
-    setisLightMode((prev) => !prev);
-  };
-
-  const handleNavigate = (url) => {
-    if (url.includes("http")) {
-      window.open(url, "_blank", "noopener,noreferrer");
-      return;
-    }
-
-    navigate(url);
-  };
+  // const handleThemeToggle = () => {
+  //   setisLightMode((prev) => !prev);
+  // };
 
   return (
     <header className="topbar-bg">
@@ -35,36 +25,32 @@ export function Topbar({ collapsed }) {
       )}
 
       <div className="topbar-btn-group">
-        <button className="list-item" onClick={() => handleNavigate("/")}>
-          Início
-        </button>
-        <button className="list-item" onClick={() => handleNavigate("/grid")}>
-          Questões
-        </button>
-        <button
-          className="list-item"
-          onClick={() => handleNavigate("/credits")}
-        >
-          Sobre Nós
-        </button>
+        <Link to="/">
+          <button className="list-item">Início</button>
+        </Link>
+        <Link to="/grid">
+          <button className="list-item">Questões</button>
+        </Link>
+        <Link to="/credits">
+          <button className="list-item">Sobre Nós</button>
+        </Link>
       </div>
 
       <div className="ms-auto me-2 flex gap-5">
-        <button className="topbar-icons" onClick={handleThemeToggle}>
+        {/* <button className="topbar-icons" onClick={handleThemeToggle}>
           {!isLightMode ? (
             <FiSun className="size-10" />
           ) : (
             <FiMoon className="size-10" />
           )}
-        </button>
-        <button
+        </button> */}
+        <Link
           className="topbar-icons"
-          onClick={() =>
-            handleNavigate("https://github.com/G-Aleixo/solucoes-obi-ifpar")
-          }
+          to="https://github.com/G-Aleixo/solucoes-obi-ifpar"
+          target="_blank"
         >
           <FaGithub className="size-10" />
-        </button>
+        </Link>
       </div>
     </header>
   );
