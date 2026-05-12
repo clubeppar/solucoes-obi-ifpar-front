@@ -2,12 +2,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/components/*"],
-      "@src/*": ["src/*"],
-      "assets/*": ["images/*"],
-      "@/hooks/*": ["hooks/*"]
+      "@/*": ["views/*"],
+      "@shared/*": ["shared/components/*"],
+      "@hooks/*": ["shared/hooks/*"],
+      "@pages/*": ["pages/*"],
+      "@provider": ["app/Provider.jsx"],
+      "assets/*": ["shared/images/*"],
     }
   },
-  "include": ["src"],
+  "include": ["./"],
   "exclude": ["node_modules"]
 }

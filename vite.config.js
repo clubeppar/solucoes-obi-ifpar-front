@@ -20,10 +20,12 @@ export default defineConfig({
   ],
   resolve: {
     alias: [
-      { find: "@/hooks", replacement: resolve(__dirname, "./hooks") },
-      { find: "@src", replacement: resolve(__dirname, "./src") },
-      { find: "assets", replacement: resolve(__dirname, "./images") },
-      { find: "@", replacement: resolve(__dirname, "./src/components") },
+      { find: "@", replacement: resolve(__dirname, "./views") },
+      { find: "@shared", replacement: resolve(__dirname, "./shared/components") },
+      { find: "@hooks", replacement: resolve(__dirname, "./shared/hooks") },
+      { find: "@pages", replacement: resolve(__dirname, "./pages") },
+      { find: "@provider", replacement: resolve(__dirname, "./app/Provider.jsx") },
+      { find: "assets", replacement: resolve(__dirname, "./shared/images") },
     ],
   },
 });
