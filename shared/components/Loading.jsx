@@ -13,12 +13,12 @@ export function Loading() {
       } else {
         setText(text + ".");
       }
-    }, 200);
+    }, 400);
   });
 
   return (
     <>
-      {count && (
+      {count > 1 && (
         <div className="loading-bg">
           <AiOutlineLoading className="animate-spin size-20 invert" />
 
