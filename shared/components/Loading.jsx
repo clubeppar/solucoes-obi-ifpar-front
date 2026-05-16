@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
+import { useFetch } from "@hooks/useFetch";
 
 export function Loading() {
+  const { isLoading } = useFetch();
   const [text, setText] = useState("Carregando");
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     setTimeout(() => {
@@ -13,12 +15,12 @@ export function Loading() {
       } else {
         setText(text + ".");
       }
-    }, 400);
+    }, 200);
   });
 
   return (
     <>
-      {count > 1 && (
+      {isLoading && (
         <div className="loading-bg">
           <AiOutlineLoading className="animate-spin size-20 invert" />
 
