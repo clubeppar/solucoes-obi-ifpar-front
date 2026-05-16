@@ -6,10 +6,11 @@ import { Topbar } from "@shared/Topbar";
 import { Header } from "./components/Header";
 import { Input } from "./components/Input";
 import { Results } from "./components/Results";
+import { EmptySelection } from "./components/EmptySelection";
 
 import { useFetch } from "@hooks/useFetch";
 
-export function MainPage({ selection }) {
+export function MainPage({ selection, clearSelection }) {
   const [fileName, setFileName] = useState("");
   const [file, setFile] = useState(null);
 
@@ -18,6 +19,8 @@ export function MainPage({ selection }) {
   const [subtasks, setSubtasks] = useState(null);
 
   const { post } = useFetch();
+
+  const isEmptySelection = Object.values(selection).some((v) => v == "");
 
   const handleSetFile = (event) => {
     const selectedFile = event.target.files[0];
@@ -65,22 +68,30 @@ export function MainPage({ selection }) {
     <div className="mainpage-layout">
       <Topbar collapsed={true} />
 
-      <Header
-        year={selection.year}
-        fase={selection.phase}
-        level={selection.level}
-        question={selection.problem}
-        file={file}
-        onSubmit={handleUpload}
-      />
+      {isEmptySelection ? (
+        <EmptySelection />
+      ) : (
+        <>
+          <Header
+            year={selection.year}
+            fase={selection.phase}
+            level={selection.level}
+            question={selection.problem}
+            isEmpty={isEmptySelection}
+            file={file}
+            onSubmit={handleUpload}
+            clearSelection={clearSelection}
+          />
 
-      <Input fileName={fileName} file={file} onFileChange={handleSetFile} />
+          <Input fileName={fileName} file={file} onFileChange={handleSetFile} />
 
-      <Results
-        subtasks={subtasks}
-        maxMemory={largerMemory}
-        maxTime={longerTime}
-      />
+          <Results
+            subtasks={subtasks}
+            maxMemory={largerMemory}
+            maxTime={longerTime}
+          />
+        </>
+      )}
     </div>
   );
 }

@@ -15,11 +15,20 @@ export function Grid() {
   });
 
   const [mainSelection, setMainSelection] = useState({
-    year: "2025",
-    phase: "1",
-    level: "1",
-    problem: "Fila",
+    year: "",
+    phase: "",
+    level: "",
+    problem: "",
   });
+
+  const handleClearSelection = () => {
+    setMainSelection({
+      year: "",
+      phase: "",
+      level: "",
+      problem: "",
+    });
+  };
 
   return (
     <div className="grid-layout">
@@ -30,7 +39,10 @@ export function Grid() {
         activeQuestion={mainSelection}
       />
 
-      <MainPage selection={mainSelection} />
+      <MainPage
+        selection={mainSelection}
+        clearSelection={handleClearSelection}
+      />
 
       <div className="col-span-full flex w-full">
         <Footer />

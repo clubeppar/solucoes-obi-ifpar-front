@@ -2,16 +2,34 @@ import { Link } from "react-router-dom";
 import { IoMdArrowBack } from "react-icons/io";
 import { MdOutlineFileUpload } from "react-icons/md";
 
-export function Header({ year, fase, level, question, file, onSubmit }) {
+export function Header({
+  year,
+  fase,
+  level,
+  question,
+  file,
+  onSubmit,
+  isEmpty,
+  clearSelection,
+}) {
   return (
     <>
       <div className="header-container">
         <h4 className="header-breadcrumb">
-          <Link to="/">
-            <IoMdArrowBack className="mr-2 shrink-0 size-6" />
-          </Link>
-          {year} {">"} Fase {fase} {">"} Nível {level} {">"}
-          <span className="text-blue-500 ml-1">{question}</span>
+          {!isEmpty ? (
+            <>
+              <IoMdArrowBack
+                onClick={clearSelection}
+                className="mr-2 shrink-0 size-6 cursor-pointer"
+              />
+              {year} {">"} Fase {fase} {">"} Nível {level} {">"}
+              <span className="text-blue-500 ml-1">{question}</span>
+            </>
+          ) : (
+            <Link to="/">
+              <IoMdArrowBack className="mr-2 shrink-0 size-6 cursor-pointer" />
+            </Link>
+          )}
         </h4>
       </div>
 
