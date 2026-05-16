@@ -2,12 +2,12 @@ import { useState, useCallback, useContext } from "react";
 import { Context } from "@provider";
 
 export function useFetch() {
-  const { setIsLoading } = useContext(Context);
+  const { isLoading, setIsLoading } = useContext(Context);
   const [error, setError] = useState(null);
 
   const baseUrl = window.location.href.includes("localhost")
     ? "http://127.0.0.1:5000"
-    : ""; // URL do backend em produção
+    : "https://solucoes-obi-ifpar.onrender.com"; // URL do backend em produção
 
   const request = useCallback(async (url, options = {}) => {
     setIsLoading(true);
@@ -50,7 +50,7 @@ export function useFetch() {
       body: JSON.stringify(body),
     });
 
-  return { get, post, request, error };
+  return { get, post, request, error, isLoading };
 }
 
 // como importar:
