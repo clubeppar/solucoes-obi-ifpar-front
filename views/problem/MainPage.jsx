@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { MdOutlineFileUpload } from "react-icons/md";
 
 // tirar uso da topbar aqui e colocar no /page/GridPage
 import { Topbar } from "@shared/Topbar";
@@ -36,6 +37,7 @@ export function MainPage({ selection, clearSelection }) {
   };
 
   const handleUpload = async () => {
+    setSubtasks(null);
     const { year, level, phase } = selection;
     const body = {
       year: year,
@@ -82,6 +84,22 @@ export function MainPage({ selection, clearSelection }) {
             onSubmit={handleUpload}
             clearSelection={clearSelection}
           />
+
+          <div className="header-wrapper">
+            <div className="header-content">
+              <h1 className="text-2xl light:text-black">{selection.problem}</h1>
+              <div className="flex items-center gap-2">
+                <button
+                  disabled={file == null}
+                  className="header-btn-submit"
+                  onClick={handleUpload}
+                >
+                  <MdOutlineFileUpload className="mr-1 w-6 h-6" />
+                  Enviar questão
+                </button>
+              </div>
+            </div>
+          </div>
 
           <Input fileName={fileName} file={file} onFileChange={handleSetFile} />
 
