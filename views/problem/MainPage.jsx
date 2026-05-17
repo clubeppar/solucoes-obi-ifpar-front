@@ -36,6 +36,11 @@ export function MainPage({ selection, clearSelection }) {
     setSubtasks(subtasks);
   };
 
+  const handleClearFile = () => {
+    setFileName("");
+    setFile(null);
+  };
+
   const handleUpload = async () => {
     setSubtasks(null);
     const { year, level, phase } = selection;
@@ -50,8 +55,7 @@ export function MainPage({ selection, clearSelection }) {
     const res = await post("/questions/validate", body);
     const data = await res.data;
     setResponseValues(data.max_memory, data.max_time, data.subtasks);
-    setFileName("");
-    setFile(null);
+    handleClearFile();
   };
 
   useEffect(() => {
@@ -90,7 +94,7 @@ export function MainPage({ selection, clearSelection }) {
               <h1 className="text-2xl light:text-black">{selection.problem}</h1>
               <div className="flex items-center gap-2">
                 <button
-                  disabled={file == null}
+                  disabled={file == null || file.size / 1024 == 0}
                   className="header-btn-submit"
                   onClick={handleUpload}
                 >
