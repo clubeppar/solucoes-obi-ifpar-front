@@ -30,9 +30,12 @@ export function SidebarItem({
   let nextURL = "";
   let nextStep = "";
 
-  const currentYear = nextCall === "Phase" ? text : branchYear;
-  const currentPhase = nextCall === "Levels" ? text : branchPhase;
-  const currentLevel = nextCall === "Questions" ? text : branchLevel;
+  const currentYear =
+    nextCall === "Phase" ? text : handleCapitalize(branchYear);
+  const currentPhase =
+    nextCall === "Levels" ? text : handleCapitalize(branchPhase);
+  const currentLevel =
+    nextCall === "Questions" ? text : handleCapitalize(branchLevel);
 
   switch (nextCall) {
     case "Phase":

@@ -45,9 +45,9 @@ export function MainPage({ selection, clearSelection }) {
     setSubtasks(null);
     const { year, level, phase } = selection;
     const body = {
-      year: year,
-      phase: phase,
-      level: level,
+      year: year.toLowerCase(),
+      phase: phase.toLowerCase(),
+      level: level.toLowerCase(),
       name: selection.problem.toLowerCase(),
       filename: fileName,
       file: await file.text(),
