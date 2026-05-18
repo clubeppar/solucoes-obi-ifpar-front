@@ -1,7 +1,8 @@
 import { useRef, useEffect } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
+import { MdClose } from "react-icons/md";
 
-export function Input({ fileName, file, onFileChange }) {
+export function Input({ fileName, file, onFileChange, clearFile}) {
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -59,6 +60,16 @@ export function Input({ fileName, file, onFileChange }) {
             <p className="text-gray-400 light:text-gray-600">
               Clique para trocar o arquivo
             </p>
+            <button type="button" 
+            className="size-8 rounded-2xl "
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+
+              clearFile();
+            }}>
+              <MdClose className="size-8 cursor-pointer hover:text-blue-600"/>
+            </button>
           </>
         )}
       </label>

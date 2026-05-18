@@ -105,7 +105,7 @@ export function MainPage({ selection, clearSelection }) {
             </div>
           </div>
 
-          <Input fileName={fileName} file={file} onFileChange={handleSetFile} />
+          <Input fileName={fileName} file={file} onFileChange={handleSetFile} clearFile={handleClearFile}/>
 
           <Results
             subtasks={subtasks}
