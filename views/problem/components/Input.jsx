@@ -52,27 +52,29 @@ export function Input({ fileName, file, onFileChange, clearFile}) {
             </h5>
           </>
         ) : (
-          <>
-            <h5 className="text-white light:text-black flex items-center">
-              {fileName}
-              <button type="button" 
-                className="size-6"
+          <div className="w-full relative">
+            <h5 className="text-white light:text-black text-center">
+              <p className="text-center">
+                {fileName} 
+              </p>
+            </h5>
+            <h6 className="text-gray-300 light:text-gray-800 text-center">
+              {file ? `${(file.size / 1024).toFixed(2)} KB` : ""}
+            </h6>
+            <button type="button" 
+                className="absolute size-8 right-0 top-1/2 -translate-y-1/2"
                 onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
 
                 clearFile();
-              }}>
-                <MdClose className="size-6 cursor-pointer hover:text-blue-600"/>
-              </button>
-            </h5>
-            <h6 className="text-gray-300 light:text-gray-800">
-              {file ? `${(file.size / 1024).toFixed(2)} KB` : ""}
-            </h6>
-            <p className="text-gray-400 light:text-gray-600">
+            }}>
+              <MdClose className="size-8 cursor-pointer hover:text-blue-600"/>
+            </button>
+            <p className="text-gray-400 light:text-gray-600 text-center">
               Clique para trocar o arquivo
             </p>
-          </>
+          </div>
         )}
       </label>
       <input
