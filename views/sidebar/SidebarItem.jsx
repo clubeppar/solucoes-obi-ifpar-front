@@ -37,6 +37,13 @@ export function SidebarItem({
   const currentLevel =
     nextCall === "Questions" ? text : handleCapitalize(branchLevel);
 
+  const hasUniqueLevel = (element) =>
+    Array.isArray(element?.niveis) &&
+    element.niveis.length === 1 && // According G-Aleixo, exists ["", "1", "2"] (for example)
+    element.niveis[0] === ""; // so, it view if array have a unique empty element
+
+  const isUniqueLevel = hasUniqueLevel(data);
+
   switch (nextCall) {
     case "Phase":
       actualArray = data?.fases;
@@ -45,10 +52,17 @@ export function SidebarItem({
       nextURL = `/nav/years/${currentYear}/phases`;
       break;
     case "Levels":
-      actualArray = data?.niveis;
-      nextStep = "Questions";
-      prefix = "Fase ";
-      nextURL = `/nav/years/${currentYear}/phases/${currentPhase}/levels`;
+      if (isUniqueLevel) {
+        actualArray = data?.questoes;
+        nextStep = "Problem";
+        prefix = "Fase ";
+        nextURL = `/nav/years/${currentYear}/phases/${currentPhase}/levels`;
+      } else {
+        actualArray = data?.niveis;
+        nextStep = "Questions";
+        prefix = "Fase ";
+        nextURL = `/nav/years/${currentYear}/phases/${currentPhase}/levels`;
+      }
       break;
     case "Questions":
       actualArray = data?.questoes;
@@ -73,12 +87,20 @@ export function SidebarItem({
 
     async function fetchData() {
       if (!nextCall) return;
-      const data = await get(nextURL.toLowerCase());
-      setData(data);
+      const res = await get(nextURL.toLowerCase());
+
+      if (nextCall === "Levels" && hasUniqueLevel(res)) {
+        const problemsURL = `/nav/years/${currentYear}/phases/${currentPhase}/levels//problems`;
+        const problemsData = await get(problemsURL.toLowerCase());
+        setData({ ...res, questoes: problemsData?.questoes ?? [] });
+        return;
+      }
+
+      setData(res);
     }
 
     fetchData();
-  }, [open, data, nextCall, nextURL, get]);
+  }, [open, data, nextCall, nextURL, get, currentYear, currentPhase]);
 
   return (
     <li>
@@ -106,7 +128,7 @@ export function SidebarItem({
                 phase: null,
                 level: null,
               }));
-            } else if (nextStep === "Questions") {
+            } else if (nextStep === "Questions" || isUniqueLevel) {
               setSelection((prev) => ({
                 ...prev,
                 phase: handleCapitalize(text),
@@ -132,29 +154,35 @@ export function SidebarItem({
       </button>
       {open && (
         <ul className="ml-4 max-w-full overflow-x-hidden">
-          {actualArray?.map((item, index) => {
-            const searchScope = search ? search[text] : null;
+          {(() => {
+            const thisSearch = search ? search[text] : null;
 
-            if (search && (!searchScope || searchScope[item] === undefined)) {
-              return null;
-            }
+            return actualArray?.map((item, index) => {
+              const searchScope =
+                nextStep === "Problem" && isUniqueLevel
+                  ? thisSearch?.[""]
+                  : thisSearch;
 
-            return (
-              <SidebarItem
-                key={index}
-                text={item}
-                nextCall={nextStep}
-                search={search ? searchScope : null}
-                selection={selection}
-                setSelection={setSelection}
-                onQuestionSelect={onQuestionSelect}
-                activeQuestion={activeQuestion}
-                branchYear={currentYear}
-                branchPhase={currentPhase}
-                branchLevel={currentLevel}
-              />
-            );
-          })}
+              if (search && (!searchScope || searchScope[item] === undefined))
+                return null;
+
+              return (
+                <SidebarItem
+                  key={index}
+                  text={item}
+                  nextCall={nextStep}
+                  search={search ? searchScope : null}
+                  selection={selection}
+                  setSelection={setSelection}
+                  onQuestionSelect={onQuestionSelect}
+                  activeQuestion={activeQuestion}
+                  branchYear={currentYear}
+                  branchPhase={currentPhase}
+                  branchLevel={currentLevel}
+                />
+              );
+            });
+          })()}
         </ul>
       )}
     </li>

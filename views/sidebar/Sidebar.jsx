@@ -18,10 +18,13 @@ export function Sidebar({
   const { get } = useFetch();
 
   const [search, setSearch] = useState(null);
-
   const [data, setData] = useState(null);
-
   const [collapsed, setCollapsed] = useState(false);
+
+  const visibleYears = data?.filter((year) => {
+    if (!search) return true;
+    return Object.prototype.hasOwnProperty.call(search, year);
+  });
 
   useEffect(() => {
     async function fetchData() {
@@ -32,14 +35,6 @@ export function Sidebar({
 
     fetchData();
   }, []);
-
-  const visibleYears = data?.filter((year) => {
-    if (!search) {
-      return true;
-    }
-
-    return Object.prototype.hasOwnProperty.call(search, year);
-  });
 
   return (
     <div
