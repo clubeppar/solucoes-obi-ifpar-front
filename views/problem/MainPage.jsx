@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { MdOutlineFileUpload } from "react-icons/md";
+import { IoIosWarning } from "react-icons/io";
 
 // tirar uso da topbar aqui e colocar no /page/GridPage
 import { Topbar } from "@shared/Topbar";
@@ -19,7 +20,10 @@ export function MainPage({ selection, clearSelection }) {
   const [longerTime, setLongerTime] = useState(null);
   const [subtasks, setSubtasks] = useState(null);
 
-  const { post } = useFetch();
+  const [problemFlag, setProblemFlag] = useState(null); // if it's false, there is no answer key
+  // so, user can't submit in this problem
+
+  const { get, post } = useFetch();
 
   const isEmptySelection = Object.values(selection).some((v) => v == "");
 
@@ -70,6 +74,21 @@ export function MainPage({ selection, clearSelection }) {
     clearFile();
   }, [selection]);
 
+  useEffect(() => {
+    if (isEmptySelection) return;
+
+    const getFlagProblem = async () => {
+      const { year, phase, level, problem } = selection;
+      const res = await get(
+        `/nav/years/${year.toLowerCase()}/phases/${phase.toLowerCase()}/levels/${level.toLowerCase()}/problems/${problem.toLowerCase()}`,
+      );
+      const flag = await res.flag;
+      setProblemFlag(flag);
+    };
+
+    getFlagProblem();
+  }, [isEmptySelection, selection]);
+
   return (
     <div className="mainpage-layout">
       <Topbar collapsed={true} />
@@ -94,7 +113,9 @@ export function MainPage({ selection, clearSelection }) {
               <h1 className="text-2xl light:text-black">{selection.problem}</h1>
               <div className="flex items-center gap-2">
                 <button
-                  disabled={file == null || file.size / 1024 == 0}
+                  disabled={
+                    file == null || file.size / 1024 == 0 || !problemFlag
+                  }
                   className="header-btn-submit"
                   onClick={handleUpload}
                 >
@@ -105,7 +126,23 @@ export function MainPage({ selection, clearSelection }) {
             </div>
           </div>
 
-          <Input fileName={fileName} file={file} onFileChange={handleSetFile} clearFile={handleClearFile}/>
+          <Input
+            fileName={fileName}
+            file={file}
+            onFileChange={handleSetFile}
+            clearFile={handleClearFile}
+          />
+
+          <div className="header-wrapper">
+            {problemFlag ? null : (
+              <div className="flex items-center gap-3 m-3 p-3 bg-red-700/40 rounded-2xl border-red-900 border">
+                <IoIosWarning className="size-5 text-red-300" />
+                <p className="font-semibold text-white">
+                  Infelizmente o gabarito desse problema não é disponibilizado :/
+                </p>
+              </div>
+            )}
+          </div>
 
           <Results
             subtasks={subtasks}
