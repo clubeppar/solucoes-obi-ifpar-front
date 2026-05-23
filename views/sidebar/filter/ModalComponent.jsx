@@ -68,7 +68,7 @@ export function ModalComponent({ title, value, setValue, arrayValues = [] }) {
           <span className="text-sm text-gray-400">
             {value == ""
               ? `Selecione um Nível`
-              : `${value in ["j", "s", "u"] ? `Nivel ${textExibit}` : `${textExibit}`}`}
+              : `${["j","s","u"].includes(value) ? `Nível ${textExibit}` : `${textExibit}`}`}
           </span>
         )}
         <GoChevronDown

@@ -38,14 +38,19 @@ export function SearchFilter({ setDataSidebar }) {
 
     const url = "/search/?" + queryParams.join("&");
 
-    const res = await get(url);
-    const data = await res.data;
-
-    if (url.length < 12) {
+    if (queryParams.length === 0) {
       setDataSidebar(null);
-    } else {
-      setDataSidebar(data);
+      return;
     }
+
+    const data = await get(url);
+
+    if (!data) {
+      setDataSidebar(null);
+      return;
+    }
+
+    setDataSidebar(data);
   }
 
   const refTimer = useRef(null);

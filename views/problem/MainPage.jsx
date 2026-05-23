@@ -56,8 +56,8 @@ export function MainPage({ selection, clearSelection }) {
       filename: fileName,
       file: await file.text(),
     };
-    const res = await post("/questions/validate", body);
-    const data = await res.data;
+    const data = await post("/questions/validate", body);
+    if (!data) return;
     setResponseValues(data.max_memory, data.max_time, data.subtasks);
     handleClearFile();
   };
