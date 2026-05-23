@@ -30,6 +30,10 @@ export function useFetch() {
         };
       }
 
+      if (data && Object.prototype.hasOwnProperty.call(data, "data")) {
+        return data.data;
+      }
+
       return data;
     } catch (err) {
       setError({
@@ -40,7 +44,7 @@ export function useFetch() {
     } finally {
       setIsLoading(false);
     }
-  }, [setIsLoading]);
+  }, [baseUrl, setIsLoading]);
 
   const get = (url) => request(url);
 
