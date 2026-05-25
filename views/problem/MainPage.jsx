@@ -82,7 +82,12 @@ export function MainPage({ selection, clearSelection }) {
       const res = await get(
         `/nav/years/${year.toLowerCase()}/phases/${phase.toLowerCase()}/levels/${level.toLowerCase()}/problems/${problem.toLowerCase()}`,
       );
-      const flag = await res.flag;
+      if (!res) {
+        setProblemFlag(null);
+        return;
+      }
+
+      const flag = res.flag;
       setProblemFlag(flag);
     };
 
