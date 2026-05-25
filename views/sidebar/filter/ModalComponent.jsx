@@ -33,13 +33,13 @@ export function ModalComponent({ title, value, setValue, arrayValues = [] }) {
       textExibit = "Competição Feminina";
       break;
     case "j":
-      textExibit = "Nível Júnior";
+      textExibit = "Júnior";
       break;
     case "s":
-      textExibit = "Nível Sênior";
+      textExibit = "Sênior";
       break;
     case "u":
-      textExibit = "Nível Univeritário";
+      textExibit = "Univeritário";
       break;
   }
 
