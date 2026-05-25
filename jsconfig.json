@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
     "paths": {
       "@/*": ["views/*"],
       "@shared/*": ["shared/components/*"],
       "@hooks/*": ["shared/hooks/*"],
       "@pages/*": ["pages/*"],
       "@provider": ["app/Provider.jsx"],
-      "assets/*": ["shared/images/*"],
+      "assets/*": ["shared/images/*"]
     }
   },
   "include": ["./"],
