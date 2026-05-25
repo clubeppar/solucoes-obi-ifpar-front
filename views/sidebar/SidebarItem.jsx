@@ -157,7 +157,7 @@ export function SidebarItem({
           {(() => {
             const thisSearch = search ? search[text] : null;
 
-            return actualArray?.map((item, index) => {
+            return actualArray?.map((item) => {
               const searchScope =
                 nextStep === "Problem" && isUniqueLevel
                   ? thisSearch?.[""]
@@ -168,7 +168,7 @@ export function SidebarItem({
 
               return (
                 <SidebarItem
-                  key={index}
+                  key={currentYear + currentPhase + currentLevel + item}
                   text={item}
                   nextCall={nextStep}
                   search={search ? searchScope : null}

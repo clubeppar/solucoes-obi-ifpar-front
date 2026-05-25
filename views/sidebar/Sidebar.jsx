@@ -75,10 +75,10 @@ export function Sidebar({
         {!collapsed && (
           <>
             <ul>
-              {visibleYears?.map((year, index) => {
+              {visibleYears?.map((year) => {
                 return (
                   <SidebarItem
-                    key={index}
+                    key={year}
                     text={year}
                     nextCall="Phase"
                     search={search}
