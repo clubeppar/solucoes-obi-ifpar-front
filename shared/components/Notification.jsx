@@ -4,34 +4,27 @@ import { IoWarningOutline } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 
 const statusType = Object.freeze({
-    success: 'success',
-    error: 'error',
-    warning: 'warning',
+    "success": {
+        icon: <FaCheck />,
+        color: 'green-400',
+    },
+    "error": {
+        icon: <MdErrorOutline />,
+        color: 'red-500',
+    },
+    "warning": {
+        icon: <IoWarningOutline />,
+        color: 'yellow-400',
+    },
 });
-
-function getStatusIcon(type) {
-    switch (type) {
-        case statusType.success:
-            return <FaCheck />;
-        case statusType.error:
-            return <MdErrorOutline />;
-        case statusType.warning:
-            return <IoWarningOutline />;
-        default:
-            return '';
-    }
-}
 
 export function Notification({ type, message }) {
     return (
         <div className={`justify-between gap-2 rounded-lg p-4 text-sm font-medium bg-gray-900 w-fit min-w-75 flex`}>
             <div className="flex items-center gap-2">
-                <div className={`border rounded-md bg-gray-800 p-1 ${type === statusType.success ? 
-                'border-green-400' : type === statusType.error ? 'border-red-500' : 
-                'border-yellow-400'}`}>
-                    <span className={`${type === statusType.success ? 'text-green-400'
-                        : type === statusType.error ? 'text-red-500' : 'text-yellow-400'}`}>
-                        {getStatusIcon(type)}
+                <div className={`border rounded-md bg-gray-800 p-1 border-${statusType[type].color}`}>
+                    <span className={`text-${statusType[type].color}`}>
+                        {statusType[type].icon}
                     </span>
                 </div>
                 {message}
