@@ -1,12 +1,13 @@
 import { BrowserRouter } from "react-router-dom";
-import { useContext } from "react";
 
 import { RoutePages } from "./RoutePages";
-import { Context } from "@provider";
+
 import { Loading } from "@shared/Loading";
 
+import { useLoading } from "@hooks";
+
 export function App() {
-  const { isLoading } = useContext(Context);
+  const { isLoading } = useLoading();
 
   return (
     <div className={isLoading ? "overflow-hidden" : ""}>
