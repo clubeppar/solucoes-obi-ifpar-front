@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { GoChevronDown } from "react-icons/go";
 
-import { useFetch } from "@hooks/useFetch";
+import { useFetch } from "@hooks";
 
 export function SidebarItem({
   text,
