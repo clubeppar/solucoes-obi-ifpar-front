@@ -19,6 +19,7 @@ export function Grid() {
     phase: "",
     level: "",
     problem: "",
+    flag: "",
   });
 
   const handleClearSelection = () => {
@@ -27,6 +28,7 @@ export function Grid() {
       phase: "",
       level: "",
       problem: "",
+      flag: "",
     });
   };
 

@@ -20,12 +20,9 @@ export function MainPage({ selection, clearSelection }) {
   const [longerTime, setLongerTime] = useState(null);
   const [subtasks, setSubtasks] = useState(null);
 
-  const [problemFlag, setProblemFlag] = useState(null); // if it's false, there is no answer key
-  // so, user can't submit in this problem
+  const { post } = useFetch();
 
-  const { get, post } = useFetch();
-
-  const isEmptySelection = Object.values(selection).some((v) => v == "");
+  const isEmptySelection = Object.values(selection).some((v) => v === "");
 
   const handleSetFile = (event) => {
     const selectedFile = event.target.files[0];
@@ -74,26 +71,6 @@ export function MainPage({ selection, clearSelection }) {
     clearFile();
   }, [selection]);
 
-  useEffect(() => {
-    if (isEmptySelection) return;
-
-    const getFlagProblem = async () => {
-      const { year, phase, level, problem } = selection;
-      const res = await get(
-        `/nav/years/${year.toLowerCase()}/phases/${phase.toLowerCase()}/levels/${level.toLowerCase()}/problems/${problem.toLowerCase()}`,
-      );
-      if (!res) {
-        setProblemFlag(null);
-        return;
-      }
-
-      const flag = res.flag;
-      setProblemFlag(flag);
-    };
-
-    getFlagProblem();
-  }, [isEmptySelection, selection]);
-
   return (
     <div className="mainpage-layout">
       <Topbar collapsed={true} />
@@ -119,7 +96,7 @@ export function MainPage({ selection, clearSelection }) {
               <div className="flex items-center gap-2">
                 <button
                   disabled={
-                    file == null || file.size / 1024 == 0 || !problemFlag
+                    file == null || file.size / 1024 == 0 || !selection.flag
                   }
                   className="header-btn-submit"
                   onClick={handleUpload}
@@ -139,7 +116,7 @@ export function MainPage({ selection, clearSelection }) {
           />
 
           <div className="header-wrapper">
-            {problemFlag ? null : (
+            {selection.flag ? null : (
               <div className="flex items-center gap-3 m-3 p-3 bg-red-700/40 rounded-2xl border-red-900 border">
                 <IoIosWarning className="size-5 text-red-300" />
                 <p className="font-semibold text-white">
