@@ -9,9 +9,9 @@ export function Notification() {
 
   return (
     <div
-      className={`justify-between gap-2 rounded-lg p-4 text-sm font-medium bg-gray-900 w-fit min-w-75 flex`}
+      className={`fixed top-17 right-[50%] translate-x-[50%] z-50 justify-between gap-2 rounded-lg p-4 text-sm font-medium bg-gray-900 w-fit min-w-75 flex`}
     >
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 text-white">
         <div
           className={`border rounded-md bg-gray-800 p-1 ${notification.borderClass}`}
         >
@@ -21,7 +21,7 @@ export function Notification() {
       </div>
       <button
         onClick={hideNotification}
-        className="ml-auto text-gray-400 hover:text-gray-500"
+        className="ml-auto text-gray-400 hover:text-gray-500 cursor-pointer"
       >
         <IoMdClose className="size-5" />
       </button>
