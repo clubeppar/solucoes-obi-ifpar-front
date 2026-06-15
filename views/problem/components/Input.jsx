@@ -15,7 +15,7 @@ export function Input({ fileName, file, onFileChange, clearFile, problem }) {
     }
 
     if (file.size / 1024 === 0) showNotification("emptyFile", fileName);
-    else if (fileName.endsWith(".java")) showNotification("javaFile", fileName);
+    else if (fileName.endsWith(".java")) showNotification("javaFile", problem);
   }, [file, fileName, problem, showNotification]);
 
   function handleDrop(e) {
