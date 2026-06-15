@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import { GoSidebarExpand } from "react-icons/go";
 import { FaCode } from "react-icons/fa6";
 import { IoIosWarning } from "react-icons/io";
+import { CiSearch } from "react-icons/ci";
 
 import { useFetch } from "@hooks/useFetch";
 import { SearchFilter } from "./filter/SearchFilter";
 import { SidebarItem } from "./SidebarItem";
+import CollapsedSearchFilter from "./filter/CollapsedSearchFilter";
 
 export function Sidebar({
   selection,
@@ -20,6 +22,7 @@ export function Sidebar({
   const [search, setSearch] = useState(null);
   const [data, setData] = useState(null);
   const [collapsed, setCollapsed] = useState(false);
+  const [smallSearchOpen, setSmallSearchOpen] = useState(false)
 
   const visibleYears = data?.filter((year) => {
     if (!search) return true;
@@ -60,6 +63,7 @@ export function Sidebar({
                 />
               </Link>
             )}
+
             <GoSidebarExpand
               className={
                 !collapsed
@@ -68,8 +72,17 @@ export function Sidebar({
               }
               onClick={() => setCollapsed(!collapsed)}
             />
+
+            {collapsed && (
+              <button onClick={() => setSmallSearchOpen(!smallSearchOpen)}>
+                <CiSearch
+                  className="size-12 cursor-pointer"
+                />
+              </button>
+            )}
           </div>
           {!collapsed && <SearchFilter setDataSidebar={setSearch} />}
+          {smallSearchOpen && <CollapsedSearchFilter setDataSidebar={setSearch}/>}
         </div>
 
         {!collapsed && (

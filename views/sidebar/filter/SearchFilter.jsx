@@ -138,7 +138,7 @@ export function SearchFilter({ setDataSidebar }) {
         />
       )}
 
-      <div className="mx-2 mt-3 mb-2 flex items-center gap-2">
+      <div className="mx-2 my-3 flex items-center gap-2">
         <div className="relative min-w-0 grow">
           <CiSearch className="pointer-events-none absolute left-3 top-1/2 size-6 -translate-y-1/2 text-gray-400" />
           <input
