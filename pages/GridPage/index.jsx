@@ -7,6 +7,8 @@ import { Footer } from "@shared/Footer";
 import { Sidebar } from "@/sidebar/Sidebar";
 import { MainPage } from "@/problem/MainPage";
 
+import { useNotification } from "@hooks";
+
 export function Grid() {
   const [selection, setSelection] = useState({
     year: null,
@@ -30,6 +32,8 @@ export function Grid() {
     });
   };
 
+  const { haveNotification } = useNotification();
+
   return (
     <div className="grid-layout">
       <Sidebar
@@ -38,6 +42,8 @@ export function Grid() {
         onQuestionSelect={setMainSelection}
         activeQuestion={mainSelection}
       />
+
+      {haveNotification && <Notification />}
 
       <MainPage
         selection={mainSelection}

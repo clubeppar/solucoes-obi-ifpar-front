@@ -136,6 +136,7 @@ export function MainPage({ selection, clearSelection }) {
             file={file}
             onFileChange={handleSetFile}
             clearFile={handleClearFile}
+            problem={selection.problem.toLowerCase()}
           />
 
           <div className="header-wrapper">

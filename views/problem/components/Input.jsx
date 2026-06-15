@@ -1,16 +1,22 @@
 import { useRef, useEffect } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
+import { useNotification } from "@hooks";
 
-export function Input({ fileName, file, onFileChange, clearFile}) {
+export function Input({ fileName, file, onFileChange, clearFile, problem }) {
   const inputRef = useRef(null);
+  const { showNotification } = useNotification();
 
   useEffect(() => {
     // file is null and inputRef is previous value: clears the value
     if (!file && inputRef.current) {
       inputRef.current.value = "";
+      return;
     }
-  }, [file]);
+
+    if (file.size / 1024 === 0) showNotification("emptyFile", fileName);
+    else if (fileName.endsWith(".java")) showNotification("javaFile", fileName);
+  }, [file, fileName, problem, showNotification]);
 
   function handleDrop(e) {
     e.preventDefault();
