@@ -6,7 +6,7 @@ import { useFetch } from "@hooks/useFetch";
 
 import { FilterModal } from "./FilterModal";
 
-export function SearchFilter({ setDataSidebar }) {
+export function SearchFilter({ setDataSidebar, setSmallFilterOpen ,setCollapsed }) {
   const { get } = useFetch();
 
   const [isOpenFilter, setIsOpenFilter] = useState(false);
@@ -147,13 +147,14 @@ export function SearchFilter({ setDataSidebar }) {
             className="h-9 w-full rounded-full border border-transparent bg-gray-900 pl-10 pr-3 text-sm text-gray-400 shadow-sm outline-none transition placeholder:text-stone-300/80 placeholder:hover:text-gray-200 hover:bg-gray-500 hover:text-gray-300"
             value={searchQuestion}
             onChange={(e) => handleDebouncedSearch(e.target.value)}
+            onClick={() => {setCollapsed(false); setSmallFilterOpen(false)}}
           />
         </div>
 
         <button
           type="button"
           className="flex size-9 shrink-0 items-center justify-center rounded-full border border-transparent bg-gray-900 text-gray-400 shadow-sm transition hover:cursor-pointer hover:bg-gray-500 hover:text-gray-200"
-          onClick={getFilterPosition}
+          onClick={() => {getFilterPosition();}}
         >
           <CiFilter className="w-6 h-6" />
         </button>

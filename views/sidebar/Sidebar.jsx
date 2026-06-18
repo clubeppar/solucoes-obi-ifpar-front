@@ -81,8 +81,8 @@ export function Sidebar({
               </button>
             )}
           </div>
-          {!collapsed && <SearchFilter setDataSidebar={setSearch} />}
-          {smallSearchOpen && <CollapsedSearchFilter setDataSidebar={setSearch}/>}
+          {!collapsed && <SearchFilter setDataSidebar={setSearch} setSmallFilterOpen={setSmallSearchOpen} setCollapsed={setCollapsed} />}
+          {smallSearchOpen && <CollapsedSearchFilter setDataSidebar={setSearch} setSmallFilterOpen={setSmallSearchOpen} setCollapsed={setCollapsed}/>}
         </div>
 
         {!collapsed && (
