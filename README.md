@@ -18,7 +18,7 @@ Criar uma plataforma que permita aos estudantes:
 - testar automaticamente as respostas
 - visualizar informações de forma clara e organizada
 - receber feedback sobre a execução
-- utilizar o sistema como ferramenta de estudo para olimpíadas de programação
+- utilizar a plataforma como ferramenta de estudo para olimpíadas de programação
 
 Além disso, o projeto também funciona como **um ambiente de aprendizado colaborativo**, permitindo que estudantes participem do desenvolvimento de uma aplicação real.
 
@@ -48,7 +48,7 @@ O projeto utiliza tecnologias modernas de desenvolvimento web.
 - GitHub
 - gh-pages
 
-## 🔧 Como rodar o projeto
+## 🔧 Como rodar o frontend do projeto
 
 Siga os passos abaixo para executar o projeto localmente.
 
@@ -90,23 +90,6 @@ Os participantes podem contribuir de diversas formas:
 - organização do projeto
 
 Mesmo quem ainda está aprendendo pode participar acompanhando o desenvolvimento e contribuindo gradualmente.
-
-### 👨‍💻 Participantes
-
-- [Alanderson Lima](https://github.com/Alanderson-LS) — Estudante Aprendiz
-- [Brasilicio Henrique](https://github.com/brasilicioh) — Coordenador e Dev Fullstack
-- [Bruno Gustavo](https://github.com/brunoficial) — Dev Backend
-- [Cauã de Lima](https://github.com/CauaLima18) — Dev Backend
-- [Douglas Ryan](https://github.com/Douglas-Mesquita) — Estudante Aprendiz
-- [Emanuele Rafaela](https://github.com/ManulSilva) — Estudante Aprendiz
-- [Gabriel Nascimento](https://github.com/GGGabriell) — Estudante Aprendiz
-- [Guilherme Aleixo](https://github.com/G-aleixo) — Dev Backend
-- [Gustavo Andrey](https://github.com/GustavoAndreyIF) — Dev Frontend
-- [Júlio César](https://github.com/JCOAlves) — Dev Fullstack
-- [Kaio Henrique](https://github.com/pc123456789n) — Dev Frontend
-- [Leonardo Kauffman](https://github.com/Leonardo1234321) — Dev Backend
-- [Rita de Cássia](https://github.com/Ritinha-tari) — Estudante Aprendiz
-- [Thiago Freitas](https://github.com/thifre09) — Dev Frontend
 
 ## ⚙️ Status do projeto
 
