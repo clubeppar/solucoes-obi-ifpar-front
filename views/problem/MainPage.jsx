@@ -10,7 +10,7 @@ import { Input } from "./components/Input";
 import { Results } from "./components/Results";
 import { EmptySelection } from "./components/EmptySelection";
 
-import { useFetch } from "@hooks/useFetch";
+import { useFetch } from "@hooks";
 
 export function MainPage({ selection, clearSelection }) {
   const [fileName, setFileName] = useState("");
@@ -113,6 +113,7 @@ export function MainPage({ selection, clearSelection }) {
             file={file}
             onFileChange={handleSetFile}
             clearFile={handleClearFile}
+            problem={selection.problem.toLowerCase()}
           />
 
           <div className="header-wrapper">

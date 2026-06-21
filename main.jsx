@@ -2,14 +2,14 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 import { App } from "./app/App";
-import "./styles/index.css";
+import { MainProvider } from "@providers";
 
-import { Provider } from "@provider";
+import "./styles/index.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Provider>
+    <MainProvider>
       <App />
-    </Provider>
+    </MainProvider>
   </StrictMode>,
 );

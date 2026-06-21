@@ -5,9 +5,9 @@
     "paths": {
       "@/*": ["views/*"],
       "@shared/*": ["shared/components/*"],
-      "@hooks/*": ["shared/hooks/*"],
+      "@hooks": ["src/hooks/index.js"],
       "@pages/*": ["pages/*"],
-      "@provider": ["app/Provider.jsx"],
+      "@providers": ["src/providers/index.js"],
       "assets/*": ["shared/images/*"]
     }
   },
