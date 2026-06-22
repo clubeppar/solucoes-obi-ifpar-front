@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 
 import { GoChevronDown } from "react-icons/go";
 
-import { useFetch } from "@hooks/useFetch";
+import { useFetch } from "@hooks";
 
 export function SidebarItem({
   text,
+  textSuffix = "",
   nextCall,
   search = null,
   selection,
@@ -20,13 +21,18 @@ export function SidebarItem({
   const [data, setData] = useState(null);
   const { get } = useFetch();
 
+  const getItemInfo = (i) =>
+    Array.isArray(i)
+      ? { text: i[0], suffix: i[1] ? "" : "*" }
+      : { text: i, suffix: "" };
+
   const handleCapitalize = (str) => {
     if (!str) return str;
     return String(str).charAt(0).toUpperCase() + String(str).slice(1);
   };
 
   let actualArray = [];
-  let prefix = "";
+  let prefixText = "";
   let nextURL = "";
   let nextStep = "";
 
@@ -48,26 +54,26 @@ export function SidebarItem({
     case "Phase":
       actualArray = data?.fases;
       nextStep = "Levels";
-      prefix = "";
+      prefixText = "";
       nextURL = `/nav/years/${currentYear}/phases`;
       break;
     case "Levels":
       if (isUniqueLevel) {
         actualArray = data?.questoes;
         nextStep = "Problem";
-        prefix = "Fase ";
+        prefixText = "Fase ";
         nextURL = `/nav/years/${currentYear}/phases/${currentPhase}/levels`;
       } else {
         actualArray = data?.niveis;
         nextStep = "Questions";
-        prefix = "Fase ";
+        prefixText = "Fase ";
         nextURL = `/nav/years/${currentYear}/phases/${currentPhase}/levels`;
       }
       break;
     case "Questions":
       actualArray = data?.questoes;
       nextStep = "Problem";
-      prefix = "Nível ";
+      prefixText = "Nível ";
       nextURL = `/nav/years/${currentYear}/phases/${currentPhase}/levels/${currentLevel}/problems`;
       break;
     default:
@@ -117,6 +123,7 @@ export function SidebarItem({
               phase: currentPhase,
               level: currentLevel,
               problem: handleCapitalize(text),
+              flag: textSuffix !== "*",
             });
           } else {
             setOpen((prev) => !prev);
@@ -143,7 +150,7 @@ export function SidebarItem({
           }
         }}
       >
-        {prefix + handleCapitalize(text)}
+        {prefixText + handleCapitalize(text) + textSuffix}
         {nextStep && (
           <GoChevronDown
             className={
@@ -158,18 +165,21 @@ export function SidebarItem({
             const thisSearch = search ? search[text] : null;
 
             return actualArray?.map((item) => {
+              const { text: text, suffix: textSuffix } = getItemInfo(item);
+
               const searchScope =
                 nextStep === "Problem" && isUniqueLevel
                   ? thisSearch?.[""]
                   : thisSearch;
 
-              if (search && (!searchScope || searchScope[item] === undefined))
+              if (search && (!searchScope || searchScope[text] === undefined))
                 return null;
 
               return (
                 <SidebarItem
-                  key={currentYear + currentPhase + currentLevel + item}
-                  text={item}
+                  key={currentYear + currentPhase + currentLevel + text}
+                  text={text}
+                  textSuffix={textSuffix}
                   nextCall={nextStep}
                   search={search ? searchScope : null}
                   selection={selection}
