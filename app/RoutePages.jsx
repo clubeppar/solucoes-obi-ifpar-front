@@ -4,6 +4,7 @@ import { Landingpage } from "@pages/LandingPage";
 import { Grid } from "@pages/GridPage";
 import { Admin } from "@pages/AdminPage";
 import { Credits } from "@pages/CreditsPage";
+import { NotFound } from "@pages/NotFound";
 
 export function RoutePages() {
   return (
@@ -12,6 +13,7 @@ export function RoutePages() {
       <Route path="/grid" element={<Grid />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/credits" element={<Credits />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

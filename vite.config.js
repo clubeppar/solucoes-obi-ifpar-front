@@ -22,9 +22,9 @@ export default defineConfig({
     alias: [
       { find: "@", replacement: resolve(__dirname, "./views") },
       { find: "@shared", replacement: resolve(__dirname, "./shared/components") },
-      { find: "@hooks", replacement: resolve(__dirname, "./shared/hooks") },
+      { find: "@hooks", replacement: resolve(__dirname, "./src/hooks/index.js") },
       { find: "@pages", replacement: resolve(__dirname, "./pages") },
-      { find: "@provider", replacement: resolve(__dirname, "./app/Provider.jsx") },
+      { find: "@providers", replacement: resolve(__dirname, "./src/providers/index.js") },
       { find: "assets", replacement: resolve(__dirname, "./shared/images") },
     ],
   },

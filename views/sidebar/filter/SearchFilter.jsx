@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { CiFilter, CiSearch } from "react-icons/ci";
 
-import { useFetch } from "@hooks/useFetch";
+import { useFetch } from "@hooks";
 
 import { FilterModal } from "./FilterModal";
 

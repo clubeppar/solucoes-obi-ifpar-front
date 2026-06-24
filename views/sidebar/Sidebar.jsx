@@ -6,7 +6,8 @@ import { FaCode } from "react-icons/fa6";
 import { IoIosWarning } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 
-import { useFetch } from "@hooks/useFetch";
+import { useFetch } from "@hooks";
+
 import { SearchFilter } from "./filter/SearchFilter";
 import { SidebarItem } from "./SidebarItem";
 
