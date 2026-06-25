@@ -6,6 +6,8 @@ O objetivo do projeto é criar uma plataforma web onde estudantes possam **resol
 
 A ideia surgiu a partir da necessidade de uma ferramenta que permita aos alunos praticar problemas da OBI e naveguem pela plataforma com facilidade.
 
+Este é o **primeiro projeto oficial do clube**.
+
 ## 📍 Objetivo
 
 Criar uma plataforma que permita aos estudantes:
@@ -16,20 +18,9 @@ Criar uma plataforma que permita aos estudantes:
 - testar automaticamente as respostas
 - visualizar informações de forma clara e organizada
 - receber feedback sobre a execução
-- utilizar o sistema como ferramenta de estudo para olimpíadas de programação
+- utilizar a plataforma como ferramenta de estudo para olimpíadas de programação
 
 Além disso, o projeto também funciona como **um ambiente de aprendizado colaborativo**, permitindo que estudantes participem do desenvolvimento de uma aplicação real.
-
-## 📖 Sobre o Clube de Programação IFPAR
-
-O Clube de Programação é uma iniciativa estudantil criada no campus com o objetivo de:
-
-- incentivar a participação em olimpíadas de programação
-- apoiar estudantes no aprendizado de algoritmos e programação
-- desenvolver projetos colaborativos
-- criar uma comunidade ativa de programadores no campus
-
-Este é o **primeiro projeto oficial do clube**.
 
 ## 💡 Sobre a OBI
 
@@ -50,11 +41,6 @@ O projeto utiliza tecnologias modernas de desenvolvimento web.
 - React Router DOM
 - Tailwind CSS
 
-### Backend
-
-- Python
-- Flask
-
 ### Ferramentas
 
 - Git
@@ -62,11 +48,7 @@ O projeto utiliza tecnologias modernas de desenvolvimento web.
 - GitHub
 - gh-pages
 
-### Documentação
-
-- Sphinx
-
-## 🔧 Como rodar o projeto
+## 🔧 Como rodar o frontend do projeto
 
 Siga os passos abaixo para executar o projeto localmente.
 
@@ -108,23 +90,6 @@ Os participantes podem contribuir de diversas formas:
 - organização do projeto
 
 Mesmo quem ainda está aprendendo pode participar acompanhando o desenvolvimento e contribuindo gradualmente.
-
-### 👨‍💻 Participantes
-
-- [Alanderson Lima](https://github.com/Alanderson-LS) — Estudante Aprendiz
-- [Brasilicio Henrique](https://github.com/brasilicioh) — Coordenador e Dev Fullstack
-- [Bruno Gustavo](https://github.com/brunoficial) — Dev Backend
-- [Cauã de Lima](https://github.com/CauaLima18) — Dev Backend
-- [Douglas Ryan](https://github.com/Douglas-Mesquita) — Estudante Aprendiz
-- [Emanuele Rafaela](https://github.com/ManulSilva) — Estudante Aprendiz
-- [Gabriel Nascimento](https://github.com/GGGabriell) — Estudante Aprendiz
-- [Guilherme Aleixo](https://github.com/G-aleixo) — Dev Backend
-- [Gustavo Andrey](https://github.com/GustavoAndreyIF) — Dev Frontend
-- [Júlio César](https://github.com/JCOAlves) — Dev Fullstack
-- [Kaio Henrique](https://github.com/pc123456789n) — Dev Frontend
-- [Leonardo Kauffman](https://github.com/Leonardo1234321) — Dev Backend
-- [Rita de Cássia](https://github.com/Ritinha-tari) — Estudante Aprendiz
-- [Thiago Freitas](https://github.com/thifre09) — Dev Frontend
 
 ## ⚙️ Status do projeto
 

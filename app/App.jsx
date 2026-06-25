@@ -1,4 +1,5 @@
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
+import { useContext } from "react";
 
 import { RoutePages } from "./RoutePages";
 
@@ -15,9 +16,9 @@ export function App() {
     <div className={isLoading ? "overflow-hidden" : ""}>
       {haveNotification && <Notification />}
       {isLoading && <Loading />}
-      <BrowserRouter basename="/solucoes-obi-ifpar">
+      <HashRouter>
         <RoutePages />
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
