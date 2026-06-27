@@ -6,32 +6,35 @@ import { useFetch } from "@hooks";
 
 import { FilterModal } from "./FilterModal";
 
-export function SearchFilter({ setDataSidebar }) {
+export function SearchFilter({
+  filters,
+  setFilters,
+  setDataSidebar,
+  showSmallSearch,
+  setSmallFilterOpen,
+  collapsed,
+  setCollapsed,
+}) {
   const { get } = useFetch();
 
   const [isOpenFilter, setIsOpenFilter] = useState(false);
-  const [searchQuestion, setSearchQuestion] = useState("");
-  const [selectedYear, setSelectedYear] = useState("");
-  const [selectedPhase, setSelectedPhase] = useState("");
-  const [selectedLevel, setSelectedLevel] = useState("");
-  const [draftYear, setDraftYear] = useState("");
-  const [draftPhase, setDraftPhase] = useState("");
-  const [draftLevel, setDraftLevel] = useState("");
 
-  async function getSearchFilterAPI({ question, year, phase, level }) {
-    const items = {
-      problem: question,
-      year: year,
-      phase: phase,
-      level: level,
-    };
+  const [draftFilters, setDraftFilters] = useState({
+    year: "",
+    phase: "",
+    level: "",
+  });
+
+  async function getSearchFilterAPI(currentFilters) {
     const queryParams = [];
 
     // for each pair in the items (Object), add to the query if it is not null
-    Object.entries(items).forEach(([key, value]) => {
-      if (value) {
+    Object.entries(currentFilters).forEach(([key, value]) => {
+      const valueNormalized =
+        key == "problem" ? value.trim().toLowerCase() : value;
+      if (valueNormalized) {
         queryParams.push(
-          `${encodeURIComponent(key)}=${encodeURIComponent(value)}`,
+          `${encodeURIComponent(key)}=${encodeURIComponent(valueNormalized)}`,
         );
       }
     });
@@ -51,6 +54,10 @@ export function SearchFilter({ setDataSidebar }) {
     }
 
     setDataSidebar(data);
+    if (collapsed) {
+      setSmallFilterOpen(false);
+      setCollapsed(false);
+    }
   }
 
   const refTimer = useRef(null);
@@ -62,27 +69,18 @@ export function SearchFilter({ setDataSidebar }) {
     }
   };
 
-  const runSearch = ({
-    question = searchQuestion,
-    year = selectedYear,
-    phase = selectedPhase,
-    level = selectedLevel,
-  } = {}) => {
-    getSearchFilterAPI({ question, year, phase, level });
-  };
+  const handleDebouncedSearch = (v) => {
+    const updatedFilters = {
+      ...filters,
+      problem: v,
+    };
 
-  const handleDebouncedSearch = (value) => {
-    setSearchQuestion(value);
+    setFilters(updatedFilters);
 
     clearSearchTimer();
 
     refTimer.current = setTimeout(() => {
-      runSearch({
-        question: value.trim().toLowerCase(),
-        year: selectedYear,
-        phase: selectedPhase,
-        level: selectedLevel,
-      });
+      getSearchFilterAPI(updatedFilters);
     }, 1200);
   };
 
@@ -90,28 +88,27 @@ export function SearchFilter({ setDataSidebar }) {
     const nextFilters = queryObject
       ? queryObject
       : {
-          year: draftYear,
-          phase: draftPhase,
-          level: draftLevel,
+          ...draftFilters,
         };
 
-    setSelectedYear(nextFilters.year || "");
-    setSelectedPhase(nextFilters.phase || "");
-    setSelectedLevel(nextFilters.level || "");
-
-    clearSearchTimer();
-    runSearch({
-      question: searchQuestion,
+    const updatedFilters = {
+      ...filters,
       year: nextFilters.year || "",
       phase: nextFilters.phase || "",
       level: nextFilters.level || "",
-    });
+    };
+
+    setFilters(updatedFilters);
+    clearSearchTimer();
+    getSearchFilterAPI(updatedFilters);
   };
 
   function getFilterPosition() {
-    setDraftYear(selectedYear);
-    setDraftPhase(selectedPhase);
-    setDraftLevel(selectedLevel);
+    setDraftFilters(() => ({
+      year: filters.year,
+      phase: filters.phase,
+      level: filters.level,
+    }));
 
     setIsOpenFilter(true);
   }
@@ -122,30 +119,35 @@ export function SearchFilter({ setDataSidebar }) {
     };
   }, []);
 
+  if (!showSmallSearch && collapsed) return null;
+
   return (
-    <div className="py-1">
+    <div
+      className={
+        "py-1" +
+        (showSmallSearch
+          ? " w-max h-12 rounded-2xl fixed inset-x-15 inset-y-15 z-100 flex items-center justify-center bg-gray-800"
+          : "")
+      }
+    >
       {isOpenFilter && (
         <FilterModal
           onClose={() => setIsOpenFilter(false)}
-          year={draftYear}
-          setYear={setDraftYear}
-          phase={draftPhase}
-          setPhase={setDraftPhase}
-          level={draftLevel}
-          setLevel={setDraftLevel}
+          draftFilters={draftFilters}
+          setDraftFilters={setDraftFilters}
           handleGet={handleApplyFilters}
           onCancelFilters={clearSearchTimer}
         />
       )}
 
-      <div className="mx-2 mt-3 mb-2 flex items-center gap-2">
+      <div className="mx-2 my-3 flex items-center gap-2">
         <div className="relative min-w-0 grow">
           <CiSearch className="pointer-events-none absolute left-3 top-1/2 size-6 -translate-y-1/2 text-gray-400" />
           <input
             type="text"
             placeholder="Buscar questão..."
             className="h-9 w-full rounded-full border border-transparent bg-gray-900 pl-10 pr-3 text-sm text-gray-400 shadow-sm outline-none transition placeholder:text-stone-300/80 placeholder:hover:text-gray-200 hover:bg-gray-500 hover:text-gray-300"
-            value={searchQuestion}
+            value={filters.problem}
             onChange={(e) => handleDebouncedSearch(e.target.value)}
           />
         </div>
@@ -153,7 +155,9 @@ export function SearchFilter({ setDataSidebar }) {
         <button
           type="button"
           className="flex size-9 shrink-0 items-center justify-center rounded-full border border-transparent bg-gray-900 text-gray-400 shadow-sm transition hover:cursor-pointer hover:bg-gray-500 hover:text-gray-200"
-          onClick={getFilterPosition}
+          onClick={() => {
+            getFilterPosition();
+          }}
         >
           <CiFilter className="w-6 h-6" />
         </button>

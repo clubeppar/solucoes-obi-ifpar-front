@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { GoSidebarExpand } from "react-icons/go";
 import { FaCode } from "react-icons/fa6";
 import { IoIosWarning } from "react-icons/io";
+import { CiSearch } from "react-icons/ci";
 
 import { useFetch } from "@hooks";
 
@@ -21,6 +22,14 @@ export function Sidebar({
   const [search, setSearch] = useState(null);
   const [data, setData] = useState(null);
   const [collapsed, setCollapsed] = useState(false);
+  const [smallSearchOpen, setSmallSearchOpen] = useState(false);
+
+  const [filters, setFilters] = useState({
+    problem: "",
+    year: "",
+    phase: "",
+    level: "",
+  });
 
   const visibleYears = data?.filter((year) => {
     if (!search) return true;
@@ -61,16 +70,37 @@ export function Sidebar({
                 />
               </Link>
             )}
+
             <GoSidebarExpand
               className={
                 !collapsed
                   ? `size-10 cursor-pointer me-2`
                   : `size-10 cursor-pointer rotate-180`
               }
-              onClick={() => setCollapsed(!collapsed)}
+              onClick={() => {
+                const nextCollapsed = !collapsed;
+                setCollapsed(nextCollapsed);
+                if (!nextCollapsed) setSmallSearchOpen(false);
+              }}
             />
+
+            {collapsed && (
+              <button onClick={() => setSmallSearchOpen(!smallSearchOpen)}>
+                <CiSearch className="size-12 cursor-pointer" />
+              </button>
+            )}
           </div>
-          {!collapsed && <SearchFilter setDataSidebar={setSearch} />}
+          {(!collapsed || smallSearchOpen) && (
+            <SearchFilter
+              filters={filters}
+              setFilters={setFilters}
+              setDataSidebar={setSearch}
+              showSmallSearch={smallSearchOpen}
+              setSmallFilterOpen={setSmallSearchOpen}
+              collapsed={collapsed}
+              setCollapsed={setCollapsed}
+            />
+          )}
         </div>
 
         {!collapsed && (

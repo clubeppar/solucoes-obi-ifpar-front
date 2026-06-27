@@ -5,12 +5,8 @@ import { ModalComponent } from "./ModalComponent";
 
 export function FilterModal({
   onClose,
-  year,
-  setYear,
-  phase,
-  setPhase,
-  level,
-  setLevel,
+  draftFilters,
+  setDraftFilters,
   handleGet,
   onCancelFilters,
 }) {
@@ -21,25 +17,32 @@ export function FilterModal({
 
   const cancelFilter = () => {
     onCancelFilters?.();
-    setYear("");
-    setLevel("");
-    setPhase("");
+    setDraftFilters(() => ({
+      year: "",
+      phase: "",
+      level: "",
+    }));
     handleGet({ year: "", level: "", phase: "" });
     onClose();
   };
 
   const ModalsComponents = [
-    { title: "Anos", value: year, setValue: setYear, arrayValues: yearList },
+    {
+      title: "Anos",
+      value: draftFilters.year,
+      setValue: (v) => setDraftFilters((p) => ({ ...p, year: v })),
+      arrayValues: yearList,
+    },
     {
       title: "Fases",
-      value: phase,
-      setValue: setPhase,
+      value: draftFilters.phase,
+      setValue: (v) => setDraftFilters((p) => ({ ...p, phase: v })),
       arrayValues: phaseList,
     },
     {
       title: "Níveis",
-      value: level,
-      setValue: setLevel,
+      value: draftFilters.level,
+      setValue: (v) => setDraftFilters((p) => ({ ...p, level: v })),
       arrayValues: levelList,
     },
   ];
@@ -47,16 +50,16 @@ export function FilterModal({
   let textExibitPhase = "";
   let textExibitLevel = "";
 
-  switch (phase) {
+  switch (draftFilters.phase) {
     case "cf":
       textExibitPhase = "Comp. Fem";
       break;
     default:
-      textExibitPhase = phase;
+      textExibitPhase = draftFilters.phase;
       break;
   }
 
-  switch (level) {
+  switch (draftFilters.level) {
     case "j":
       textExibitLevel = "N. Júnior";
       break;
@@ -67,7 +70,7 @@ export function FilterModal({
       textExibitLevel = "N. Universitário";
       break;
     default:
-      textExibitLevel = level;
+      textExibitLevel = draftFilters.level;
       break;
   }
 
@@ -81,21 +84,21 @@ export function FilterModal({
           <header className="sticky w-full top-0 z-150 py-4 flex items-center bg-gray-900 rounded-xl justify-between">
             <h2 className="text-lg ms-5 font-semibold text-white">Filtros</h2>
             <div className="flex justify-center items-stretch">
-              {year && (
+              {draftFilters.year && (
                 <p className="bg-blue-700 mx-1 sm:mx-2 px-2 py rounded-xl">
-                  {year}
+                  {draftFilters.year}
                 </p>
               )}
-              {phase && (
+              {draftFilters.phase && (
                 <p className="bg-blue-700 mx-1 sm:mx-2 px-2 py rounded-xl">
-                  {phase === "cf"
+                  {draftFilters.phase === "cf"
                     ? `${textExibitPhase}`
                     : `Fase ${textExibitPhase}`}
                 </p>
               )}
-              {level && (
+              {draftFilters.level && (
                 <p className="bg-blue-700 mx-1 sm:mx-2 px-2 py rounded-xl">
-                  {!["j", "s", "u"].includes(level)
+                  {!["j", "s", "u"].includes(draftFilters.level)
                     ? `Nível ${textExibitLevel}`
                     : `${textExibitLevel}`}
                 </p>
