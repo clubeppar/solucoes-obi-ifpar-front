@@ -1,10 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
-import { App } from "./app/App";
-import { MainProvider } from "@providers";
+import { App } from "./src/app/App";
+import { MainProvider } from "./src/app/providers/index.js";
 
-import "./styles/index.css";
+import "./src/app/styles/index.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

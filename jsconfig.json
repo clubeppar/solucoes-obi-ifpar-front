@@ -1,16 +1,32 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "src",
     "ignoreDeprecations": "6.0",
-    "paths": {
-      "@/*": ["views/*"],
-      "@shared/*": ["shared/components/*"],
-      "@hooks": ["src/hooks/index.js"],
-      "@pages/*": ["pages/*"],
-      "@providers": ["src/providers/index.js"],
-      "assets/*": ["shared/images/*"]
-    }
+/*   "paths": {
+      "@/*": [
+        "features/*"
+      ],
+      "@shared/*": [
+        "components/*"
+      ],
+      "@hooks": [
+        "hooks/index.js"
+      ],
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@providers": [
+        "app/providers/index.js"
+      ],
+      "assets/*": [
+        "shared/images/*"
+      ]
+    } */
   },
-  "include": ["./"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
