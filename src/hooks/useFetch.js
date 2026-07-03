@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-import { useLoading } from "../app/store/index";
+import { useLoading } from "../hooks/useLoading";
 
 const API_URL =
   window.location.hostname === "localhost"

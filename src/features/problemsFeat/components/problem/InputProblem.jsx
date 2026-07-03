@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 
-import { useNotification } from "../../../../app/store/index";
+import { useNotification } from "../../../../hooks/index";
 
 export function InputProblem({ fileName, file, onFileChange, clearFile, problem }) {
   const inputRef = useRef(null);
@@ -62,21 +62,21 @@ export function InputProblem({ fileName, file, onFileChange, clearFile, problem 
           <div className="w-full relative">
             <h5 className="text-white light:text-black text-center">
               <p className="text-center">
-                {fileName} 
+                {fileName}
               </p>
             </h5>
             <h6 className="text-gray-300 light:text-gray-800 text-center">
               {file ? `${(file.size / 1024).toFixed(2)} KB` : ""}
             </h6>
-            <button type="button" 
-                className="absolute size-8 right-0 top-1/2 -translate-y-1/2"
-                onClick={(e) => {
+            <button type="button"
+              className="absolute size-8 right-0 top-1/2 -translate-y-1/2"
+              onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
 
                 clearFile();
-            }}>
-              <MdClose className="size-8 cursor-pointer hover:text-blue-600"/>
+              }}>
+              <MdClose className="size-8 cursor-pointer hover:text-blue-600" />
             </button>
             <p className="text-gray-400 light:text-gray-600 text-center">
               Clique para trocar o arquivo

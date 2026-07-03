@@ -3,10 +3,10 @@ import { useContext } from "react";
 
 import { RoutePages } from "./RoutePages";
 
-import { LoadingProvider } from "./providers/index";
-import { NotificationProvider } from "./providers/index";
+import { Loading } from '../components/ui/Loading'
+import { NotificationProvider } from "../providers/index";
 
-import { useLoading, useNotification } from "./store/index";
+import { useLoading, useNotification } from "../hooks/index";
 
 export function App() {
   const { isLoading } = useLoading();
@@ -15,7 +15,7 @@ export function App() {
   return (
     <div className={isLoading ? "overflow-hidden" : ""}>
       {haveNotification && <NotificationProvider />}
-      {isLoading && <LoadingProvider />}
+      {isLoading && <Loading />}
       <HashRouter>
         <RoutePages />
       </HashRouter>
