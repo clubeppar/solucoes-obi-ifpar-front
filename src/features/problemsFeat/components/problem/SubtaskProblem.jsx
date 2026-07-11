@@ -1,6 +1,11 @@
 import { TaskProblem } from "./TaskProblem";
 
-export function SubtaskProblem({ numSubtask, tasks, formatTime, formatMemory }) {
+export function SubtaskProblem({
+  numSubtask,
+  tasks,
+  formatTime,
+  formatMemory,
+}) {
   return (
     <div className="rounded-2xl border border-white/10 bg-gray-900/70 p-4">
       <p className="text-md text-gray-400">SUBTAREFA {numSubtask}</p>

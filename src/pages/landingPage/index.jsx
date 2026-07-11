@@ -1,7 +1,13 @@
-import { Topbar } from "../../components/layout/Topbar";
-import { Footer } from "../../components/layout/Footer";
+import { Topbar } from "@components/Topbar";
+import { Footer } from "@components/Footer";
 
-import { Hero, Features, About, HowItWorks, SeeOnPractice } from "../../features/landingFeat/index"; // import do arquivo Barrel
+import {
+  Hero,
+  Features,
+  About,
+  HowItWorks,
+  SeeOnPractice,
+} from "@feats/landingFeat";
 
 export function LandingPage() {
   return (

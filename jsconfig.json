@@ -2,31 +2,18 @@
   "compilerOptions": {
     "baseUrl": "src",
     "ignoreDeprecations": "6.0",
-/*   "paths": {
-      "@/*": [
-        "features/*"
-      ],
-      "@shared/*": [
-        "components/*"
-      ],
-      "@hooks": [
-        "hooks/index.js"
-      ],
-      "@pages/*": [
-        "pages/*"
-      ],
-      "@providers": [
-        "app/providers/index.js"
-      ],
-      "assets/*": [
-        "shared/images/*"
-      ]
-    } */
+    "paths": {
+      "@app": ["app/App.jsx"],
+      "@providers": ["providers/index.js"],
+      "@hooks": ["hooks/index.js"],
+      "@styles/*": ["styles/*"],
+      "@ui/*": ["components/ui/*"],
+      "@components/*": ["components/layout/*"],
+      "@pages/*": ["pages/*"],
+      "@images/*": ["assets/images/*"],
+      "@feats/*": ["features/*"]
+    }
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src/**/*", "main.jsx"],
+  "exclude": ["node_modules"]
 }

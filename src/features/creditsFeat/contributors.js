@@ -1,17 +1,17 @@
-import kaioImage from "../../assets/images/credits/kaio.png";
-import brasilicioImage from "../../assets/images/credits/brasilicio.png";
-import guilhermeImage from "../../assets/images/credits/guilherme.png";
-import gabrielImage from "../../assets/images/credits/gabriel.png";
-import douglasImage from "../../assets/images/credits/douglas.png";
-import brunoImage from "../../assets/images/credits/bruno.png";
-import leonardoImage from "../../assets/images/credits/leonardo.png";
-import gustavoImage from "../../assets/images/credits/gustavo.png";
-import ritaImage from "../../assets/images/credits/rita.png";
-import thiagoImage from "../../assets/images/credits/thiago.png";
-import alandersonImage from "../../assets/images/credits/alanderson.png";
-import julioImage from "../../assets/images/credits/julio.png";
-import cauaImage from "../../assets/images/credits/caua.png";
-import danielImage from "../../assets/images/credits/daniel.png";
+import kaioImage from "@images/credits/kaio.png";
+import brasilicioImage from "@images/credits/brasilicio.png";
+import guilhermeImage from "@images/credits/guilherme.png";
+import gabrielImage from "@images/credits/gabriel.png";
+import douglasImage from "@images/credits/douglas.png";
+import brunoImage from "@images/credits/bruno.png";
+import leonardoImage from "@images/credits/leonardo.png";
+import gustavoImage from "@images/credits/gustavo.png";
+import ritaImage from "@images/credits/rita.png";
+import thiagoImage from "@images/credits/thiago.png";
+import alandersonImage from "@images/credits/alanderson.png";
+import julioImage from "@images/credits/julio.png";
+import cauaImage from "@images/credits/caua.png";
+import danielImage from "@images/credits/daniel.png";
 
 export const CONTRIBUTORS = [
   {

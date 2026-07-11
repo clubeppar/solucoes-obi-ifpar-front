@@ -1,12 +1,11 @@
 import { HashRouter } from "react-router-dom";
-import { useContext } from "react";
+
+import { NotificationProvider } from "@providers";
+import { useLoading, useNotification } from "@hooks";
 
 import { RoutePages } from "./RoutePages";
 
-import { Loading } from '../components/ui/Loading'
-import { NotificationProvider } from "../providers/index";
-
-import { useLoading, useNotification } from "../hooks/index";
+import { Loading } from "@ui/Loading";
 
 export function App() {
   const { isLoading } = useLoading();

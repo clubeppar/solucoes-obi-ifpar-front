@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 
-import { LandingPage } from "../pages/landingPage/LadingPage";
-import { ProblemsPage } from "../pages/problemsPage/ProblemsPage";
-import { AdminPage } from "../pages/adminPage/adminPage";
-import { CreditsPage } from "../pages/creditsPage/creditsPage";
-import { NotFoundPage } from "../pages/NotFoundPage";
+import { LandingPage } from "@pages/landingPage";
+import { ProblemsPage } from "@pages/problemsPage";
+import { AdminPage } from "@pages/adminPage";
+import { CreditsPage } from "@pages/creditsPage";
+import { NotFoundPage } from "@pages/NotFoundPage";
 
 export function RoutePages() {
   return (

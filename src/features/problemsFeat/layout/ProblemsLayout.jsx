@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
+
 import { MdOutlineFileUpload } from "react-icons/md";
 import { IoIosWarning } from "react-icons/io";
 
 // tirar uso da topbar aqui e colocar no /page/problemsPage
-import { Topbar } from "../../../components/layout/Topbar";
+import { Topbar } from "@components/Topbar";
 
-import { HeaderProblem } from "../components/problem/HeaderProblem";
-import { InputProblem } from "../components/problem/InputProblem";
-import { ResultsProblem } from "../components/problem/ResultsProblem";
-import { EmptySelectionProblem } from "../components/problem/EmptySelectionProblem";
+import {
+  HeaderProblem,
+  InputProblem,
+  ResultsProblem,
+  EmptySelectionProblem,
+} from "@feats/problemsFeat";
 
-import { useFetch } from "../../../hooks/index";
+import { useFetch } from "@hooks";
 
 export function ProblemsLayout({ selection, clearSelection }) {
   const [fileName, setFileName] = useState("");
@@ -121,7 +124,8 @@ export function ProblemsLayout({ selection, clearSelection }) {
               <div className="flex items-center gap-3 m-3 p-3 bg-red-700/40 rounded-2xl border-red-900 border">
                 <IoIosWarning className="size-5 text-red-300" />
                 <p className="font-semibold text-white">
-                  Infelizmente o gabarito desse problema não é disponibilizado :/
+                  Infelizmente o gabarito desse problema não é disponibilizado
+                  :/
                 </p>
               </div>
             )}

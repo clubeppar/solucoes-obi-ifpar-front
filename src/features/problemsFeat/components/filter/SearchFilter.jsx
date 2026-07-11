@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { CiFilter, CiSearch } from "react-icons/ci";
 
-import { useFetch } from "../../../../hooks/index";
+import { useFetch } from "@hooks";
 
 import { ModalFilter } from "./ModalFilter";
 /**
@@ -90,8 +90,8 @@ export function SearchFilter({
     const nextFilters = queryObject
       ? queryObject
       : {
-        ...draftFilters,
-      };
+          ...draftFilters,
+        };
 
     const updatedFilters = {
       ...filters,

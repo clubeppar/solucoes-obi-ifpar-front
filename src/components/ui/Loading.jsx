@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+
 import { AiOutlineLoading } from "react-icons/ai";
-import { useLoading } from "../../hooks/index";
+
+import { useLoading } from "@hooks";
 
 export function Loading() {
   const { isLoading } = useLoading();

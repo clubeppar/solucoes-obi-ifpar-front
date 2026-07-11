@@ -2,9 +2,9 @@ import { useState } from "react";
 
 // usar import da Topbar aqui
 
-import { Footer } from "../../components/layout/Footer";
+import { Footer } from "@components/Footer";
 
-import { ProblemsLayout, ProblemsSidebar } from "../../features/problemsFeat/index";
+import { ProblemsLayout, ProblemsSidebar } from "@feats/problemsFeat";
 
 export function ProblemsPage() {
   const [selection, setSelection] = useState({

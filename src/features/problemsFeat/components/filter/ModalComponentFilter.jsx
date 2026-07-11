@@ -3,7 +3,12 @@ import { useState } from "react";
 import { GoChevronDown } from "react-icons/go";
 import { IoCalendarOutline } from "react-icons/io5";
 
-export function ModalComponentFilter({ title, value, setValue, arrayValues = [] }) {
+export function ModalComponentFilter({
+  title,
+  value,
+  setValue,
+  arrayValues = [],
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSelect = (v) => {
@@ -68,7 +73,7 @@ export function ModalComponentFilter({ title, value, setValue, arrayValues = [] 
           <span className="text-sm text-gray-400">
             {value == ""
               ? `Selecione um Nível`
-              : `${["j","s","u"].includes(value) ? `Nível ${textExibit}` : `${textExibit}`}`}
+              : `${["j", "s", "u"].includes(value) ? `Nível ${textExibit}` : `${textExibit}`}`}
           </span>
         )}
         <GoChevronDown

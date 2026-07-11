@@ -6,10 +6,9 @@ import { FaCode } from "react-icons/fa6";
 import { IoIosWarning } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 
-import { useFetch } from "../../../hooks/index";
+import { useFetch } from "@hooks";
 
-import { SearchFilter } from "../components/filter/SearchFilter";
-import { ItemSideBar } from "../components/sidebar/ItemSideBar";
+import { SearchFilter, ItemSideBar } from "@feats/problemsFeat";
 
 export function ProblemsSidebar({
   selection,

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-import { Topbar } from "../../components/layout/Topbar";
-import { Footer } from "../../components/layout/Footer";
+import { Topbar } from "@components/Topbar";
+import { Footer } from "@components/Footer";
 
-import { ContributorCard, CONTRIBUTORS } from "../../features/creditsFeat/index";
+import { ContributorCard, CONTRIBUTORS } from "@feats/creditsFeat";
 
 export function CreditsPage() {
   return (

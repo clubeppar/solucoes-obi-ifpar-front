@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { Topbar } from "../components/layout/Topbar";
-import { Footer } from "../components/layout/Footer";
-import capivara_NotFound from "../assets/images/others/capivara_NotFound.png";
+
+import capivara_NotFound from "@images/others/capivara_NotFound.png";
+
+import { Topbar } from "@components/Topbar";
+import { Footer } from "@components/Footer";
 
 export function NotFoundPage() {
   return (
@@ -25,7 +27,11 @@ export function NotFoundPage() {
             </button>
           </Link>
         </div>
-        <img src={capivara_NotFound} alt="Imagem de Not-Found" className="w-120 ml-auto mr-auto md:ml-0 md:mr-0" />
+        <img
+          src={capivara_NotFound}
+          alt="Imagem de Not-Found"
+          className="w-120 ml-auto mr-auto md:ml-0 md:mr-0"
+        />
       </div>
 
       <div className="col-span-full flex w-full h-full">

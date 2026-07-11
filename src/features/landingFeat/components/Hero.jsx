@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import heroBackground from "../../../assets/images/others/bg_landing_page.png";
+import heroBackground from "@images/others/bg_landing_page.png";
 
 export function Hero() {
   return (

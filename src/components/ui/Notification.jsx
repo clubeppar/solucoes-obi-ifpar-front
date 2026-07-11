@@ -1,6 +1,6 @@
 import { IoMdClose } from "react-icons/io";
 
-import { useNotification } from "../../hooks/index";
+import { useNotification } from "@hooks";
 
 export function Notification() {
   const { notification, hideNotification } = useNotification();

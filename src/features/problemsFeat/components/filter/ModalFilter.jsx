@@ -1,6 +1,7 @@
 import { IoClose } from "react-icons/io5";
 
-import { yearList, phaseList, levelList } from "../../constants";
+import { yearList, phaseList, levelList } from "@feats/problemsFeat";
+
 import { ModalComponentFilter } from "./ModalComponentFilter";
 
 export function ModalFilter({
