@@ -2,7 +2,7 @@ import {
   ThemeProvider,
   LoadingProvider,
   NotificationProvider,
-} from "@providers";
+} from "./index.js";
 
 export function MainProvider({ children }) {
   return (
