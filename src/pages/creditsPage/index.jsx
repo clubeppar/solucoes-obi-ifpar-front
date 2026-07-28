@@ -28,14 +28,14 @@ export function CreditsPage() {
             ))}
           </div>
           <div className="bottom-0 bg-slate-900 w-full flex justify-center flex-col items-center light:bg-white">
-            <div className="w-fit mt-6 px-3 text-center text-[16px]/[24px] font-normal display-inline-block  border-2 border-gray-700 rounded-[20px]  light:text-black">
+            <div className="p-1.5 w-fit mt-6 px-3 text-center text-[16px]/[24px] font-normal display-inline-block  border-2 border-gray-700 rounded-[20px]  light:text-black">
               Feito por alunos, para alunos
             </div>
-            <Link to="/">
               <button className="mt-12 mb-12 bg-blue-600 pr-10 pl-10 pt-2.5 pb-2.5 rounded-lg text-[14px]/[20px] font-medium cursor-pointer transition hover:bg-gray-400">
-                Voltar para o inicio
+                <Link to="/">
+                  Voltar para o inicio
+                </Link>
               </button>
-            </Link>
           </div>
         </div>
       </div>

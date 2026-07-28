@@ -12,6 +12,8 @@ import alandersonImage from "@images/credits/alanderson.png";
 import julioImage from "@images/credits/julio.png";
 import cauaImage from "@images/credits/caua.png";
 import danielImage from "@images/credits/daniel.png";
+import jadeImage from "@images/credits/jade.png";
+import nicholasImage from "@images/credits/nicholas.png";
 
 export const CONTRIBUTORS = [
   {
@@ -83,6 +85,16 @@ export const CONTRIBUTORS = [
     name: "Daniel Aguiar",
     role: "Professor orientador",
     image: danielImage,
+  },
+  {
+    name: "Jade Raquel",
+    role: "Design",
+    image: jadeImage,
+  },
+  {
+    name: "Nicholas",
+    role: "Backend",
+    image: nicholasImage,
   },
 ];
 
