@@ -1,7 +1,6 @@
 import { useState } from "react";
 
-// usar import da Topbar aqui
-
+import { Topbar } from "@components/Topbar";
 import { Footer } from "@components/Footer";
 
 import { ProblemsLayout, ProblemsSidebar } from "@feats/problemsFeat";
@@ -40,10 +39,16 @@ export function ProblemsPage() {
         activeQuestion={mainSelection}
       />
 
-      <ProblemsLayout
-        selection={mainSelection}
-        clearSelection={handleClearSelection}
-      />
+      <div className="grid h-full min-h-0 grid-rows-[auto_minmax(0,1fr)]">
+        <div className="bg-gray-950">
+          <Topbar collapsed={true} />
+        </div>
+
+        <ProblemsLayout
+          selection={mainSelection}
+          clearSelection={handleClearSelection}
+        />
+      </div>
 
       <div className="col-span-full flex w-full">
         <Footer />

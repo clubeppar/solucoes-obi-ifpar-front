@@ -3,9 +3,6 @@ import { useEffect, useState } from "react";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { IoIosWarning } from "react-icons/io";
 
-// tirar uso da topbar aqui e colocar no /page/problemsPage
-import { Topbar } from "@components/Topbar";
-
 import {
   HeaderProblem,
   InputProblem,
@@ -76,8 +73,6 @@ export function ProblemsLayout({ selection, clearSelection }) {
 
   return (
     <div className="mainpage-layout">
-      <Topbar collapsed={true} />
-
       {isEmptySelection ? (
         <EmptySelectionProblem />
       ) : (
