@@ -3,3 +3,7 @@ export * from "./components/Features";
 export * from "./components/Hero";
 export * from "./components/HowItWorks";
 export * from "./components/SeeOnPractice";
+export * from "./components/AboutOBI";
+export * from "./components/WhoWeAre";
+export * from "./components/MeetTheTeam";
+export * from "./components/ReadyToSolve";

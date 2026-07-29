@@ -7,6 +7,10 @@ import {
   About,
   HowItWorks,
   SeeOnPractice,
+  AboutOBI,
+  WhoWeAre,
+  MeetTheTeam,
+  ReadyToSolve
 } from "@feats/landingFeat";
 
 export function LandingPage() {
@@ -22,7 +26,11 @@ export function LandingPage() {
           <Features />
           <About />
           <HowItWorks />
-          {/* <SeeOnPractice /> */}
+          <SeeOnPractice />
+          <AboutOBI />
+          <WhoWeAre />
+          <MeetTheTeam />
+          <ReadyToSolve />
         </div>
 
         <div className="col-span-full">

@@ -75,7 +75,7 @@ html {
   }
   .landingpage-body{
     @apply col-span-full bg-gray-950 flex flex-col items-center justify-start text-white
-    light:bg-white
+    light:bg-white min-w-0
   }
 
   /* subcomponents/grid folder */
