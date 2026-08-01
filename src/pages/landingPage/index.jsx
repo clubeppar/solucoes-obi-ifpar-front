@@ -12,7 +12,7 @@ import {
 export function LandingPage() {
   return (
     <>
-      <div className="landingpage-bg">
+      <div className="landingpage-bg scrollbar">
         <div className="landingpage-topbar-slot">
           <Topbar collapsed={false} />
         </div>
