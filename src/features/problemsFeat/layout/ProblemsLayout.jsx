@@ -13,11 +13,12 @@ import {
 import { useFetch } from "@hooks";
 
 export function ProblemsLayout({ selection, clearSelection }) {
+  const { year, level, phase, problem, flag } = selection;
+
   const [fileName, setFileName] = useState("");
   const [file, setFile] = useState(null);
 
-  const [largerMemory, setLargerMemory] = useState(null);
-  const [longerTime, setLongerTime] = useState(null);
+  const [submitDataInfo, setSubmitDataInfo] = useState(null);
   const [subtasks, setSubtasks] = useState(null);
 
   const { post } = useFetch();
@@ -31,12 +32,6 @@ export function ProblemsLayout({ selection, clearSelection }) {
     setFile(selectedFile);
   };
 
-  const setResponseValues = (memory, time, subtasks) => {
-    setLargerMemory(memory);
-    setLongerTime(time);
-    setSubtasks(subtasks);
-  };
-
   const handleClearFile = () => {
     setFileName("");
     setFile(null);
@@ -44,18 +39,19 @@ export function ProblemsLayout({ selection, clearSelection }) {
 
   const handleUpload = async () => {
     setSubtasks(null);
-    const { year, level, phase } = selection;
     const body = {
       year: year.toLowerCase(),
       phase: phase.toLowerCase(),
       level: level.toLowerCase(),
-      name: selection.problem.toLowerCase(),
+      name: problem.toLowerCase(),
       filename: fileName,
       file: await file.text(),
     };
     const data = await post("/questions/validate", body);
     if (!data) return;
-    setResponseValues(data.max_memory, data.max_time, data.subtasks);
+    const { subtasks, ...dataInfo } = data;
+    setSubtasks(subtasks);
+    setSubmitDataInfo(dataInfo);
     handleClearFile();
   };
 
@@ -63,8 +59,7 @@ export function ProblemsLayout({ selection, clearSelection }) {
     const clearFile = () => {
       setFileName("");
       setFile(null);
-      setLargerMemory(null);
-      setLongerTime(null);
+      setSubmitDataInfo(null);
       setSubtasks(null);
     };
 
@@ -78,10 +73,10 @@ export function ProblemsLayout({ selection, clearSelection }) {
       ) : (
         <>
           <HeaderProblem
-            year={selection.year}
-            fase={selection.phase}
-            level={selection.level}
-            question={selection.problem}
+            year={year}
+            fase={phase}
+            level={level}
+            question={problem}
             isEmpty={isEmptySelection}
             file={file}
             onSubmit={handleUpload}
@@ -90,12 +85,10 @@ export function ProblemsLayout({ selection, clearSelection }) {
 
           <div className="header-wrapper">
             <div className="header-content">
-              <h1 className="text-2xl light:text-black">{selection.problem}</h1>
+              <h1 className="text-2xl light:text-black">{problem}</h1>
               <div className="flex items-center gap-2">
                 <button
-                  disabled={
-                    file == null || file.size / 1024 == 0 || !selection.flag
-                  }
+                  disabled={file == null || file.size / 1024 == 0 || !flag}
                   className="header-btn-submit"
                   onClick={handleUpload}
                 >
@@ -111,11 +104,11 @@ export function ProblemsLayout({ selection, clearSelection }) {
             file={file}
             onFileChange={handleSetFile}
             clearFile={handleClearFile}
-            problem={selection.problem.toLowerCase()}
+            problem={problem.toLowerCase()}
           />
 
           <div className="header-wrapper">
-            {selection.flag ? null : (
+            {flag ? null : (
               <div className="flex items-center gap-3 m-3 p-3 bg-red-700/40 rounded-2xl border-red-900 border">
                 <IoIosWarning className="size-5 text-red-300" />
                 <p className="font-semibold text-white">
@@ -126,11 +119,24 @@ export function ProblemsLayout({ selection, clearSelection }) {
             )}
           </div>
 
-          <ResultsProblem
-            subtasks={subtasks}
-            maxMemory={largerMemory}
-            maxTime={longerTime}
-          />
+          {subtasks && (
+            <div className="">
+              <div className="mx-6 my-4 space-y-1">
+                <h4 className="text-xl font-bold">Resultados</h4>
+                <p className="text-sm font-semibold text-gray-400">
+                  Tempo de execução e uso de memória em cada subtarefa
+                </p>
+                <p className="text-sm font-semibold text-gray-400">
+                  Esses dados não serão salvos
+                </p>
+              </div>
+
+              <ResultsProblem
+                submitDataInfo={submitDataInfo}
+                subtasks={subtasks}
+              />
+            </div>
+          )}
         </>
       )}
     </div>
