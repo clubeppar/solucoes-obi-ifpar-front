@@ -3,7 +3,7 @@ import { GoChevronDown } from "react-icons/go";
 
 import { TestProblem } from "./TestProblem";
 
-export function SubtaskProblem({ index, subtask, formatValue }) {
+export function SubtaskProblem({ index, subtask, userCode, formatValue }) {
   const [open, setOpen] = useState(false);
 
   const {
@@ -51,6 +51,7 @@ export function SubtaskProblem({ index, subtask, formatValue }) {
             key={index}
             index={index}
             test={test}
+            userCode={userCode}
             formatValue={formatValue}
           />
         ))}

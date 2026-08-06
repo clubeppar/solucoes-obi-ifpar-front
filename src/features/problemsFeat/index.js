@@ -8,6 +8,7 @@ export * from "./components/problem/results/ResultsProblem";
 export * from "./components/problem/results/SubtaskProblem";
 export * from "./components/problem/results/CompileError";
 export * from "./components/problem/results/TestProblem";
+export * from "./components/problem/results/ModalIO";
 export * from "./components/sidebar/ItemSideBar";
 export * from "./layout/ProblemsSidebar";
 export * from "./layout/ProblemsLayout";

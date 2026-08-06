@@ -7,6 +7,7 @@ export function ResultsProblem({ submitDataInfo, subtasks }) {
     correct_subtasks: correctSubtasks,
     max_memory: maxMemory,
     max_time: maxTime,
+    user_code: userCode,
   } = submitDataInfo;
 
   const subtaskPercent = (correctSubtasks / totalSubtasks) * 100;
@@ -76,6 +77,7 @@ export function ResultsProblem({ submitDataInfo, subtasks }) {
                 key={index}
                 index={index}
                 subtask={subtask}
+                userCode={userCode}
                 formatValue={formatValue}
               />
             ))}
