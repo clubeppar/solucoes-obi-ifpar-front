@@ -8,6 +8,7 @@ import {
   InputProblem,
   ResultsProblem,
   EmptySelectionProblem,
+  CompileError,
 } from "@feats/problemsFeat";
 
 import { useFetch } from "@hooks";
@@ -20,6 +21,7 @@ export function ProblemsLayout({ selection, clearSelection }) {
 
   const [submitDataInfo, setSubmitDataInfo] = useState(null);
   const [subtasks, setSubtasks] = useState(null);
+  const [compileError, setCompileError] = useState(null);
 
   const { post } = useFetch();
 
@@ -35,10 +37,10 @@ export function ProblemsLayout({ selection, clearSelection }) {
   const handleClearFile = () => {
     setFileName("");
     setFile(null);
+    setCompileError(null);
   };
 
   const handleUpload = async () => {
-    setSubtasks(null);
     const body = {
       year: year.toLowerCase(),
       phase: phase.toLowerCase(),
@@ -47,12 +49,18 @@ export function ProblemsLayout({ selection, clearSelection }) {
       filename: fileName,
       file: await file.text(),
     };
-    const data = await post("/questions/validate", body);
-    if (!data) return;
-    const { subtasks, ...dataInfo } = data;
-    setSubtasks(subtasks);
-    setSubmitDataInfo(dataInfo);
-    handleClearFile();
+    try {
+      const data = await post("/questions/validate", body);
+
+      const { subtasks, ...dataInfo } = data;
+
+      setSubtasks(subtasks);
+      setSubmitDataInfo(dataInfo);
+
+      handleClearFile();
+    } catch (err) {
+      setCompileError([err, fileName]);
+    }
   };
 
   useEffect(() => {
@@ -61,6 +69,7 @@ export function ProblemsLayout({ selection, clearSelection }) {
       setFile(null);
       setSubmitDataInfo(null);
       setSubtasks(null);
+      setCompileError(null);
     };
 
     clearFile();
@@ -137,6 +146,8 @@ export function ProblemsLayout({ selection, clearSelection }) {
               />
             </div>
           )}
+
+          {compileError && <CompileError message={compileError} />}
         </>
       )}
     </div>

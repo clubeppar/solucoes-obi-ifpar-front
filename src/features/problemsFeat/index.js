@@ -6,6 +6,7 @@ export * from "./components/problem/HeaderProblem";
 export * from "./components/problem/InputProblem";
 export * from "./components/problem/results/ResultsProblem";
 export * from "./components/problem/results/SubtaskProblem";
+export * from "./components/problem/results/CompileError";
 export * from "./components/problem/results/TestProblem";
 export * from "./components/sidebar/ItemSideBar";
 export * from "./layout/ProblemsSidebar";

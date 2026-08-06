@@ -48,7 +48,7 @@ export function useFetch() {
           message: err.message || "Unknown error",
           status: err.status || 500,
         });
-        return null;
+        throw err;
       } finally {
         stopLoading();
       }
