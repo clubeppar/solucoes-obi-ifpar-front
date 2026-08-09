@@ -77,8 +77,6 @@ export function ProblemsLayout({ selection, clearSelection }) {
 
   return (
     <div className="mainpage-layout scrollbar">
-      <Topbar collapsed={true} />
-
       {isEmptySelection ? (
         <EmptySelectionProblem />
       ) : (
