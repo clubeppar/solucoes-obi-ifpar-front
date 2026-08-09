@@ -1,33 +1,15 @@
 let boxex = [
   {
     size: 3,
-    h1: "Lista questões",
-    p: "lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.",
-    img: "",
+    h1: "Todos os Desafios em Um Só Lugar",
+    p: "Navegue por problemas da OBI e encontre o próximo desafio para colocar seus conhecimentos em prática.",
+    img: "src/assets/images/others/capivara_NotFound.png",
   },
   {
     size: 3,
-    h1: "Lista questões",
-    p: "lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.",
-    img: "",
-  },
-  {
-    size: 2,
-    h1: "Lista questões",
-    p: "lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.",
-    img: "",
-  },
-  {
-    size: 2,
-    h1: "Lista questões",
-    p: "lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.",
-    img: "",
-  },
-  {
-    size: 2,
-    h1: "Lista questões",
-    p: "lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate.",
-    img: "",
+    h1: "Testes Automatizados",
+    p: "Envie seu código e receba uma avaliação automática da sua solução, com resultados detalhados sobre os testes executados.",
+    img: "src/assets/images/others/capivara_NotFound.png",
   },
 ];
 
