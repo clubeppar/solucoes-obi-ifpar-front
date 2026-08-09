@@ -7,12 +7,16 @@ import {
   About,
   HowItWorks,
   SeeOnPractice,
+  AboutOBI,
+  WhoWeAre,
+  MeetTheTeam,
+  ReadyToSolve
 } from "@feats/landingFeat";
 
 export function LandingPage() {
   return (
     <>
-      <div className="landingpage-bg">
+      <div className="landingpage-bg scrollbar">
         <div className="landingpage-topbar-slot">
           <Topbar collapsed={false} />
         </div>
@@ -23,6 +27,10 @@ export function LandingPage() {
           <About />
           <HowItWorks />
           {/* <SeeOnPractice /> */}
+          <AboutOBI />
+          {/* <WhoWeAre /> */}
+          <MeetTheTeam />
+          <ReadyToSolve />
         </div>
 
         <div className="col-span-full">

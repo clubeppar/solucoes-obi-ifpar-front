@@ -5,18 +5,18 @@ import heroBackground from "@images/others/bg_landing_page.png";
 export function Hero() {
   return (
     <div
-      className="w-full flex flex-col items-center justify-center gap-8 bg-top bg-no-repeat px-4 py-16 md:aspect-[1440/496] md:py-0"
+      className="w-full flex flex-col items-center justify-center gap-8 bg-top bg-no-repeat px-4 py-16 md:aspect-1440/496 md:py-0"
       style={{
         backgroundImage: `url(${heroBackground})`,
         backgroundSize: "100% auto",
       }}
     >
       <div className="flex justify-center w-full">
-        <div className="flex flex-col justify-center items-center text-center w-full max-w-[826px] text-white">
-          <h1 className="text-3xl md:text-[48px] md:leading-[48px] font-bold mb-4">
+        <div className="flex flex-col justify-center items-center text-center w-full max-w-206.5 text-white">
+          <h1 className="text-3xl md:text-[48px] md:leading-12 font-bold mb-4">
             Resolva Problemas. Envie Código. Veja o Resultado
           </h1>
-          <p className="text-base md:text-lg md:leading-7 font-medium text-center w-full max-w-[650px]">
+          <p className="text-base md:text-lg md:leading-7 font-medium text-center w-full max-w-162.5">
             Uma plataforma gratuita para treinar programação competitiva
             resolvendo questões da OBI e recebendo feedback automático das suas
             soluções

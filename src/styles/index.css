@@ -68,14 +68,14 @@ html {
   }
 
   .landingpage-bg{
-    @apply grid grid-cols-4 grid-rows-[auto_6fr_auto] min-h-screen gap-0
+    @apply grid grid-cols-4 grid-rows-[auto_6fr_auto] h-screen overflow-y-auto gap-0
   }
   .landingpage-topbar-slot{
     @apply col-span-full bg-gray-950 flex items-center h-16 sticky top-0 z-10
   }
   .landingpage-body{
     @apply col-span-full bg-gray-950 flex flex-col items-center justify-start text-white
-    light:bg-white
+    light:bg-white min-w-0
   }
 
   /* subcomponents/grid folder */
