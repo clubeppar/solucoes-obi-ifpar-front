@@ -12,7 +12,7 @@ export function ReadyToSolve() {
     >
       <h2 className="text-3xl font-bold mb-2 text-center text-balance">
         Pronto para Resolver o seu{" "}<br></br>
-        <span className="text-blue-500">Primeiro Problema</span>
+        <span className="text-blue-500">Primeiro Problema?</span>
       </h2>
       <Link
         to="/problems"
