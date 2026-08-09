@@ -26,9 +26,9 @@ export function LandingPage() {
           <Features />
           <About />
           <HowItWorks />
-          <SeeOnPractice />
+          {/* <SeeOnPractice /> */}
           <AboutOBI />
-          <WhoWeAre />
+          {/* <WhoWeAre /> */}
           <MeetTheTeam />
           <ReadyToSolve />
         </div>
