@@ -37,7 +37,6 @@ export function ProblemsLayout({ selection, clearSelection }) {
   const handleClearFile = () => {
     setFileName("");
     setFile(null);
-    setCompileError(null);
   };
 
   const handleUpload = async () => {
@@ -56,9 +55,12 @@ export function ProblemsLayout({ selection, clearSelection }) {
 
       setSubtasks(subtasks);
       setSubmitDataInfo(dataInfo);
+      setCompileError(null);
 
       handleClearFile();
     } catch (err) {
+      setSubtasks(null);
+      setSubmitDataInfo(null);
       setCompileError([err, fileName]);
     }
   };
@@ -87,8 +89,6 @@ export function ProblemsLayout({ selection, clearSelection }) {
             level={level}
             question={problem}
             isEmpty={isEmptySelection}
-            file={file}
-            onSubmit={handleUpload}
             clearSelection={clearSelection}
           />
 
