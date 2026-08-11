@@ -32,7 +32,9 @@ export function CardTestData({ title, value }) {
   const shouldTruncate = previewLines.length > maxPreviewLines;
   const previewValue = shouldTruncate
     ? `${previewLines.slice(0, maxPreviewLines).join("\n")}\n\n...`
-    : value;
+    : value.length >= 1000
+      ? value.slice(0, 1000) + "..."
+      : value;
 
   return (
     <section className="flex flex-col rounded-xl bg-gray-800 p-4 shadow-lg gap-3">
