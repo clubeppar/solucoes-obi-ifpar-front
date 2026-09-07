@@ -138,7 +138,7 @@ html {
 
 
   .mainpage-layout{
-    @apply h-full
+    @apply h-full min-h-0
     bg-gray-950 
     text-white overflow-y-auto 
     light:bg-white
