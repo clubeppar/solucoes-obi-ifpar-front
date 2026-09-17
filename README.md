@@ -50,10 +50,14 @@ O projeto utiliza tecnologias modernas de desenvolvimento web.
 - React Router DOM
 - Tailwind CSS
 
+[![Ferramentas Frontend](https://skillicons.dev/icons?i=vite,react,js,tailwind)](https://skillicons.dev)
+
 ### Backend
 
 - Python
 - Flask
+
+[![Ferramentas Backend](https://skillicons.dev/icons?i=py,flask)](https://skillicons.dev)
 
 ### Ferramentas
 
@@ -61,6 +65,8 @@ O projeto utiliza tecnologias modernas de desenvolvimento web.
 - Git Flow
 - GitHub
 - gh-pages
+
+[![Ferramentas de versionamento](https://skillicons.dev/icons?i=git,github)](https://skillicons.dev)
 
 ### Documentação
 
