@@ -64,7 +64,7 @@ html {
   /* pages folder */
 
   .grid-layout{
-    @apply grid h-screen grid-cols-[auto_minmax(0,1fr)] grid-rows-[minmax(0,1fr)_40px] gap-0
+    @apply grid h-screen grid-cols-[auto_minmax(0,1fr)] grid-rows-[minmax(0,1fr)] gap-0
   }
 
   .landingpage-bg{
