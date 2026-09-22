@@ -11,6 +11,8 @@ import {
   CompileError,
 } from "@feats/problemsFeat";
 
+import { Footer } from "@components/Footer";
+
 import { useFetch } from "@hooks";
 
 export function ProblemsLayout({ selection, clearSelection }) {
@@ -150,6 +152,7 @@ export function ProblemsLayout({ selection, clearSelection }) {
           {compileError && <CompileError message={compileError} />}
         </>
       )}
+      <Footer/>
     </div>
   );
 }

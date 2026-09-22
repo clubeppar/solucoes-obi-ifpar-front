@@ -48,7 +48,6 @@ export function ProblemsPage() {
           selection={mainSelection}
           clearSelection={handleClearSelection}
         />
-        <Footer />
       </div>
 
       {/* <div className="col-span-full flex w-full">
