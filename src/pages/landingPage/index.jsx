@@ -10,7 +10,7 @@ import {
   AboutOBI,
   WhoWeAre,
   MeetTheTeam,
-  ReadyToSolve
+  ReadyToSolve,
 } from "@feats/landingFeat";
 
 export function LandingPage() {
@@ -34,7 +34,7 @@ export function LandingPage() {
         </div>
 
         <div className="col-span-full">
-          <Footer />
+          <Footer onlyFooter={false} />
         </div>
       </div>
     </>

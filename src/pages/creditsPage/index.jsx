@@ -35,10 +35,9 @@ export function CreditsPage() {
           </button>
         </div>
         <div className="w-full col-span-full">
-          <Footer />
+          <Footer onlyFooter={false} />
         </div>
       </div>
-
     </div>
   );
 }
