@@ -80,7 +80,7 @@ export function ProblemsLayout({ selection, clearSelection }) {
   }, [selection]);
 
   return (
-    <div className="mainpage-layout scrollbar">
+    <div className="mainpage-layout scrollbar flex flex-col">
       {isEmptySelection ? (
         <EmptySelectionProblem />
       ) : (
@@ -152,7 +152,9 @@ export function ProblemsLayout({ selection, clearSelection }) {
           {compileError && <CompileError message={compileError} />}
         </>
       )}
-      <Footer/>
+      <div className="col-span-full mt-auto">
+        <Footer />
+      </div>
     </div>
   );
 }
