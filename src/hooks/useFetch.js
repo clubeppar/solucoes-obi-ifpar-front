@@ -3,9 +3,10 @@ import { useState, useCallback } from "react";
 import { useLoading } from "./useLoading";
 
 const API_URL =
-  window.location.hostname === "localhost"
+  import.meta.env.VITE_BACKEND_URL ||
+  (window.location.hostname === "localhost"
     ? "http://127.0.0.1:5000"
-    : "https://solucoes-obi-ifpar.onrender.com";
+    : "https://solucoes-obi-ifpar.onrender.com");
 
 export function useFetch() {
   const { startLoading, stopLoading } = useLoading();

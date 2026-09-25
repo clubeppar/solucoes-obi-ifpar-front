@@ -76,6 +76,16 @@ A aplicação web estará disponível em:
 http://localhost:5173/solucoes-obi-ifpar/
 ```
 
+### Variáveis de ambiente
+
+Copie `.env.example` para `.env` e ajuste a URL do backend:
+
+```env
+VITE_BACKEND_URL=http://127.0.0.1:5000
+```
+
+Não deve conter segredos nesse `.env`.
+
 ## 👥 Contribuição
 
 Este é um projeto **aberto aos estudantes do Clube de Programação do IFPAR**.
