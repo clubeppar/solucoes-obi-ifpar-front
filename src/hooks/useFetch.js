@@ -15,18 +15,20 @@ export function useFetch() {
 
   const request = useCallback(
     async (url, options = {}) => {
-      startLoading();
+      const { skipLoading = false, ...fetchOptions } = options;
+
+      if (!skipLoading) startLoading();
       setError(null);
 
       try {
         const response = await fetch(API_URL + url, {
           headers: {
-            ...(options.body instanceof FormData
+            ...(fetchOptions.body instanceof FormData
               ? {}
               : { "Content-Type": "application/json" }),
-            ...options.headers,
+            ...fetchOptions.headers,
           },
-          ...options,
+          ...fetchOptions,
         });
 
         let data = null;
@@ -51,13 +53,13 @@ export function useFetch() {
         });
         throw err;
       } finally {
-        stopLoading();
+        if (!skipLoading) stopLoading();
       }
     },
     [startLoading, stopLoading],
   );
 
-  const get = useCallback((url) => request(url), [request]);
+  const get = useCallback((url, options) => request(url, options), [request]);
 
   const post = useCallback(
     (url, body) =>

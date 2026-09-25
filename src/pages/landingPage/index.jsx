@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useFetch } from "@hooks";
+
 import { Topbar } from "@components/Topbar";
 import { Footer } from "@components/Footer";
 
@@ -14,6 +17,18 @@ import {
 } from "@feats/landingFeat";
 
 export function LandingPage() {
+  const { get } = useFetch();
+
+  useEffect(() => {
+    async function runAPI() {
+      const link = "/api/hello";
+      const data = await get(link, { skipLoading: true });
+      console.log(data.message);
+    }
+
+    runAPI();
+  }, [get]);
+
   return (
     <>
       <div className="landingpage-bg scrollbar">
