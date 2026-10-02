@@ -2,9 +2,9 @@ import { useState } from "react";
 import { GoChevronDown } from "react-icons/go";
 
 export function LanguagesDropdown({
-  selectedLanguage = "cpp",
-  arrayValues = [],
-  onSelect = () => { }
+  selectedLanguage,
+  arrayValues,
+  onSelect
 }) {
 
   const [language, setLanguage] = useState(selectedLanguage);

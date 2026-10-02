@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { MdOutlineFileUpload } from "react-icons/md";
 import { IoIosWarning } from "react-icons/io";
+import { FaLaptopCode } from "react-icons/fa";
 
 import {
   HeaderProblem,
@@ -97,15 +98,26 @@ export function ProblemsLayout({ selection, clearSelection }) {
           <div className="header-wrapper">
             <div className="header-content">
               <h1 className="text-2xl light:text-black">{problem}</h1>
-              <div className="flex items-center gap-2">
-                <button
-                  disabled={file == null || file.size / 1024 == 0 || !flag}
-                  className="header-btn-submit"
-                  onClick={handleUpload}
-                >
-                  <MdOutlineFileUpload className="mr-1 w-6 h-6" />
-                  Enviar questão
-                </button>
+              <div className="flex gap-2">
+                <div className="flex items-center gap-2">
+                  <button
+                    className="header-btn-submit"
+                    onClick={handleUpload}
+                  >
+                    <FaLaptopCode className="mr-1 w-6 h-6" />
+                    Abrir IDE
+                  </button>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    disabled={file == null || file.size / 1024 == 0 || !flag}
+                    className="header-btn-submit"
+                    onClick={handleUpload}
+                  >
+                    <MdOutlineFileUpload className="mr-1 w-6 h-6" />
+                    Enviar questão
+                  </button>
+                </div>
               </div>
             </div>
           </div>
