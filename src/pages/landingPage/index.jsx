@@ -16,8 +16,6 @@ import {
   ReadyToSolve,
 } from "@feats/landingFeat";
 
-import { Ide } from "@feats/ideFeat";
-
 export function LandingPage() {
   const { get } = useFetch();
 
@@ -48,7 +46,6 @@ export function LandingPage() {
           {/* <WhoWeAre /> */}
           <MeetTheTeam />
           <ReadyToSolve />
-          <Ide />
         </div>
 
         <div className="col-span-full">
