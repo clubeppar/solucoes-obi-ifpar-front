@@ -51,7 +51,10 @@ export function ProblemsLayout({ selection, clearSelection }) {
 
     if (!submissionFileName || submissionFile == null) return;
 
-    const codeText = typeof submissionFile === "string" ? submissionFile : await submissionFile.text()
+    const codeText =
+      typeof submissionFile === "string"
+        ? submissionFile
+        : await submissionFile.text();
 
     const body = {
       year: year.toLowerCase(),

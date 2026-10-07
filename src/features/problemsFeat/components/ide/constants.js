@@ -11,7 +11,7 @@ export const languageConfig = {
 int main(void) {
 
   return 0;
-}`
+}`,
   },
   cpp: {
     name: "C++",
@@ -23,7 +23,7 @@ using namespace std;
 int main() {
 
   return 0;
-}`
+}`,
   },
   python: {
     name: "Python",
@@ -33,7 +33,7 @@ int main() {
     pass
 
 if __name__ == "__main__":
-    main()`
+    main()`,
   },
   java: {
     name: "Java",
@@ -43,6 +43,6 @@ if __name__ == "__main__":
   public static void main(String[] args) {
 
   }
-}`
+}`,
   },
 };

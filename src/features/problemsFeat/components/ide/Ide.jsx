@@ -1,11 +1,11 @@
-import { Editor } from '@monaco-editor/react';
+import { Editor } from "@monaco-editor/react";
 
-import { IoClose } from 'react-icons/io5'
+import { IoClose } from "react-icons/io5";
 
 import { useState } from "react";
 
-import { LanguagesDropdown } from './LanguagesDropdown';
-import { languageConfig } from './constants';
+import { LanguagesDropdown } from "./LanguagesDropdown";
+import { languageConfig } from "./constants";
 
 // * O nome do arquivo deve ser o nome da questão . a extensão; por exemplo: "jogo.cpp" ou "arara.java"
 

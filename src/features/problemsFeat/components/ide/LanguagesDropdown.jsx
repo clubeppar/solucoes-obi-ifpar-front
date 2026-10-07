@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { GoChevronDown } from "react-icons/go";
 
-export function LanguagesDropdown({
-  selectedLanguage,
-  arrayValues,
-  onSelect
-}) {
-
+export function LanguagesDropdown({ selectedLanguage, arrayValues, onSelect }) {
   const [language, setLanguage] = useState(selectedLanguage);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -41,10 +36,11 @@ export function LanguagesDropdown({
                 onClick={() => {
                   handleSelect(item.key);
                 }}
-                className={`cursor-pointer rounded-2xl py-2 text-sm text-white transition ${isSelected
-                  ? "bg-blue-600 hover:bg-blue-700"
-                  : "hover:bg-gray-700"
-                  }`}
+                className={`cursor-pointer rounded-2xl py-2 text-sm text-white transition ${
+                  isSelected
+                    ? "bg-blue-600 hover:bg-blue-700"
+                    : "hover:bg-gray-700"
+                }`}
               >
                 {item.value}
               </button>
@@ -53,5 +49,5 @@ export function LanguagesDropdown({
         </div>
       )}
     </div>
-  )
+  );
 }
