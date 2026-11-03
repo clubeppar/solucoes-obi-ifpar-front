@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { MdOutlineFileUpload } from "react-icons/md";
 import { IoIosWarning } from "react-icons/io";
+import { FaLaptopCode } from "react-icons/fa";
 
 import {
   HeaderProblem,
@@ -9,6 +10,7 @@ import {
   ResultsProblem,
   EmptySelectionProblem,
   CompileError,
+  Ide,
 } from "@feats/problemsFeat";
 
 import { Footer } from "@components/Footer";
@@ -24,6 +26,8 @@ export function ProblemsLayout({ selection, clearSelection }) {
   const [submitDataInfo, setSubmitDataInfo] = useState(null);
   const [subtasks, setSubtasks] = useState(null);
   const [compileError, setCompileError] = useState(null);
+
+  const [IDEOpen, setIDEOpen] = useState(false);
 
   const { post } = useFetch();
 
@@ -41,14 +45,24 @@ export function ProblemsLayout({ selection, clearSelection }) {
     setFile(null);
   };
 
-  const handleUpload = async () => {
+  const handleUpload = async (editorSubmission = null) => {
+    const submissionFileName = editorSubmission?.filename ?? fileName;
+    const submissionFile = editorSubmission?.file ?? file;
+
+    if (!submissionFileName || submissionFile == null) return;
+
+    const codeText =
+      typeof submissionFile === "string"
+        ? submissionFile
+        : await submissionFile.text();
+
     const body = {
       year: year.toLowerCase(),
       phase: phase.toLowerCase(),
       level: level.toLowerCase(),
       name: problem.toLowerCase(),
-      filename: fileName,
-      file: await file.text(),
+      filename: submissionFileName,
+      file: codeText,
     };
     try {
       const data = await post("/questions/validate", body);
@@ -63,8 +77,9 @@ export function ProblemsLayout({ selection, clearSelection }) {
     } catch (err) {
       setSubtasks(null);
       setSubmitDataInfo(null);
-      setCompileError([err, fileName]);
+      setCompileError([err, submissionFileName]);
     }
+    setIDEOpen(false);
   };
 
   useEffect(() => {
@@ -97,15 +112,26 @@ export function ProblemsLayout({ selection, clearSelection }) {
           <div className="header-wrapper">
             <div className="header-content">
               <h1 className="text-2xl light:text-black">{problem}</h1>
-              <div className="flex items-center gap-2">
-                <button
-                  disabled={file == null || file.size / 1024 == 0 || !flag}
-                  className="header-btn-submit"
-                  onClick={handleUpload}
-                >
-                  <MdOutlineFileUpload className="mr-1 w-6 h-6" />
-                  Enviar questão
-                </button>
+              <div className="flex gap-2">
+                <div className="flex items-center gap-2">
+                  <button
+                    className="header-btn-submit"
+                    onClick={() => setIDEOpen(true)}
+                  >
+                    <FaLaptopCode className="mr-1 w-6 h-6" />
+                    Abrir IDE
+                  </button>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    disabled={file == null || file.size / 1024 == 0 || !flag}
+                    className="header-btn-submit"
+                    onClick={handleUpload}
+                  >
+                    <MdOutlineFileUpload className="mr-1 w-6 h-6" />
+                    Enviar questão
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -155,6 +181,14 @@ export function ProblemsLayout({ selection, clearSelection }) {
       <div className="col-span-full mt-auto">
         <Footer />
       </div>
+
+      {IDEOpen && (
+        <Ide
+          closeIDE={() => setIDEOpen(false)}
+          problemName={problem.toLowerCase()}
+          submitCode={handleUpload}
+        />
+      )}
     </div>
   );
 }
