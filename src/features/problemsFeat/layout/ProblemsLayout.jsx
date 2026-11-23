@@ -19,6 +19,12 @@ import { useFetch } from "@hooks";
 
 export function ProblemsLayout({ selection, clearSelection }) {
   const { year, level, phase, problem, flag } = selection;
+  const storageKey =
+    year && level && phase && problem
+      ? `obi-code:${[year, level, phase, problem]
+          .map((value) => String(value).trim().toLowerCase())
+          .join(":")}`
+      : null;
 
   const [fileName, setFileName] = useState("");
   const [file, setFile] = useState(null);
@@ -187,6 +193,7 @@ export function ProblemsLayout({ selection, clearSelection }) {
           closeIDE={() => setIDEOpen(false)}
           problemName={problem.toLowerCase()}
           submitCode={handleUpload}
+          storageKey={storageKey}
         />
       )}
     </div>

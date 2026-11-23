@@ -9,19 +9,48 @@ import { languageConfig } from "./constants";
 
 // * O nome do arquivo deve ser o nome da questão . a extensão; por exemplo: "jogo.cpp" ou "arara.java"
 
-export function Ide({ closeIDE, problemName, submitCode }) {
+export function Ide({ closeIDE, problemName, submitCode, storageKey }) {
   const [selectedLanguage, setSelectedLanguage] = useState("cpp");
-  const [codeByLanguage, setCodeByLanguage] = useState(() =>
-    Object.fromEntries(
+  const [codeByLanguage, setCodeByLanguage] = useState(() => {
+    const defaults = Object.fromEntries(
       Object.entries(languageConfig).map(([language, config]) => [
         language,
         config.defaultCode,
       ]),
-    ),
-  );
+    );
+
+    try {
+      const storedCode = JSON.parse(sessionStorage.getItem(storageKey));
+      if (!storedCode || typeof storedCode !== "object") return defaults;
+
+      return Object.fromEntries(
+        Object.entries(languageConfig).map(([language, config]) => [
+          language,
+          typeof storedCode[language] === "string"
+            ? storedCode[language]
+            : config.defaultCode,
+        ]),
+      );
+    } catch {
+      return defaults;
+    }
+  });
 
   const code = codeByLanguage[selectedLanguage];
   const currentLanguage = languageConfig[selectedLanguage];
+
+  const updateCode = (value) => {
+    setCodeByLanguage((currentCodes) => {
+      const nextCodes = {
+        ...currentCodes,
+        [selectedLanguage]: value ?? "",
+      };
+
+      sessionStorage.setItem(storageKey, JSON.stringify(nextCodes));
+
+      return nextCodes;
+    });
+  };
 
   function onSubmit() {
     submitCode({
@@ -67,12 +96,7 @@ export function Ide({ closeIDE, problemName, submitCode }) {
             <div className="px-5">
               <Editor
                 value={code}
-                onChange={(value) =>
-                  setCodeByLanguage((currentCodes) => ({
-                    ...currentCodes,
-                    [selectedLanguage]: value ?? "",
-                  }))
-                }
+                onChange={updateCode}
                 key={selectedLanguage}
                 height="50vh"
                 language={currentLanguage.editorLanguage}
