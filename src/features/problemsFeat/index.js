@@ -1,6 +1,7 @@
 export * from "./components/filter/ModalComponentFilter";
 export * from "./components/filter/ModalFilter";
 export * from "./components/filter/SearchFilter";
+export * from "./components/ide/Ide";
 export * from "./components/problem/EmptySelectionProblem";
 export * from "./components/problem/HeaderProblem";
 export * from "./components/problem/InputProblem";
